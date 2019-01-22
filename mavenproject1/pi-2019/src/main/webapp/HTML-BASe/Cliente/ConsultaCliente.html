@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+        <head>
+                <meta charset="utf-8" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <title>Consultar Cliente</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <link rel="stylesheet" type="text/css" media="screen" href="../Styles/main.css" />
+                <script src="main.js"></script>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            <script src="main.js"></script>
+            <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function(){
+                $("input.data").mask("99/99/9999");
+                $("input.cpf").mask("999.999.999-99");
+                $("input.cep").mask("99.999-999");
+                $('#dinheiro').mask('#.##9,99', {reverse: true}); 
+            });
+            </script>
+            </head>
+            <nav class="navbar navbar-expand navbar-light bg-white">
+                <a class="navbar-brand" href="../Main.html">
+                    <img  src="../Styles/Logo.png" alt="" width="30" height="30">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse" id="navbarsExample02">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                      <a class="nav-link" href="../Main.html">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Cliente
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="../Cliente/CadastroCliente.html">Cadastro</a>
+                          <a class="dropdown-item" href="../Cliente/ConsultaCliente.html">Consulta</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          "Venda"
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="../Venda/CadastroVenda.html">Cadastro</a>
+                          <a class="dropdown-item" href="../Venda/ConsultaVenda.html">Consulta</a>
+                        </div>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Produto
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="../Produto/CadastroProduto.html">Cadastro</a>
+                          <a class="dropdown-item" href="../Produto/ConsultaProduto.html">Consulta</a>
+                        </div>
+                      </li> <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Relatório
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                          <a class="dropdown-item" href="../Relatorio/EmitirRelatorio.html">Emitir</a>
+                        </div>
+                      </li>
+                  </ul>
+                  <a href="../login.html" class="btn btn-info btn-lg my-2 my-md-0" id="btn-sair">
+                        <span class="glyphicon glyphicon-log-out"></span> Sair
+                      </a>
+                </div>
+              </nav>
+ <body id="body-changes" class="text-center">  
+        <form id="FadeForm" class="form-type" >
+                <div class="row justify-content-center">
+                    <div class="form-group col-6 ">
+                        <label> Client Full Name: </label>
+                        <input type="text" class="form-control" placeholder="First Name" required>
+                    </div>
+        
+                    <div class="form-group col-6 ">
+                        <label> CPF: </label>
+                        <input type="text"  id="cpf" class="cpf form-control" placeholder="111.111.111-11" required>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="form-group col-12">
+                    <button type="submit" id="btn-form-search">Pesquisar</button>
+                    </div>
+                </div>
+                <br>
+                <div class="row justify-content-center">
+                    <div class="form-group col-12">
+                        <table class="table table-bordered">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">CPF</th>
+                                <th scope="col">Options</th>
+                            </tr>
+                            <tbody>
+                            <tr>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                                <td><a class="linkTable" href="#">Update </a>/
+                                    <a class="linkTable" href="#">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+        
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                                <td><a class="linkTable" href="#">Update </a>/
+                                    <a class="linkTable" href="#">Delete</a>
+                                </td>
+                            </tr>
+                            <tr>
+        
+                                <td >Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
+                                <td><a class="linkTable" href="#">Update </a>/
+                                    <a class="linkTable" href="#">Delete</a>
+                                </td>
+                            </tr>
+          </tbody>
+                        </table>
+                    </div>
+                </div>
+        
+            </form>
+</body>
+</html>

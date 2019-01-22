@@ -1,0 +1,151 @@
+body{
+
+  background: #f6898c;
+    
+}
+#body-changes{
+    background-color: #f6898c;
+}
+.form-singin{
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+    background-color: white;
+    padding: 2%;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);    
+}
+#fadeIn{
+	opacity: 0;
+	animation: fadeIn 1.3s forwards;
+
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(0px);
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(250px);
+  }
+}
+#btn-singin{
+    background-color: #f6898c;
+    border: 0;
+}
+#btn-singin:hover{
+  background-color: white;
+  color: #f6898c;
+  border: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+.Intro{
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  padding: 2%;
+  font-size: 100px;
+  color: white;
+  text-shadow:  10px 10px 10px rgba(0, 0, 0, 0.5);
+}
+.Func{
+  width: 100%;
+  padding: 10px;
+  margin: auto;
+  padding: 2%;
+  font-size: 20px;
+  color: white;
+  text-shadow:  3px 3px 3px rgba(0, 0, 0, 0.8);
+}
+#btn-sair{
+  padding: .5rem 1rem;
+  font-size: 0.8rem;
+  line-height: 1.60;
+  border-radius: .3rem;
+  background-color: #f6898c;
+  border: 0;
+}
+#btn-sair:hover{
+  background-color: white;
+  color: #f6898c;
+  border: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+#FadeForm{
+	opacity: 0;
+	animation: fadeIn 1.3s forwards;
+
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(150px);
+  }
+  30% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(50px);
+  }
+}
+.form-type{
+  width: 100%;
+  max-width: 1000px;
+  padding: 15px;
+  margin: auto;
+  background-color: white;
+  padding: 1%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);  
+}
+#btn-form{
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.80;
+  border-radius: .3rem;
+  background-color: #f6898c;
+  border: 0;
+  color: white;
+}
+#btn-form:hover{
+  background-color: white;
+  color: #f6898c;
+  border: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+#btn-form-search{
+  width: 100%;
+  padding: .5rem 1rem;
+  font-size: 1rem;
+  border-radius: .3rem;
+  background-color: #f6898c;
+  border: 0;
+  color: white;
+}
+#btn-form-search:hover{
+  background-color: white;
+  color: #f6898c;
+  border: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+#btn-secondary{
+  padding: .5rem 1rem;
+  font-size: 0.8rem;
+  line-height: 1.60;
+  border-radius: .3rem;
+  background-color: #f6898c;
+  border: 0;
+  color: white;
+}
+#btn-secondary:hover{
+  background-color: white;
+  color: #f6898c;
+  border: 5px;
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
