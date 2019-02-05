@@ -9,7 +9,7 @@
 <html>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Home</title>
+    <title>Cadastrar Cliente</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="JSP-STYLES/main.css" />
     <script src="main.js"></script>
@@ -52,7 +52,7 @@
             </div>
             <div class=" form-group col-6 ">
                 <label> R.G: </label>
-                <input type="number" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg">
+                <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14">
             </div>
         </div>
         <div class="row justify-content-center">

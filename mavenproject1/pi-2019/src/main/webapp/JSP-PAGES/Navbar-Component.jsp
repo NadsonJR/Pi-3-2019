@@ -39,7 +39,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/CadastroCliente">Cadastro</a>
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/ConsultaCliente">Consulta</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/ClienteConsulta">Consulta</a>
                 </div>
               </li>
               <li class="nav-item dropdown">

@@ -14,7 +14,6 @@ public class Cliente extends Pessoa {
     private String complemento;
     private String cidade;
     private String estado;
-
     private Integer ID;
 
     public int getID() {
