@@ -29,7 +29,7 @@
 </head>
 <jsp:include page="Navbar-Component.jsp"/>
 <body id="body-changes" class="text-center">
-    <form id="FadeForm" class="form-type">
+    <form id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroCliente" >
         <div class="row justify-content-center">
             <div class="form-group col-6">
                 <h2>Client</h2>
@@ -38,31 +38,31 @@
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> Nome: </label>
-                <input type="text" class="form-control" placeholder="Nome" required id="nome">
+                <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome">
             </div>
             <div class="form-group col-6 ">
                 <label> Sobrenome: </label>
-                <input type="text" class="form-control" placeholder="Sobrenome" required id="sobrenome">
+                <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> CPF: </label>
-                <input type="number" class="cpf form-control" placeholder="111.111.111-11" maxlength="10" required id="cpf">
+                <input type="number" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf">
             </div>
             <div class=" form-group col-6 ">
                 <label> R.G: </label>
-                <input type="number" class="form-control" placeholder="11.111.111-11" required maxlength="10" id="rg">
+                <input type="number" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-8 ">
                 <label> Cidade: </label>
-                <input type="text" class="form-control" placeholder="Chicago" required id="cidade">
+                <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade">
             </div>
             <div class="form-group col-4">
                 <label> Estado: </label>
-                <select class="form-control" required>
+                <select class="form-control" name="estado" id="estado" required>
                     <option selected>Escolha...</option>
                     <option value="AC">Acre</option>
                     <option value="AL">Alagoas</option>
@@ -97,11 +97,11 @@
         <div class="row justify-content-center">
             <div class="form-group col-8 ">
                 <label> Endereço: </label>
-                <input type="text" class="form-control" placeholder="1234 Main St" required>
+                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" required>
             </div>
             <div class="form-group col-4">
                 <label> Complemento: </label>
-                <input type="text" class="form-control" placeholder="Apartament" required>
+                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" required>
             </div>
         </div>
         <div class="row ">

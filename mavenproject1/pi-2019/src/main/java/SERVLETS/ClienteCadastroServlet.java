@@ -5,6 +5,8 @@ package SERVLETS;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import DAO.ClienteDAO;
+import Modal.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -25,6 +27,8 @@ public class ClienteCadastroServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+                
+
        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteCadastro.jsp");
         dispatcher.forward(request, response);
@@ -34,7 +38,26 @@ public class ClienteCadastroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("oi");
+        String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
+        String cpf = request.getParameter("cpf");
+        String rg = request.getParameter("rg");
+        String complemento = request.getParameter("complemento");
+        String cidade = request.getParameter("cidade");
+        String estado = request.getParameter("estado");
+        String endereco = request.getParameter("endereco");
         
+        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
+      
+        
+        try {
+            ClienteDAO.inserir(c);
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println(e);
+        }
+        request.setAttribute("cliente", c);
         
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteCadastro.jsp");
