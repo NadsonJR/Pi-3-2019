@@ -38,7 +38,7 @@ public class ClienteCadastroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("oi");
+       
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -60,7 +60,7 @@ public class ClienteCadastroServlet extends HttpServlet {
         request.setAttribute("cliente", c);
         
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/ClienteCadastro.jsp");
+                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
         dispatcher.forward(request, response);
     }
 

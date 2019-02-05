@@ -22,7 +22,7 @@
     </head>
   <nav class="navbar navbar-expand navbar-light bg-white">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/Home">
-            <img  src="../JSP-STYLES/Logo.png" alt="" width="30" height="30">
+            <img  src="JSP-STYLES/Logo.png" alt="" width="30" height="30">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

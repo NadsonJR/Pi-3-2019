@@ -19,7 +19,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO cliente (Nome,Sobrenome,CPF,RG,Complemento,Cidade,Estado,Endereco,) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente (Nome,Sobrenome,CPF,RG,Complemento,Cidade,Estado,Endereco) VALUES (?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -41,12 +41,10 @@ public class ClienteDAO {
             preparedStatement.setString(8, cliente.getEndereco());           
             //Executa o comando no banco de dados
             preparedStatement.execute();
-            
         } catch(Exception e){
             
             e.getLocalizedMessage();
-            System.out.println(e);
-            
+            System.out.println(e);            
         }
             finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento

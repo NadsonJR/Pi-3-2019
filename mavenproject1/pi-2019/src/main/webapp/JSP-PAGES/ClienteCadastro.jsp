@@ -48,7 +48,7 @@
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> CPF: </label>
-                <input type="number" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf">
+                <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="14">
             </div>
             <div class=" form-group col-6 ">
                 <label> R.G: </label>
@@ -109,7 +109,7 @@
             </div>
             <div class ="form group   col-sm-3 ">
                 <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
-                <button type="submit" class="btn btn-primary" id="btn-form"> Confirm </button>
+                <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
             </div>
         </div>
 
