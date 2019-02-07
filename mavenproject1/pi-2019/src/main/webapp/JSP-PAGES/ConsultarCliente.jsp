@@ -27,7 +27,7 @@
             <div class="row justify-content-center">
                 <div class="form-group col-6 ">
                     <label> Client Full Name: </label>
-                    <input type="text" class="form-control" placeholder="First Name" required id="nome" name="nome">
+                    <input type="text" class="form-control" placeholder="First Name" id="nome" name="nome">
                 </div>
 
                 <div class="form-group col-6 ">
@@ -44,28 +44,41 @@
             <br>
             <div class="row justify-content-center">
                 <div class="form-group col-12">
-                    <table class="table table-bordered">
+                    <table class="table ">
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">Sobrenome</th>
                             <th scope="col">CPF</th>
                             <th scope="col">Opções</th>
                         </tr>
-                        <c:forEach items ="${listaClientes}" var="cliente">
-                            <tbody>
-                                <tr>
-                                    <td><c:out value="${cliente.getNome()}"/></td>
-                                    <td><c:out value="${cliente.getSobrenome()}"/></td>
-                                    <td><c:out value="${cliente.getCpf()}"/></td>
-                                    <td>
-                                        <button id="btn-form-search"  type="submit"> Alterar</button>
-                                    </td>
-                                    <td>
-                                        <button id="btn-form-search" type="submit"> Excluir</button>
-                                    </td>    
-                                </tr>
-                            </tbody>
+
+                        <tbody>
+                            <%-- primeiro form ignorado pelo metodo! --%>
+                        <form method="get" action="${pageContext.request.contextPath}/ClienteEditar">
+                            <input type="hidden" value="${cliente.getID()}" name="id">
+                        </form>
+                        <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
+                        <%-- primeiro form ignorado pelo metodo! --%>
+                        <c:forEach items ="${listaClientes}" var="cliente" begin="0">
+                            <tr>
+                                <td><c:out value="${cliente.getNome()}"/></td>
+                                <td><c:out value="${cliente.getSobrenome()}"/></td>
+                                <td><c:out value="${cliente.getCpf()}"/></td>
+                                <td>
+                                    <div>
+                                        <form method="get" action="${pageContext.request.contextPath}/ClienteEditar">
+                                            <input type="hidden" value="${cliente.getID()}" name="id">
+                                            <button class="form-button" id="btn-form-search"  type="submit"> Alterar</button>
+                                        </form>
+                                    </div>    
+                                </td>
+                                <td><form  method="post" action="${pageContext.request.contextPath}/ClienteExcluir">
+                                        <input type="hidden" value="${cliente.getID()}" name="id">
+                                        <button id="btn-form-search" type="submit"> Excluir</button>                                        </form>
+                                </td>    
+                            </tr>
                         </c:forEach>
+                        </tbody>
                     </table>
                 </div>
             </div>

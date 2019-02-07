@@ -25,9 +25,9 @@
         <img class="mb-4" src="JSP-STYLES/Logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Insira seus dados</h1>
         <label for="inputUsuario" class="sr-only">Usuário</label>
-        <input type="usuario" id="inputUsuario" class="form-control" placeholder="Usuário" required="" autofocus="">
+        <input type="usuario" id="inputUsuario" class="form-control" placeholder="Usuário" required="" autofocus="" name="inputUsuario">
         <label for="inputSenha" class="sr-only">Senha</label>
-        <input type="password" id="inputSenha" class="form-control" placeholder="Senha" required="">
+        <input type="password" id="inputSenha" class="form-control" placeholder="Senha" required="" name="inputSenha">
         <div>
             <input type="checkbox" value="remember-me">
             Remember-me
