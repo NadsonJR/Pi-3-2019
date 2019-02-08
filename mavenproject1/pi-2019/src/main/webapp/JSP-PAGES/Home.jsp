@@ -25,7 +25,7 @@
     <jsp:include page="Navbar-Component.jsp" />
     <body id="body-changes" class="text-center">  
         <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
-        <label class="Func" id="fadeIn">Nome funcionário!</label>
+        <label class="Func" id="fadeIn">${sessionScope.usuario.getNome()}</label>
     </body>
 </html>
 

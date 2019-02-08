@@ -1,13 +1,12 @@
 package Modal;
 
-import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
  * @author Matheus
  */
 public class Usuario extends Pessoa {
-
+    private Integer ID;
     private String nivel;
     private String username;
     private String senha;
@@ -18,9 +17,10 @@ public class Usuario extends Pessoa {
 
     }
 
-    public Usuario(String nivel, String nome, String cpf, String rg, String sobrenome) {
+    public Usuario(String nivel, String nome, String cpf, String rg, String sobrenome, String ID) {
         super(nome, sobrenome, cpf, rg);
         this.nivel = nivel;
+        
     }
 
     public Usuario() {
@@ -32,6 +32,14 @@ public class Usuario extends Pessoa {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
 
