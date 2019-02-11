@@ -31,6 +31,7 @@
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
         <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ProdutoEditar">
+            <input type="hidden" value="${produto.getID()}" name="id">
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <h2>Produto</h2>
@@ -39,28 +40,28 @@
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <label> Nome do produto: </label>
-                    <input type="text" class="form-control" placeholder="Nome do Produto" required id="ProdutoName" name="NomeProduto" value="${produto.getNomeProduto}">
+                    <input type="text" class="form-control" placeholder="Nome do Produto" required id="ProdutoName" name="NomeProduto" value="${produto.getNomeProduto()}">
                 </div>
                 <div class="form-group col-6">
                     <label> Quantidade: </label>
-                    <input type="text" class="form-control" placeholder="10" required id="ProdutoName" name="QuantidadeProduto" value="${produto.getQuantidadeProduto}">
+                    <input type="text" class="form-control" placeholder="10" required id="ProdutoName" name="QuantidadeProduto" value="${produto.getQuantidadeProduto()}">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-12 ">
                     <label> Descrição: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DescricaoProduto" value="${produto.getDescricaoProduto}"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DescricaoProduto" value="${produto.getDescricaoProduto()}">${produto.getDescricaoProduto()}</textarea>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <label>Preço:</label>
-                    R$:<input type="int" id="dinheiro" name="dinheiro" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${produto.getPrecoProduto}"/>
+                    R$:<input type="int" id="dinheiro" name="dinheiro" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${produto.getPrecoProduto()}"/>
                 </div>
                 <div class="form-group col-6">
                     <label> Categoria: </label>
                     <select class="form-control" required name="CategoriaProduto">
-                        <option selected value="${produto.getNomeProduto}" >${produto.getCategoriaProduto}</option>
+                        <option selected value="${produto.getCategoriaProduto()}" >${produto.getCategoriaProduto()}</option>
                         <option value="Hamburguer">Hamburguer</option>
                         <option value="Batata">Batata</option>
                         <option value="Refrigerante">Refrigerante</option>

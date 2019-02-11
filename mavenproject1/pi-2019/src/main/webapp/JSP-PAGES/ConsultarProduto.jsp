@@ -51,7 +51,7 @@
 
                         <tbody>
                             <%-- primeiro form ignorado pelo metodo! --%>
-                             <form method="get" action="${pageContext.request.contextPath}/ClienteEditar">
+                        <form method="get" action="${pageContext.request.contextPath}/ClienteEditar">
                             <input type="hidden" value="${cliente.getID()}" name="id">
                         </form>
                         <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
@@ -73,7 +73,8 @@
                                 </td>
                                 <td><form  method="post" action="${pageContext.request.contextPath}/ProdutoExcluir">
                                         <input type="hidden" value="${produto.getID()}" name="id">
-                                        <button id="btn-form-search" type="submit"> Excluir</button>                                        </form>
+                                        <button id="btn-form-search" type="submit"> Excluir</button>                                        
+                                    </form>
                                 </td>    
                             </tr>
                         </c:forEach>

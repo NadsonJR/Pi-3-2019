@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import DAO.ProdutoDAO;
 import Modal.Produto;
+import javax.servlet.RequestDispatcher;
+
 /**
  *
  * @author mt12732
@@ -21,41 +23,47 @@ import Modal.Produto;
 @WebServlet(name = "ProdutoEditar", urlPatterns = {"/ProdutoEditar"})
 public class ProdutoEditarServlet extends HttpServlet {
 
-   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-          int ID = Integer.parseInt(request.getParameter("id"));
-       Produto p = null;
+
+        int ID = Integer.parseInt(request.getParameter("id"));
+        Produto p = null;
         try {
             p = ProdutoDAO.procurarId(ID);
         } catch (Exception e) {
             e.printStackTrace();
+            e.getLocalizedMessage();
+            System.out.println("erro DAO produto: " + e);
         }
         request.setAttribute("id", ID);
         request.setAttribute("produto", p);
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("JSP-PAGES/ProdutoEditar.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        System.out.println("Post ALTERAR PRODUTO!");
         String NomeProduto = request.getParameter("NomeProduto");
         String DescricaoProduto = request.getParameter("DescricaoProduto");
         int PrecoProduto = Integer.parseInt(request.getParameter("dinheiro"));
         String CategoriaProduto = request.getParameter("CategoriaProduto");
         int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
-        
+
         Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
-        
-        try{
-            //ProdutoDAO.AlterarProduto(P, ID)
+
+        try {
+            ProdutoDAO.AlterarProduto(P, NomeProduto);
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println(e);
         }
-        catch(Exception e){
-        
-        }
-        
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
+        dispatcher.forward(request, response);
     }
 
 }
