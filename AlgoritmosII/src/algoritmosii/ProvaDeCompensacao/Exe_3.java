@@ -12,7 +12,9 @@ package algoritmosii.ProvaDeCompensacao;
 public class Exe_3 {
 
     public static void main(String[] args) {
-        int[] vetor = {2, 9, 6, 1, 8, 0};
+        //int[] vetor = {2, 9, 6, 1, 8, 0};
+        
+        int[] vetor = {0,1,2,3,4};
         
         //bubblesort(vetor);
         
@@ -40,8 +42,8 @@ public class Exe_3 {
         int aux = 0;
         
         if ((count < vetor.length) && vetor[count] <= vetor[count + 1])
-            bubblesort(vetor, count++);
-        
+            bubblesort(vetor, count + 1);                
+        System.out.println("batata");
         for(int i = 0; i<vetor.length-1;i++){
             for(int j = 0; j<vetor.length-i-1; j++){
                 if(vetor[j] > vetor[j+1]){
