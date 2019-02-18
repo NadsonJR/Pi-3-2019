@@ -8,7 +8,7 @@ package algoritmosii.ProvaDeCompensacao;
 public class Exe_7 {
 
     public static void main(String[] args) {
-        Fila fila = new Fila();
+       // Fila fila = new Fila();
     }
 
     public void InsereNaFila() {
@@ -23,7 +23,7 @@ public class Exe_7 {
         boolean alo = false;
         return alo;
     }
-    public Fila(){
+   // public Fila(){
     
-    }
+   // }
 }

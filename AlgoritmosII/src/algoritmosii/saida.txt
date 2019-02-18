@@ -1,0 +1,5 @@
+pib da regiao Norte = 221.49998
+pib da regiao Nordeste = 551.0
+pib da regiao Sudeste = 2294.0
+pib da regiao Sul = 671.0
+pib da regiao Centro-Oeste = 395.0
