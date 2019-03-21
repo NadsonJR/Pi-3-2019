@@ -1,4 +1,4 @@
-package algoritmosii;
+package algoritmosii.ProvaDeCompensacao.POO_ADO;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class lab1 {
     public static void main(String[] args) {
 
         // nome do arquivo
-        String nomeDoArquivo1 = "C:\\Users\\mt12732\\Documents\\NetBeansProjects\\Pi-3-2019\\AlgoritmosII\\src\\algoritmosii\\pib.txt";
+        String nomeDoArquivo1 = "C:\\Users\\antonio.ncgjunior\\Documents\\NetBeansProjects\\Pi-3-2019\\AlgoritmosII\\src\\algoritmosii\\POO_ADO\\pib.txt";
         String nomeDoArquivo2 = "regioes.txt";
         List<pibCidadeEStado> pib = new ArrayList();
         // linha temporaria
@@ -54,7 +54,7 @@ public class lab1 {
         /*      ------------------------------------- */
         /*      Exemplo de escrita em arquivo         */
         /*      ------------------------------------- */
-        String arquivoDeSaida = "C:\\Users\\mt12732\\Documents\\NetBeansProjects\\Pi-3-2019\\AlgoritmosII\\src\\algoritmosii\\saida.txt";
+        String arquivoDeSaida = "C:\\Users\\antonio.ncgjunior\\Documents\\NetBeansProjects\\Pi-3-2019\\AlgoritmosII\\src\\algoritmosii\\saida.txt";
 
         try {
             int total = 0;
