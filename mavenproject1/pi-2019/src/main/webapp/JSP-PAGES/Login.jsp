@@ -28,7 +28,6 @@
     <body class="text-center" id=body-changes> 
         <form class="form-singin" id="fadeIn" action = "${pageContext.request.contextPath}/Login" method = "post">
             <c:out value="${msgErro}" />
-            <img class="mb-4" src="JSP-STYLES/Logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Insira seus dados</h1>
             <label for="inputUsuario" class="sr-only">Usuário</label>
             <input type="usuario" id="inputUsuario" class="form-control" placeholder="Usuário" required="" autofocus="" name="inputName">

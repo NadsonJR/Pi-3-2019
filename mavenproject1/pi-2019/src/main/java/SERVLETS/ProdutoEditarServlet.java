@@ -47,16 +47,17 @@ public class ProdutoEditarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("Post ALTERAR PRODUTO!");
+        int ID =  Integer.parseInt(request.getParameter("id"));
         String NomeProduto = request.getParameter("NomeProduto");
         String DescricaoProduto = request.getParameter("DescricaoProduto");
         int PrecoProduto = Integer.parseInt(request.getParameter("dinheiro"));
         String CategoriaProduto = request.getParameter("CategoriaProduto");
         int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
 
-        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
+        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto, ID);
 
         try {
-            ProdutoDAO.AlterarProduto(P, NomeProduto);
+            ProdutoDAO.AlterarProduto(P, ID);
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);

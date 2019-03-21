@@ -23,9 +23,11 @@
     <script src="main.js"></script>
     </head>
     <jsp:include page="Navbar-Component.jsp" />
-    <body id="body-changes" class="text-center">  
+    <body id="body-changes" class="text-center" > 
+        <div id="bemvindo">
         <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
         <label class="Func" id="fadeIn">${sessionScope.usuario.getNome()}</label>
+        </div>
     </body>
 </html>
 

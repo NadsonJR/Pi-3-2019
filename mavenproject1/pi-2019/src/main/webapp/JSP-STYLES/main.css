@@ -1,20 +1,31 @@
 body{
+  background-image: url("../JSP-STYLES/MainBackground.jpg");
+  background-size: cover;
+}
+li,a{
+    padding-right: 50px;
+    padding-left: 30px;
 
-  background: #f6898c;
+}
+#navbarMain{
+    //padding-left: 21%;
+    background-color: rgba(0, 0, 0, 0.5);
     
 }
 #body-changes{
-    background-color: #f6898c;
+    background-image: url("../JSP-STYLES/MainBackground.jpg");
+    background-size: cover;
 }
 .form-singin{
+    color: white; 
     width: 100%;
     max-width: 330px;
     padding: 15px;
     margin: auto;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 2%;
     border-radius: 5px;
-    box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);    
+    box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.3);    
 }
 #fadeIn{
 	opacity: 0;
@@ -35,12 +46,12 @@ body{
   }
 }
 #btn-singin{
-    background-color: #f6898c;
+    background-color: grey;
     border: 0;
 }
 #btn-singin:hover{
   background-color: white;
-  color: #f6898c;
+  color: black;
   border: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -50,7 +61,7 @@ body{
   margin: auto;
   padding: 2%;
   font-size: 100px;
-  color: white;
+  color: black;
   text-shadow:  10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 .Func{
@@ -59,26 +70,27 @@ body{
   margin: auto;
   padding: 2%;
   font-size: 20px;
-  color: white;
-  text-shadow:  3px 3px 3px rgba(0, 0, 0, 0.8);
+  color: black;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }
 #btn-sair{
   padding: .5rem 1rem;
   font-size: 0.8rem;
   line-height: 1.60;
   border-radius: .3rem;
-  background-color: #f6898c;
+  background-color: grey;
   border: 0;
 }
 #btn-sair:hover{
   background-color: white;
-  color: #f6898c;
+  color: black;
   border: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 #FadeForm{
 	opacity: 0;
 	animation: fadeIn 1.3s forwards;
+        opacity: 0.5;
 
 }
 @keyframes fadeIn {
@@ -99,23 +111,25 @@ body{
   max-width: 1000px;
   padding: 15px;
   margin: auto;
-  background-color: white;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 1%;
   border-radius: 5px;
-  box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5);  
+  box-shadow: 5px 5px 10px 3px rgba(0, 0, 0, 0.5); 
+  
 }
 #btn-form{
   padding: .5rem 1rem;
   font-size: 1rem;
   line-height: 1.80;
   border-radius: .3rem;
-  background-color: #f6898c;
+  background-color: grey;
   border: 0;
   color: white;
 }
 #btn-form:hover{
   background-color: white;
-  color: #f6898c;
+  color: black;
   border: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -124,13 +138,13 @@ body{
   padding: .5rem 1rem;
   font-size: 1rem;
   border-radius: .3rem;
-  background-color: #f6898c;
+  background-color: grey;
   border: 0;
   color: white;
 }
 #btn-form-search:hover{
   background-color: white;
-  color: #f6898c;
+  color: black;
   border: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
@@ -139,13 +153,13 @@ body{
   font-size: 0.8rem;
   line-height: 1.60;
   border-radius: .3rem;
-  background-color: #f6898c;
+  background-color: grey;
   border: 0;
   color: white;
 }
 #btn-secondary:hover{
   background-color: white;
-  color: #f6898c;
+  color: black;
   border: 5px;
   box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }

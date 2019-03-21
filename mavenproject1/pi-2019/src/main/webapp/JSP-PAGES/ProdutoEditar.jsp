@@ -31,7 +31,7 @@
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
         <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ProdutoEditar">
-            <input type="hidden" value="${produto.getID()}" name="id">
+            
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <h2>Produto</h2>

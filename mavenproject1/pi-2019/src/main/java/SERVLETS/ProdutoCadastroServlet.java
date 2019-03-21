@@ -28,18 +28,19 @@ public class ProdutoCadastroServlet extends HttpServlet {
             throws ServletException, IOException {
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/JSP-PAGES/ProdutoCadastro.jsp");
-        dispatcher.forward(request, response);
+         dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        int id= Integer.parseInt(request.getParameter("ID"));
         String NomeProduto = request.getParameter("NomeProduto");
         String DescricaoProduto = request.getParameter("DescricaoProduto");
         int PrecoProduto = Integer.parseInt(request.getParameter("dinheiro"));
         String CategoriaProduto = request.getParameter("CategoriaProduto");
         int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
-        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
+        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto ,id);
 
         try {
             ProdutoDAO.inserir(P);

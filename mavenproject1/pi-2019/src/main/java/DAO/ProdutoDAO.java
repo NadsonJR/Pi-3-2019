@@ -97,7 +97,7 @@ public class ProdutoDAO {
                 int QuantidadeProduto = Integer.parseInt(result.getString("Quantidade"));
                 
 
-                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto);
+                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto,id);
                 p.setID(id);
                 //Adiciona a instância na lista
                 listaProduto.add(p);
@@ -158,7 +158,7 @@ public class ProdutoDAO {
                 int QuantidadeProduto = Integer.parseInt(result.getString("Quantidade"));
                 
 
-                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto);
+                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto, id);
                 p.setID(id);
                 //Adiciona a instância na lista
                 listaProduto.add(p);
@@ -214,7 +214,7 @@ public class ProdutoDAO {
                 String CategoriaProduto = result.getString("Categoria");
                 int QuantidadeProduto = result.getInt("Quantidade");
 
-                 Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
+                 Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto, id);
                 
                 //Retorna o resultado
                 return p;
@@ -238,11 +238,11 @@ public class ProdutoDAO {
         //Neste caso, não há um elemento a retornar, então retornamos "null"
         return null;
     }
-      public static void AlterarProduto(Produto p, String NomeProduto) throws Exception {
+      public static void AlterarProduto(Produto p, int ID) throws Exception {
         System.out.println("Iniciando processo de atualização de Produto...");
         
         //comando sql
-        String sql = "update Produto set NomeProduto=?,Quantidade=?,Descricao=?,Preco=?,Categoria=? WHERE NomeProduto=?";
+        String sql = "update Produto set NomeProduto=?,Quantidade=?,Descricao=?,Preco=?,Categoria=? WHERE ID=?";
          //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -263,12 +263,12 @@ public class ProdutoDAO {
             preparedStatement.setInt(2, p.getQuantidadeProduto());
             preparedStatement.setString(3, p.getDescricaoProduto());
             preparedStatement.setInt(4, p.getPrecoProduto());
-            preparedStatement.setString(5, p.getDescricaoProduto());
-            preparedStatement.setString(6, p.getNomeProduto());
+            preparedStatement.setString(5, p.getCategoriaProduto());
+            preparedStatement.setInt(6, ID);
             
-
+            System.out.println("ID: " +  ID);
             System.out.println("Nome Produto: " + p.getNomeProduto());
-
+            System.out.println("Categoria: " + p.getCategoriaProduto());
             preparedStatement.executeUpdate();
         }catch(Exception e){
             e.getLocalizedMessage();
