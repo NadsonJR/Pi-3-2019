@@ -54,7 +54,7 @@ public class ProdutoEditarServlet extends HttpServlet {
         String CategoriaProduto = request.getParameter("CategoriaProduto");
         int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
 
-        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto, ID);
+        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
 
         try {
             ProdutoDAO.AlterarProduto(P, ID);

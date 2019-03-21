@@ -8,10 +8,9 @@ li,a{
 
 }
 #navbarMain{
-    //padding-left: 21%;
+    padding-left: 19%;  
     background-color: rgba(0, 0, 0, 0.5);
-    
-}
+    }
 #body-changes{
     background-image: url("../JSP-STYLES/MainBackground.jpg");
     background-size: cover;

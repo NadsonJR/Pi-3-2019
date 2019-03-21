@@ -65,7 +65,7 @@ public class Produto {
         this.ID = ID;
     }
     
-    public Produto(String NomeProduto , String DescricaoProduto, int PrecoProduto, String Categoria, int QuantidadeProduto, int ID ){
+    public Produto(String NomeProduto , String DescricaoProduto, int PrecoProduto, String Categoria, int QuantidadeProduto ){
     this.CategoriaProduto = Categoria;
     this.NomeProduto = NomeProduto;
     this.DescricaoProduto = DescricaoProduto;

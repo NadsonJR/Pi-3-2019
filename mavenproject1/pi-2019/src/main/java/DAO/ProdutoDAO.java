@@ -97,7 +97,7 @@ public class ProdutoDAO {
                 int QuantidadeProduto = Integer.parseInt(result.getString("Quantidade"));
                 
 
-                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto,id);
+                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto);
                 p.setID(id);
                 //Adiciona a instância na lista
                 listaProduto.add(p);
@@ -158,7 +158,7 @@ public class ProdutoDAO {
                 int QuantidadeProduto = Integer.parseInt(result.getString("Quantidade"));
                 
 
-                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto, id);
+                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto);
                 p.setID(id);
                 //Adiciona a instância na lista
                 listaProduto.add(p);
@@ -214,7 +214,7 @@ public class ProdutoDAO {
                 String CategoriaProduto = result.getString("Categoria");
                 int QuantidadeProduto = result.getInt("Quantidade");
 
-                 Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto, id);
+                 Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
                 
                 //Retorna o resultado
                 return p;
