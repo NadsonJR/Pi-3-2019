@@ -102,8 +102,10 @@
             <div class="form-group col-4">
                 <label> Complemento: </label>
                 <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" required value="${cliente.complemento}"/>
+                
             </div>
         </div>
+                <input type="hidden" name="idCliente" id="idCliente" value="${cliente.ID}"/>
         <div class="row ">
             <div class ="form group col-9 ">
             </div>
@@ -114,6 +116,7 @@
             </div>
         </div>
             
+        
     </form>
 </body>
 </html>

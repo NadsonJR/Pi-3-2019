@@ -7,6 +7,13 @@ li,a{
     padding-left: 30px;
 
 }
+i.fa-journal-whills {
+    font-size: 60px;
+    padding-bottom: 0.5em;
+}
+#inputUsuario{
+    margin-bottom: 0.5em;
+}
 #navbarMain{
     padding-left: 19%;  
     background-color: rgba(0, 0, 0, 0.5);

@@ -254,9 +254,8 @@ public class ClienteDAO {
     }
       public static void AlterarCliente(Cliente cliente)  throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
-        
         //comando sql
-        String sql = "update Cliente set (Nome,Sobrenome,CPF,RG,Complemento,Cidade,Estado,Endereco) VALUES (?,?,?,?,?,?,?,?) where id=?";
+        String sql = "update Cliente set Nome =?,Sobrenome =?,CPF =?,RG=?,Complemento=?,Cidade=?,Estado=?,Endereco=? where id=?";
          //Conexão para abertura e fechamento
         Connection connection = null;
        
@@ -282,9 +281,7 @@ public class ClienteDAO {
             preparedStatement.setString(7, cliente.getEstado());
             preparedStatement.setString(8, cliente.getEndereco());
             preparedStatement.setInt(9, cliente.getID());
-            System.out.println("Nome cliente:"+cliente.getNome());
 
-            System.out.println("Id: " + cliente.getID());
 
             preparedStatement.executeUpdate();
         }catch(Exception e){

@@ -34,7 +34,6 @@ public class ClienteEditarServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("pasou aqui esse é o ID: " + ID);
         request.setAttribute("id", ID);
         request.setAttribute("cliente", c);
         
@@ -47,7 +46,7 @@ public class ClienteEditarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        int id=  Integer.parseInt(request.getParameter("idCliente"));
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -56,8 +55,7 @@ public class ClienteEditarServlet extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
-
-        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
+        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,id);
         try {
             System.out.println("AlterarCliente POST");
             ClienteDAO.AlterarCliente(c);
