@@ -26,8 +26,9 @@
         </script>
     </head>
     
-    <body class="text-center" id=body-changes> 
+    <body class="text-center" id=body-changes style="padding-top:10% "> 
         <form class="form-singin" id="fadeIn" action = "${pageContext.request.contextPath}/Login" method = "post">
+            <div>
             <c:out value="${msgErro}" />
             <i class="fas fa-journal-whills"></i>
             <h1 class="h3 mb-3 font-weight-normal">Insira seus dados</h1>
@@ -40,7 +41,7 @@
                 Remember-me
             </div>
             <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn-singin">Sign in</button>
-            
+            </div>
         </form>
      
     </body>

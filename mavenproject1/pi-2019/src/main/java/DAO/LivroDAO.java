@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Modal.Produto;
+import Modal.Livro;
 import conexao.ConnectionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,13 +18,13 @@ import java.util.List;
  *
  * @author mt12732
  */
-public class ProdutoDAO {
+public class LivroDAO {
 
-    public static void inserir(Produto produto)
+    public static void inserir(Livro livro)
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO produto (NomeProduto,Descricao,preco,Categoria,Quantidade) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO Livro (NomeLivro,Autor,Editora,Descricao,ValorVenda,ValorCusto,Categoria,Quantidade) VALUES (?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -36,11 +36,14 @@ public class ProdutoDAO {
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
-            preparedStatement.setString(1, produto.getNomeProduto());
-            preparedStatement.setString(2, produto.getDescricaoProduto());
-            preparedStatement.setInt(3, produto.getPrecoProduto());
-            preparedStatement.setString(4, produto.getCategoriaProduto());
-            preparedStatement.setInt(5, produto.getQuantidadeProduto());
+            preparedStatement.setString(1, livro.getNomeLivro());
+            preparedStatement.setString(2, livro.getAutor());
+            preparedStatement.setString(3, livro.getEditora());
+            preparedStatement.setString(4, livro.getDescricao());
+            preparedStatement.setFloat(5, livro.getValorVenda());
+            preparedStatement.setFloat(6, livro.getValorCusto());
+            preparedStatement.setString(7, livro.getCategoria());
+            preparedStatement.setFloat(8, livro.getQuantidade());
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
@@ -58,13 +61,13 @@ public class ProdutoDAO {
             }
         }
     }
-    public static List<Produto> listar()
+    public static List<Livro> listar()
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Produto";
+        String sql = "SELECT * FROM Livro";
         //Lista de clientes de resultado
-        List<Produto> listaProduto = null;
+        List<Livro> listaProduto = null;
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -85,22 +88,25 @@ public class ProdutoDAO {
             while (result.next()) {
                 //Se a lista não foi inicializada, a inicializa
                 if (listaProduto == null) {
-                    listaProduto = new ArrayList<Produto>();
+                    listaProduto = new ArrayList<Livro>();
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
 
                 int id = result.getInt("id");
-                String NomeProduto = result.getString("NomeProduto");
-                String DescricaoProduto = result.getString("Descricao");
-                int PrecoProduto = Integer.parseInt(result.getString("Preco"));
+                String NomeLivro = result.getString("NomeLivro");
+                String Autor = result.getString("Autor");
+                String Editora = result.getString("Editora");
+                String Descricao = result.getString("Descricao");
+                float ValorVenda = Float.parseFloat(result.getString("ValorVenda"));
+                float ValorCusto = Float.parseFloat(result.getString("ValorCusto"));
                 String Categoria = result.getString("Categoria");
-                int QuantidadeProduto = Integer.parseInt(result.getString("Quantidade"));
+                int Quantidade = Integer.parseInt(result.getString("Quantidade"));
                 
 
-                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto);
-                p.setID(id);
+                Livro L = new Livro(NomeLivro,Autor,Editora,Descricao,ValorVenda,ValorCusto,Categoria,Quantidade);
+                L.setID(id);
                 //Adiciona a instância na lista
-                listaProduto.add(p);
+                listaProduto.add(L);
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -119,13 +125,13 @@ public class ProdutoDAO {
         //Retorna a lista de clientes do banco de dados
         return listaProduto;
     }
-    public static List<Produto> listarPorNome(String nomeBanco)
+    public static List<Livro> listarPorNome(String nomeBanco)
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Produto WHERE NomeProduto="+"'"+nomeBanco+"'";
+        String sql = "SELECT * FROM Livro WHERE NomeLivro="+"'"+nomeBanco+"'";
         //Lista de clientes de resultado
-        List<Produto> listaProduto = null;
+        List<Livro> listaProduto = null;
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -147,21 +153,24 @@ public class ProdutoDAO {
             while (result.next()) {
                 //Se a lista não foi inicializada, a inicializa
                 if (listaProduto == null) {
-                    listaProduto = new ArrayList<Produto>();
+                    listaProduto = new ArrayList<Livro>();
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
                 int id = result.getInt("id");
-                String NomeProduto = result.getString("NomeProduto");
-                String DescricaoProduto = result.getString("Descricao");
-                int PrecoProduto = Integer.parseInt(result.getString("Preco"));
+                String NomeLivro = result.getString("NomeLivro");
+                String Autor = result.getString("Autor");
+                String Editora = result.getString("Editora");
+                String Descricao = result.getString("Descricao");
+                float ValorVenda = Float.parseFloat(result.getString("ValorVenda"));
+                float ValorCusto = Float.parseFloat(result.getString("ValorCusto"));
                 String Categoria = result.getString("Categoria");
-                int QuantidadeProduto = Integer.parseInt(result.getString("Quantidade"));
+                int Quantidade = Integer.parseInt(result.getString("Quantidade"));
                 
 
-                Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, Categoria, QuantidadeProduto);
-                p.setID(id);
+                Livro L = new Livro(NomeLivro,Autor,Editora,Descricao,ValorVenda,ValorCusto,Categoria,Quantidade);
+                L.setID(id);
                 //Adiciona a instância na lista
-                listaProduto.add(p);
+                listaProduto.add(L);
                 
             }
         } finally {
@@ -181,11 +190,11 @@ public class ProdutoDAO {
         //Retorna a lista de clientes do banco de dados
         return listaProduto;
     }
-     public static Produto procurarId(int idProduto)
+     public static Livro procurarId(int idProduto)
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o cliente
         //com o ID informado e que esteja ativo ("enabled" com "true")
-        String sql = "SELECT * FROM Produto WHERE ID=?"; 
+        String sql = "SELECT * FROM Livro WHERE ID=?"; 
         //Conexão para abertura e fechamento
          System.out.println("oi");
         Connection connection = null;
@@ -208,16 +217,19 @@ public class ProdutoDAO {
             if (result.next()) {
                 //Cria uma instância de Cliente e popula com os valores do BD
                 int id = result.getInt("id");
-                String NomeProduto = result.getString("NomeProduto");
-                String DescricaoProduto = result.getString("Descricao");
-                int PrecoProduto = result.getInt("Preco");
-                String CategoriaProduto = result.getString("Categoria");
-                int QuantidadeProduto = result.getInt("Quantidade");
+                String NomeLivro = result.getString("NomeLivro");
+                String Autor = result.getString("Autor");
+                String Editora = result.getString("Editora");
+                String Descricao = result.getString("Descricao");
+                float ValorVenda = Float.parseFloat(result.getString("ValorVenda"));
+                float ValorCusto = Float.parseFloat(result.getString("ValorCusto"));
+                String Categoria = result.getString("Categoria");
+                int Quantidade = Integer.parseInt(result.getString("Quantidade"));
 
-                 Produto p = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
+                 Livro L = new Livro(NomeLivro,Autor,Editora,Descricao,ValorVenda,ValorCusto,Categoria,Quantidade);
                 
                 //Retorna o resultado
-                return p;
+                return L;
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -238,11 +250,11 @@ public class ProdutoDAO {
         //Neste caso, não há um elemento a retornar, então retornamos "null"
         return null;
     }
-      public static void AlterarProduto(Produto p, int ID) throws Exception {
+      public static void AlterarProduto(Livro livro, int ID) throws Exception {
         System.out.println("Iniciando processo de atualização de Produto...");
         
         //comando sql
-        String sql = "update Produto set NomeProduto=?,Quantidade=?,Descricao=?,Preco=?,Categoria=? WHERE ID=?";
+        String sql = "update Produto set NomeLivro=?,Autor=?,Editora=?,Descricao=?,ValorVenda=?,ValorCusto=?,Categoria=?,Quantidade=? WHERE ID=?";
          //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -259,20 +271,23 @@ public class ProdutoDAO {
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
             
-            preparedStatement.setString(1, p.getNomeProduto());
-            preparedStatement.setInt(2, p.getQuantidadeProduto());
-            preparedStatement.setString(3, p.getDescricaoProduto());
-            preparedStatement.setInt(4, p.getPrecoProduto());
-            preparedStatement.setString(5, p.getCategoriaProduto());
-            preparedStatement.setInt(6, ID);
+            preparedStatement.setString(1, livro.getNomeLivro());
+            preparedStatement.setString(2, livro.getAutor());
+            preparedStatement.setString(3, livro.getEditora());
+            preparedStatement.setString(4, livro.getDescricao());
+            preparedStatement.setFloat(5, livro.getValorVenda());
+            preparedStatement.setFloat(6, livro.getValorCusto());
+            preparedStatement.setString(7, livro.getCategoria());
+            preparedStatement.setFloat(8, livro.getQuantidade());
+            preparedStatement.setInt(9,livro.getID());
             
             System.out.println("ID: " +  ID);
-            System.out.println("Nome Produto: " + p.getNomeProduto());
-            System.out.println("Categoria: " + p.getCategoriaProduto());
+            System.out.println("Nome Produto: " + livro.getNomeLivro());
+            System.out.println("Categoria: " + livro.getCategoria());
             preparedStatement.executeUpdate();
         }catch(Exception e){
             e.getLocalizedMessage();
-            System.out.println("Produto Alterar: "+e);
+            System.out.println("Produto Alterar ERRO: "+e);
         }
         finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento

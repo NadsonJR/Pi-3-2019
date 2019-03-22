@@ -5,8 +5,8 @@
  */
 package SERVLETS;
 
-import DAO.ProdutoDAO;
-import Modal.Produto;
+import DAO.LivroDAO;
+import Modal.Livro;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -33,8 +33,8 @@ public class ConsultarProdutoServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         
         try {
-              List<Produto> listaProduto = ProdutoDAO.listar();
-              System.out.println(listaProduto.get(0).getNomeProduto());
+              List<Livro> listaProduto = LivroDAO.listar();
+              System.out.println(listaProduto.get(0).getNomeLivro());
              request.setAttribute("listaProduto", listaProduto);
             sessao.setAttribute("listaProduto" , listaProduto);
         } catch (Exception e) {
@@ -53,7 +53,7 @@ public class ConsultarProdutoServlet extends HttpServlet {
           try {
               String nome = request.getParameter("nome");
               System.out.println(nome);
-              List<Produto> listaProduto = ProdutoDAO.listarPorNome(nome);
+              List<Livro> listaProduto = LivroDAO.listarPorNome(nome);
               System.out.println(listaProduto.size());
              request.setAttribute("listaProduto", listaProduto);
             sessao.setAttribute("listaProduto" , listaProduto);

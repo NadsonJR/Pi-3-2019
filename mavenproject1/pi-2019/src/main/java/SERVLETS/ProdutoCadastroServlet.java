@@ -13,8 +13,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import Modal.Produto;
-import DAO.ProdutoDAO;
+import Modal.Livro;
+import DAO.LivroDAO;
 
 /**
  *
@@ -40,10 +40,10 @@ public class ProdutoCadastroServlet extends HttpServlet {
         int PrecoProduto = Integer.parseInt(request.getParameter("dinheiro"));
         String CategoriaProduto = request.getParameter("CategoriaProduto");
         int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
-        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto );
+        Livro lP = new Livro(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto );
 
         try {
-            ProdutoDAO.inserir(P);
+            LivroDAO.inserir(P);
         } catch (Exception e) {
         }
 

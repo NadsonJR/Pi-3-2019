@@ -12,8 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import DAO.ProdutoDAO;
-import Modal.Produto;
+import DAO.LivroDAO;
+import Modal.Livro;
 import javax.servlet.RequestDispatcher;
 
 /**
@@ -28,9 +28,9 @@ public class ProdutoEditarServlet extends HttpServlet {
             throws ServletException, IOException {
 
         int ID = Integer.parseInt(request.getParameter("id"));
-        Produto p = null;
+        Livro p = null;
         try {
-            p = ProdutoDAO.procurarId(ID);
+            p = LivroDAO.procurarId(ID);
         } catch (Exception e) {
             e.printStackTrace();
             e.getLocalizedMessage();
@@ -54,10 +54,10 @@ public class ProdutoEditarServlet extends HttpServlet {
         String CategoriaProduto = request.getParameter("CategoriaProduto");
         int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
 
-        Produto P = new Produto(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
+        Livro P = new Livro(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
 
         try {
-            ProdutoDAO.AlterarProduto(P, ID);
+            LivroDAO.AlterarProduto(P, ID);
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);

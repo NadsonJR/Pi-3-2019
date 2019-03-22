@@ -33,17 +33,27 @@
         <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ProdutoCadastro">
             <div class="row justify-content-center">
                 <div class="form-group col-6">
-                    <h2>Produto</h2>
+                    <h2>Livro</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-6">
-                    <label> Nome do produto: </label>
-                    <input type="text" class="form-control" placeholder="Nome do Produto" required id="ProdutoName" name="NomeProduto">
+                    <label> Título do livro: </label>
+                    <input type="text" class="form-control" placeholder="Título do Livro" required id="ProdutoName" name="TituloLivro">
                 </div>
                 <div class="form-group col-6">
                     <label> Quantidade: </label>
-                    <input type="text" class="form-control" placeholder="10" required id="ProdutoName" name="QuantidadeProduto">
+                    <input type="number" class="form-control" placeholder="10" required id="ProdutoName" name="QuantidadeProduto">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group col-6">
+                    <label> Autor: </label>
+                    <input type="text" class="form-control" placeholder="Autor" required id="ProdutoName" name="Autor">
+                </div>
+                <div class="form-group col-6">
+                    <label> Editora: </label>
+                    <input type="text" class="form-control" placeholder="Editora" required id="ProdutoName" name="Editora">
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -54,7 +64,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-6">
-                    <label>Preço:</label>
+                    <label>Valor Venda:</label>
                     R$:<input type="int" id="dinheiro" name="dinheiro" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" />
                 </div>
                 <div class="form-group col-6">
