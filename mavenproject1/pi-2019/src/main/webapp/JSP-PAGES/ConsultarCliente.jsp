@@ -73,8 +73,9 @@
                                     </div>    
                                 </td>
                                 <td><form  method="post" action="${pageContext.request.contextPath}/ClienteExcluir">
-                                        <input type="hidden" value="${cliente.getID()}" name="id">
-                                        <button id="btn-form-search" type="submit"> Excluir</button>                                        </form>
+                                        <input type="hidden" value="${cliente.getID()}" name="ID">
+                                        <button id="btn-form-search" type="submit"> Excluir</button>                                        
+                                    </form>
                                 </td>    
                             </tr>
                         </c:forEach>

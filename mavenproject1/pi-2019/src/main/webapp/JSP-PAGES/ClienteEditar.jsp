@@ -97,11 +97,11 @@
         <div class="row justify-content-center">
             <div class="form-group col-8 ">
                 <label> Endereço: </label>
-                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" required value="${cliente.endereco}">
+                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" required value="${cliente.endereco}"/>
             </div>
             <div class="form-group col-4">
                 <label> Complemento: </label>
-                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" required value="${cliente.complemento}">
+                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" required value="${cliente.complemento}"/>
             </div>
         </div>
         <div class="row ">
@@ -109,10 +109,11 @@
             </div>
             <div class ="form group   col-sm-3 ">
                 <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
+                 
                 <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
             </div>
         </div>
-
+            
     </form>
 </body>
 </html>

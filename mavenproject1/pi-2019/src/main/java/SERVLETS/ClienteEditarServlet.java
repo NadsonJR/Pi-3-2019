@@ -34,9 +34,10 @@ public class ClienteEditarServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("pasou aqui esse é o ID: " + ID);
         request.setAttribute("id", ID);
         request.setAttribute("cliente", c);
-
+        
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteEditar.jsp");
         dispatcher.forward(request, response);
@@ -46,7 +47,7 @@ public class ClienteEditarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -59,7 +60,7 @@ public class ClienteEditarServlet extends HttpServlet {
         Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
         try {
             System.out.println("AlterarCliente POST");
-            ClienteDAO.AlterarCliente(c, cpf);
+            ClienteDAO.AlterarCliente(c);
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
             dispatcher.forward(request, response);

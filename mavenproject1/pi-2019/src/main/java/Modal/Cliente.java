@@ -24,6 +24,16 @@ public class Cliente extends Pessoa {
         this.ID = ID;
     }
 
+    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf,int Id) {
+        super(nome, sobrenome, cpf, rg);
+        this.complemento = complemento;
+        this.cidade = cidade;
+        this.estado = estado;
+        this.endereco = endereco;
+        this.ID = Id;
+        
+    }
+
     public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf) {
         super(nome, sobrenome, cpf, rg);
         this.complemento = complemento;
@@ -31,10 +41,6 @@ public class Cliente extends Pessoa {
         this.estado = estado;
         this.endereco = endereco;
         
-    }
-
-    public Cliente() {
-
     }
 
     public String getEndereco() {

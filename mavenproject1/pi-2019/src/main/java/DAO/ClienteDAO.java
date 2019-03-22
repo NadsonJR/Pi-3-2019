@@ -196,7 +196,7 @@ public class ClienteDAO {
         String sql = "SELECT * FROM Cliente WHERE ID=?"; 
         //Conexão para abertura e fechamento
         Connection connection = null;
-        System.out.println("alo"+idCliente);
+        System.out.println("ID Procurar: "+idCliente);
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
@@ -226,9 +226,11 @@ public class ClienteDAO {
                 String endereco = result.getString("endereco");
 
                 Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
-                
+                c.setID(id);
                 //Retorna o resultado
+                System.out.println("Retornando o objeto");
                 return c;
+                
             }
         } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
@@ -247,21 +249,21 @@ public class ClienteDAO {
         //Se chegamos aqui, o "return" anterior não foi executado porque
         //a pesquisa não teve resultados
         //Neste caso, não há um elemento a retornar, então retornamos "null"
+          System.out.println("Nao encontrou!");
         return null;
     }
-      public static void AlterarCliente(Cliente cliente, String CPFCliente) throws Exception {
+      public static void AlterarCliente(Cliente cliente)  throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
         
         //comando sql
-        String sql = "update Cliente set Nome=?,Sobrenome=?,CPF=?,RG=?,Complemento=?,Cidade=?,Estado=?,Endereco=? WHERE CPF=?";
+        String sql = "update Cliente set (Nome,Sobrenome,CPF,RG,Complemento,Cidade,Estado,Endereco) VALUES (?,?,?,?,?,?,?,?) where id=?";
          //Conexão para abertura e fechamento
         Connection connection = null;
-        System.out.println(cliente.toString());
+       
+        System.out.println(cliente.getID());
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;  
-           
-        
         
         try {
              //abre conexão com banco de dados
@@ -279,10 +281,10 @@ public class ClienteDAO {
             preparedStatement.setString(6, cliente.getCidade());
             preparedStatement.setString(7, cliente.getEstado());
             preparedStatement.setString(8, cliente.getEndereco());
-            preparedStatement.setString(9, cliente.getCpf());
-            System.out.println("numeroAlterado:"+cliente.getNome());
+            preparedStatement.setInt(9, cliente.getID());
+            System.out.println("Nome cliente:"+cliente.getNome());
 
-            System.out.println("cpf: " + cliente.getCpf());
+            System.out.println("Id: " + cliente.getID());
 
             preparedStatement.executeUpdate();
         }catch(Exception e){
