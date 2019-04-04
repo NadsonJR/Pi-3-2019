@@ -40,7 +40,7 @@
                 <input type="checkbox" value="remember-me">
                 Remember-me
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn-singin">Sign in</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn-singin"> Sign in <i class="fas fa-sign-in-alt"></i> </button>
             </div>
         </form>
      

@@ -5,6 +5,7 @@
  */
 package SERVLETS;
 
+import DAO.CategoriaDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -15,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Modal.Livro;
 import DAO.LivroDAO;
+import java.time.Instant;
+import java.util.Date;
+import java.util.List;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,6 +31,14 @@ public class ProdutoCadastroServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sessao = request.getSession();
+        try {
+              List<Livro> listaCategoria = CategoriaDAO.listar();
+             request.setAttribute("listaCategoria", listaCategoria);
+            sessao.setAttribute("listaCategoria" , listaCategoria);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/JSP-PAGES/ProdutoCadastro.jsp");
          dispatcher.forward(request, response);
@@ -35,15 +48,22 @@ public class ProdutoCadastroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        String NomeProduto = request.getParameter("NomeProduto");
-        String DescricaoProduto = request.getParameter("DescricaoProduto");
-        int PrecoProduto = Integer.parseInt(request.getParameter("dinheiro"));
-        String CategoriaProduto = request.getParameter("CategoriaProduto");
-        int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
-        Livro lP = new Livro(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto );
+        String NomeLivro = request.getParameter("NomeLivro");
+        String Autor = request.getParameter("Autor");
+        String Editora = request.getParameter("Editora");
+        String Descricao = request.getParameter("Descricao");
+        float ValorVenda = Float.parseFloat(request.getParameter("ValorVenda"));
+        float ValorCusto = Float.parseFloat(request.getParameter("ValorCusto"));
+        String Categoria = request.getParameter("Categoria");
+        int Quantidade = Integer.parseInt(request.getParameter("Quantidade"));
+        String Data = request.getParameter("DataCadastro");
+        System.out.println("Aqui esta A editora: " + Editora) ;
+        
+        Livro L = new Livro(NomeLivro,Descricao,Autor,Editora,ValorVenda,ValorCusto,Categoria,Quantidade,Data);
 
         try {
-            LivroDAO.inserir(P);
+            System.out.println("asdasd"+Categoria);
+            LivroDAO.inserir(L);
         } catch (Exception e) {
         }
 

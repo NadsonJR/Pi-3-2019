@@ -28,18 +28,21 @@ public class ProdutoEditarServlet extends HttpServlet {
             throws ServletException, IOException {
 
         int ID = Integer.parseInt(request.getParameter("id"));
-        Livro p = null;
+        System.out.println(ID +" <= ID encontrado!");
+        Livro L = null;
         try {
-            p = LivroDAO.procurarId(ID);
+           L = LivroDAO.procurarId(ID);
+            System.out.println(L.getNomeLivro()+ " <= Nome do Objeto");
         } catch (Exception e) {
             e.printStackTrace();
             e.getLocalizedMessage();
             System.out.println("erro DAO produto: " + e);
         }
         request.setAttribute("id", ID);
-        request.setAttribute("produto", p);
+        request.setAttribute("livro", L);
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ProdutoEditar.jsp");
+        
         dispatcher.forward(request, response);
     }
 
@@ -47,17 +50,21 @@ public class ProdutoEditarServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("Post ALTERAR PRODUTO!");
-        int ID =  Integer.parseInt(request.getParameter("id"));
-        String NomeProduto = request.getParameter("NomeProduto");
-        String DescricaoProduto = request.getParameter("DescricaoProduto");
-        int PrecoProduto = Integer.parseInt(request.getParameter("dinheiro"));
-        String CategoriaProduto = request.getParameter("CategoriaProduto");
-        int QuantidadeProduto = Integer.parseInt(request.getParameter("QuantidadeProduto"));
+        int ID = Integer.parseInt(request.getParameter("id"));
+        String NomeLivro = request.getParameter("NomeLivro");
+        String Autor = request.getParameter("Autor");
+        String Editora = request.getParameter("Editora");
+        String Descricao = request.getParameter("Descricao");
+        float ValorVenda = Float.parseFloat(request.getParameter("ValorVenda"));
+        float ValorCusto = Float.parseFloat(request.getParameter("ValorCusto"));
+        String Categoria = request.getParameter("Categoria");
+        int Quantidade = Integer.parseInt(request.getParameter("Quantidade"));
+        String Data = request.getParameter("DataCadastro");
 
-        Livro P = new Livro(NomeProduto, DescricaoProduto, PrecoProduto, CategoriaProduto, QuantidadeProduto);
+        Livro L = new Livro(NomeLivro,Descricao, Autor, Editora,  ValorVenda, ValorCusto, Categoria, Quantidade, Data, ID);
 
         try {
-            LivroDAO.AlterarProduto(P, ID);
+            LivroDAO.AlterarProduto(L, ID);
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);

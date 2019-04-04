@@ -26,46 +26,63 @@
                 $("input.cep").mask("99.999-999");
                 $('#dinheiro').mask('#.##9,99', {reverse: true});
             });
-        </script>
+        </script>        
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
         <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ProdutoEditar">
-            
             <div class="row justify-content-center">
                 <div class="form-group col-6">
-                    <h2>Produto</h2>
+                    <h2>Editar Livro</h2>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-6">
-                    <label> Nome do produto: </label>
-                    <input type="text" class="form-control" placeholder="Nome do Produto" required id="ProdutoName" name="NomeProduto" value="${produto.getNomeProduto()}">
+                    <label> Título do livro: </label>
+                    <input type="text" class="form-control" placeholder="Título do Livro" required id="ProdutoName" name="NomeLivro" value="${livro.nomeLivro}">
                 </div>
                 <div class="form-group col-6">
                     <label> Quantidade: </label>
-                    <input type="text" class="form-control" placeholder="10" required id="ProdutoName" name="QuantidadeProduto" value="${produto.getQuantidadeProduto()}">
+                    <input type="number" class="form-control" placeholder="10" required id="ProdutoName" name="Quantidade" value="${livro.quantidade}">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group col-6">
+                    <label> Autor: </label>
+                    <input type="text" class="form-control" placeholder="Autor" required id="ProdutoName" name="Autor" value="${livro.autor}">
+                </div>
+                <div class="form-group col-6">
+                    <label> Editora: </label>
+                    <input type="text" class="form-control" placeholder="Editora" required id="ProdutoName" name="Editora"value="${livro.editora}">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-12 ">
                     <label> Descrição: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DescricaoProduto" value="${produto.getDescricaoProduto()}">${produto.getDescricaoProduto()}</textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Descricao" value="${livro.descricao}"></textarea>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-6">
-                    <label>Preço:</label>
-                    R$:<input type="int" id="dinheiro" name="dinheiro" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${produto.getPrecoProduto()}"/>
+                <div class="form-group col-3">
+                    <label>Valor Venda:</label>
+                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${livro.valorVenda}"/>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-3">
+                    <label>Valor Compra:</label>
+                    R$:<input type="int" id="dinheiro" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${livro.valorCusto}"/>
+                </div>
+                <div class="form-group col-3">
+                    <label>Ano:</label>
+                    <input type="String" name="DataCadastro" class=" form-control" style="display:inline-block"  value="${livro.dataCadastro}"/>
+                </div>
+                <div class="form-group col-3">
                     <label> Categoria: </label>
-                    <select class="form-control" required name="CategoriaProduto">
-                        <option selected value="${produto.getCategoriaProduto()}" >${produto.getCategoriaProduto()}</option>
-                        <option value="Hamburguer">Hamburguer</option>
-                        <option value="Batata">Batata</option>
-                        <option value="Refrigerante">Refrigerante</option>
-                        <option value="Suco">Suco</option>
+                    <select class="form-control" required name="Categoria">
+                        <option selected value="${livro.categoria}">${livro.categoria}</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Suspense">Suspense</option>
+                        <option value="Ação">Ação</option>
+                        <option value="Aventura">Aventura</option>
                     </select>
                 </div>
             </div>
@@ -73,10 +90,11 @@
                 <div class ="form group col-9 ">
                 </div>
                 <div class ="form group   col-sm-3 ">
-                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
-                    <button type="submit" class="btn btn-primary" id="btn-form"> Confirm </button>
+                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancelar </button>
+                    <button type="submit" class="btn btn-primary" id="btn-form"> Confirmar </button>
                 </div>
             </div>
+             <input type="hidden" value="${livro.ID}" name="id">
         </form>
     </body>
 </html>

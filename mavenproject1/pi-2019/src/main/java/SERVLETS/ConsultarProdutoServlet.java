@@ -34,7 +34,8 @@ public class ConsultarProdutoServlet extends HttpServlet {
         
         try {
               List<Livro> listaProduto = LivroDAO.listar();
-              System.out.println(listaProduto.get(0).getNomeLivro());
+              System.out.println(listaProduto.get(0).getNomeLivro());           
+              System.out.println(listaProduto.get(0).getCategoria());
              request.setAttribute("listaProduto", listaProduto);
             sessao.setAttribute("listaProduto" , listaProduto);
         } catch (Exception e) {

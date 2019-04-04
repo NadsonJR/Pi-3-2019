@@ -48,8 +48,8 @@
                   "Venda"
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Venda/CadastroVenda">Cadastro</a>
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Venda/ConsultaVenda">Consulta</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/CadastroVenda">Cadastro</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/ConsultaVenda">Consulta</a>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -70,7 +70,7 @@
               </li>
           </ul>
           <a href="${pageContext.request.contextPath}/Login" class="btn btn-info btn-lg my-2 my-md-0" id="btn-sair">
-              <span class="glyphicon glyphicon-log-out"></span> Sair
+              <span class="glyphicon glyphicon-log-out"><i class="fas fa-sign-out-alt"></i></span> 
             </a>
         </div>
       </nav>

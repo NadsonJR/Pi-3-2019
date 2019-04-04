@@ -8,8 +8,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" >
         <title>Cadastrar Produto</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="JSP-STYLES/main.css" />
@@ -39,11 +39,11 @@
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <label> Título do livro: </label>
-                    <input type="text" class="form-control" placeholder="Título do Livro" required id="ProdutoName" name="TituloLivro">
+                    <input type="text" class="form-control" placeholder="Título do Livro" required id="ProdutoName" name="NomeLivro">
                 </div>
                 <div class="form-group col-6">
                     <label> Quantidade: </label>
-                    <input type="number" class="form-control" placeholder="10" required id="ProdutoName" name="QuantidadeProduto">
+                    <input type="number" class="form-control" placeholder="10" required id="ProdutoName" name="Quantidade">
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -59,22 +59,30 @@
             <div class="row justify-content-center">
                 <div class="form-group col-12 ">
                     <label> Descrição: </label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="DescricaoProduto"></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="Descricao"></textarea>
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-6">
+                <div class="form-group col-3">
                     <label>Valor Venda:</label>
-                    R$:<input type="int" id="dinheiro" name="dinheiro" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" />
+                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00"/>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-3">
+                    <label>Valor Compra:</label>
+                    R$:<input type="int" id="dinheiro" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" />
+                </div>
+                <div class="form-group col-3">
+                    <label>Ano:</label>
+                    <input type="String" name="DataCadastro" class=" form-control" style="display:inline-block"  />
+                </div>
+                <div class="form-group col-3">
                     <label> Categoria: </label>
-                    <select class="form-control" required name="CategoriaProduto">
+                    <select class="form-control" required name="Categoria">
                         <option selected>Choose...</option>
-                        <option value="Hamburguer">Hamburguer</option>
-                        <option value="Batata">Batata</option>
-                        <option value="Refrigerante">Refrigerante</option>
-                        <option value="Suco">Suco</option>
+                        <option value="Terror">Terror</option>
+                        <option value="Suspense">Suspense</option>
+                        <option value="Ação">Ação</option>
+                        <option value="Aventura">Aventura</option>
                     </select>
                 </div>
             </div>
@@ -82,8 +90,8 @@
                 <div class ="form group col-9 ">
                 </div>
                 <div class ="form group   col-sm-3 ">
-                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
-                    <button type="submit" class="btn btn-primary" id="btn-form"> Confirm </button>
+                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancelar </button>
+                    <button type="submit" class="btn btn-primary" id="btn-form"> Confirmar </button>
                 </div>
             </div>
         </form>

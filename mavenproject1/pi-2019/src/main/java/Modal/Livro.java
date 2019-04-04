@@ -5,12 +5,14 @@
  */
 package Modal;
 
+import java.util.Date;
+
 /**
  *
  * @author mt12732
  */
 public class Livro {
-    private String NomeLivro;
+    private String nomelivro;
     private String Autor;
     private String Editora;	
     private String Descricao;
@@ -19,13 +21,22 @@ public class Livro {
     private String Categoria;
     private Integer ID;
     private Integer Quantidade;
+    private String DataCadastro;
+
+    public String getDataCadastro() {
+        return DataCadastro;
+    }
+
+    public void setDataCadastro(String DataCadastro) {
+        this.DataCadastro = DataCadastro;
+    }
 
     public String getNomeLivro() {
-        return NomeLivro;
+        return nomelivro;
     }
 
     public void setNomeLivro(String NomeLivro) {
-        this.NomeLivro = NomeLivro;
+        this.nomelivro = NomeLivro;
     }
 
     public String getAutor() {
@@ -93,14 +104,28 @@ public class Livro {
     }
 
     
-    public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade ){
+    public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade, String DataCadastro ){
     this.Categoria = Categoria;
-    this.NomeLivro = NomeLivro;
+    this.nomelivro = NomeLivro;
     this.Autor = Autor;
     this.Editora = Editora;
     this.Descricao = DescricaoLivro;
     this.ValorVenda = ValorVenda;
     this.ValorCusto = ValorCusto;
     this.Quantidade = Quantidade;
+    this.DataCadastro =  DataCadastro;
+    }
+    
+        public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade, String DataCadastro, int id ){
+    this.Categoria = Categoria;
+    this.nomelivro = NomeLivro;
+    this.Autor = Autor;
+    this.Editora = Editora;
+    this.Descricao = DescricaoLivro;
+    this.ValorVenda = ValorVenda;
+    this.ValorCusto = ValorCusto;
+    this.Quantidade = Quantidade;
+    this.DataCadastro =  DataCadastro;
+    this.ID = id;
     }
 }

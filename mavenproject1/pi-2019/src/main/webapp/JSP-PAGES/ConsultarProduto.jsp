@@ -20,69 +20,74 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        <script src="main.js"></script>
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center"  >  
         <form id="FadeForm" class="form-type"action = "${pageContext.request.contextPath}/ConsultarProduto" method = "post" >
             <div class="row justify-content-center">
-                <div class="form-group col-12 ">
-                    <label> Nome Produto: </label>
-                    <input type="text" class="form-control" placeholder="Nome Produto" id="nome" name="nome">
-                </div>
+                <h2>Consulta</h2>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-12">
-                    <button type="submit" id="btn-form-search">Pesquisar</button>
+                <div class="input-group col-12">
+                    <input type="text" class="form-control" placeholder="Nome do Livro" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar <i class="fas fa-search"></i></button>
+                    </div>
                 </div>
             </div>
             <br>
             <div class="row justify-content-center">
                 <div class="form-group col-12">
-                    <table class="table ">
-                        <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Descrição</th>
-                            <th scope="col">Preço</th>
-                            <th scope="col">Categoria</th>
-                            <th scope="col">Quantidade</th>
-                            <th scope="col">Opções</th>
-                        </tr>
-
-                        <tbody>
-                            <%-- primeiro form ignorado pelo metodo! --%>
-                        <form method="get" action="${pageContext.request.contextPath}/ClienteEditar">
-                            <input type="hidden" value="${cliente.getID()}" name="id">
-                        </form>
-                        <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
-                        <%-- primeiro form ignorado pelo metodo! --%>
-                        <c:forEach items ="${listaProduto}" var="produto">
+                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="style-1">
+                        <table class="table">
                             <tr>
-                                <td><c:out value="${produto.getNomeProduto()}"/></td>
-                                <td><c:out value="${produto.getDescricaoProduto()}"/></td>
-                                <td><c:out value="${produto.getPrecoProduto()}"/></td>
-                                <td><c:out value="${produto.getCategoriaProduto()}"/></td>
-                                <td><c:out value="${produto.getQuantidadeProduto()}"/></td>
-                                <td>
-                                    <div>
-                                        <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
-                                            <input type="hidden" value="${produto.getID()}" name="id">
-                                            <button class="form-button" id="btn-form-search"  type="submit"> Alterar</button>
-                                        </form>
-                                    </div>    
-                                </td>
-                                <td><form  method="post" action="${pageContext.request.contextPath}/ProdutoExcluir">
-                                        <input type="hidden" value="${produto.getID()}" name="id">
-                                        <button id="btn-form-search" type="submit"> Excluir</button>                                        
-                                    </form>
-                                </td>    
+                                <th scope="col">Título</th>
+                                <th scope="col">Autor</th>
+                                <th scope="col">Editora</th>
+                                <th scope="col">Ano</th>
+                                <th scope="col">Categoria</th>
+                                <th scope="col">Valor</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Opções</th>
                             </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
+
+                            <tbody>
+                                <%-- primeiro form ignorado pelo metodo! --%>
+                            <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
+                                <input type="hidden" value="${Livro.getID()}" name="id">
+                            </form>
+                            <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
+                            <%-- primeiro form ignorado pelo metodo! --%>
+                            <c:forEach items ="${listaProduto}" var="produto">
+                                <tr>
+                                    <td><c:out value="${produto.getNomeLivro()}"/></td>
+                                    <td><c:out value="${produto.getAutor()}"/></td>
+                                    <td><c:out value="${produto.getEditora()}"/></td>
+                                    <td><c:out value="${produto.getDataCadastro()}"/></td>
+                                    <td><c:out value="${produto.getCategoria()}"/></td>
+                                    <td><c:out value="${produto.getValorVenda()}"/></td>
+                                    <td><c:out value="${produto.getQuantidade()}"/></td>
+                                    <td>
+                                        <div>
+                                            <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
+                                                <input type="hidden" value="${produto.getID()}" name="id">
+                                                <button class="form-button " id="btn-form-search"  type="submit"><i class="far fa-edit"></i></button>
+                                            </form>
+                                        </div>    
+                                    </td>
+                                    <td><form  method="post" action="${pageContext.request.contextPath}/ProdutoExcluir">
+                                            <input type="hidden" value="${produto.getID()}" name="id">
+                                            <button id="btn-form-search" type="submit"><i class="fas fa-times"></i></button>                                        
+                                        </form>
+                                    </td>    
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
         </form>
     </body> 
+
 </html>
