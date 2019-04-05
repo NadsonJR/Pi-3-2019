@@ -100,9 +100,9 @@ public class ClienteDAO {
                 String cidade = result.getString("cidade"); 
                 String endereco = result.getString("endereco");
                 String estado = result.getString("estado");
-                
+                String dataNascimento = result.getString("dataNascimento");
 
-                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
+                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento);
                 c.setID(id);
                 //Adiciona a instância na lista
                 listaClientes.add(c);
@@ -164,9 +164,9 @@ public class ClienteDAO {
                 String cidade = result.getString("cidade"); 
                 String estado = result.getString("estado");
                 String endereco = result.getString("endereco");
-                
+                String dataNascimento = result.getString("dataNascimento");
 
-                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
+                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,dataNascimento);
                 c.setID(id);
                 //Adiciona a instância na lista
                 listaClientes.add(c);
@@ -224,8 +224,9 @@ public class ClienteDAO {
                 String cidade = result.getString("cidade"); 
                 String estado = result.getString("estado");
                 String endereco = result.getString("endereco");
+                String dataNascimento = result.getString("dataNascimento");
 
-                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
+                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,dataNascimento);
                 c.setID(id);
                 //Retorna o resultado
                 System.out.println("Retornando o objeto");

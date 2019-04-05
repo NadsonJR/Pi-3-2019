@@ -55,7 +55,9 @@ public class ClienteEditarServlet extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
-        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,id);
+        String dataNascimento = request.getParameter("dataNascimento");
+        
+        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,id,dataNascimento);
         try {
             System.out.println("AlterarCliente POST");
             ClienteDAO.AlterarCliente(c);

@@ -55,6 +55,15 @@
                     <label> R.G: </label>
                     <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14">
                 </div>
+            </div><div class="row justify-content-center">
+                <div class="form-group col-6 ">
+                    <label> Data de Nascimento: </label>
+                    <input type="text" class="cpf form-control" placeholder="dd/MM/yyyy" required name="data" id="data" maxlength="10">
+                </div>
+                <div class=" form-group col-6 ">
+                    <label> </label>
+                    <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14">
+                </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-8 ">

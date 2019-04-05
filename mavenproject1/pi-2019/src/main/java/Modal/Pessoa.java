@@ -15,15 +15,25 @@ public abstract class Pessoa {
     private String sobrenome;
     private String cpf;
     private String rg;
+    private String DataNascimento;
 
-    public Pessoa(String nome, String sobrenome,  String cpf, String rg) {
+    public Pessoa(String nome, String sobrenome,  String cpf, String rg, String dataNascimento) {
         this.sobrenome = sobrenome;
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
+        this.DataNascimento = dataNascimento;
     }
 
     public Pessoa() {
+    }
+
+    public String getDataNascimento() {
+        return DataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.DataNascimento = dataNascimento;
     }
 
     public String getCpf() {

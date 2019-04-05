@@ -17,8 +17,8 @@ public class Usuario extends Pessoa {
 
     }
 
-    public Usuario(String nivel, String nome, String cpf, String rg, String sobrenome, String ID) {
-        super(nome, sobrenome, cpf, rg);
+    public Usuario(String nivel, String nome, String cpf, String rg, String sobrenome, String ID,String dataNascimento) {
+        super(nome, sobrenome, cpf, rg, dataNascimento);
         this.nivel = nivel;
         
     }

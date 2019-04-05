@@ -47,8 +47,9 @@ public class ClienteCadastroServlet extends HttpServlet {
         String cidade = request.getParameter("cidade");
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
-        
-        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf);
+        String dataNascimento = request.getParameter("dataNascimento");
+
+        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento);
       
         
         try {
