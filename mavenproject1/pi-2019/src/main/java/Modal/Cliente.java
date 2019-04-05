@@ -15,6 +15,10 @@ public class Cliente extends Pessoa {
     private String cidade;
     private String estado;
     private Integer ID;
+    private String CEP;
+    private String Telefone;
+    private String Celular;
+    private String Email;
 
     public int getID() {
         return ID;
@@ -24,8 +28,8 @@ public class Cliente extends Pessoa {
         this.ID = ID;
     }
 
-    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf,int Id) {
-        super(nome, sobrenome, cpf, rg);
+    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf,int Id, String dataNascimento) {
+        super(nome, sobrenome, cpf, rg, dataNascimento);
         this.complemento = complemento;
         this.cidade = cidade;
         this.estado = estado;
@@ -34,8 +38,8 @@ public class Cliente extends Pessoa {
         
     }
 
-    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf) {
-        super(nome, sobrenome, cpf, rg);
+    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf, String dataNascimento) {
+        super(nome, sobrenome, cpf, rg, dataNascimento);
         this.complemento = complemento;
         this.cidade = cidade;
         this.estado = estado;
