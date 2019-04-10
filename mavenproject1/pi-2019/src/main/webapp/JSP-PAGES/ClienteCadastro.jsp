@@ -124,7 +124,7 @@
                 </div>
                 <div class="form-group col-3">
                     <label> Celular: </label>
-                    <input type="text" class="form-control" placeholder="(00)0000-00000" name="Celular " id="Celular" required>
+                    <input type="text" class="form-control" placeholder="(00)0000-00000" name="celular" id="celular" required>
                 </div>
             </div>
             <div class="row ">

@@ -37,8 +37,7 @@ public class ClienteExcluirServlet extends HttpServlet {
         int IdCliente = Integer.parseInt(request.getParameter("ID"));
         try {
             ClienteDAO.delCliente(IdCliente);
-            List<Cliente> listaCliente = ClienteDAO.listar();
-            request.setAttribute("listaCliente", listaCliente);
+            
 
         } catch (Exception e) {
             System.out.println("oi "+e);

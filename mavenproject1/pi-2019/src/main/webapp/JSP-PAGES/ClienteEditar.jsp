@@ -46,28 +46,36 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="form-group col-6 ">
+            <div class="form-group col-4 ">
                 <label> CPF: </label>
-                <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="14"value="${cliente.cpf}">
+                <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="14" value="${cliente.cpf}">
             </div>
-            <div class=" form-group col-6 ">
+            <div class=" form-group col-4 ">
                 <label> R.G: </label>
-                <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14" value="${cliente.rg}">
+                <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14"  value="${cliente.rg}">
+            </div>
+            <div class="form-group col-4 ">
+                <label> Data de Nascimento: </label>
+                <input type="text" class="cpf form-control" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10" value="${cliente.dataNascimento}">
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="form-group col-8 ">
+            <div class="form-group col-4 ">
+                <label> CEP: </label>
+                <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" value="${cliente.CEP}">
+            </div>
+            <div class="form-group col-4 ">
                 <label> Cidade: </label>
                 <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" value="${cliente.cidade}">
             </div>
             <div class="form-group col-4">
                 <label> Estado: </label>
-                <select class="form-control" name="estado" id="estado" required value="${cliente.estado}" >
-                    <option value="${cliente.estado}">${cliente.estado}</option>
-                    <option value="Acre">Acre</option>
-                    <option value="Alagoas">Alagoas</option>
-                    <option value="Amapá">Amapá</option>
-                    <option value="Amazonas">Amazonas</option>
+                <select class="form-control" name="estado" id="estado" required>
+                    <option selected value="${cliente.estado}">${cliente.estado}</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
                     <option value="BA">Bahia</option>
                     <option value="CE">Ceará</option>
                     <option value="DF">Distrito Federal</option>
@@ -97,26 +105,39 @@
         <div class="row justify-content-center">
             <div class="form-group col-8 ">
                 <label> Endereço: </label>
-                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" required value="${cliente.endereco}"/>
+                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" value="${cliente.endereco}" required>
             </div>
             <div class="form-group col-4">
                 <label> Complemento: </label>
-                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" required value="${cliente.complemento}"/>
-                
+                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" value="${cliente.complemento}" required>
             </div>
         </div>
-                <input type="hidden" name="idCliente" id="idCliente" value="${cliente.ID}"/>
+        <div class="row justify-content-center">
+            <div class="form-group col-6 ">
+                <label> E-mail: </label>
+                <input type="text" class="form-control" placeholder="example@example.com" name="email" id="email" value="${cliente.email}" required>
+            </div>
+            <div class="form-group col-3">
+                <label> Telefone: </label>
+                <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" value="${cliente.telefone}" required>
+            </div>
+            <div class="form-group col-3">
+                <label> Celular: </label>
+                <input type="text" class="form-control" placeholder="(00)0000-00000" name="celular" id="celular" value="${cliente.celular}" required>
+            </div>
+        </div>
+        <input type="hidden" name="idCliente" id="idCliente" value="${cliente.ID}"/>
         <div class="row ">
             <div class ="form group col-9 ">
             </div>
             <div class ="form group   col-sm-3 ">
                 <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
-                 
+
                 <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
             </div>
         </div>
-            
-        
+
+
     </form>
 </body>
 </html>

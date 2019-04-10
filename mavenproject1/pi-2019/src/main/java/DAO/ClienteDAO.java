@@ -235,7 +235,7 @@ public class ClienteDAO {
                  int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sobrenome = result.getString("sobrenome");
-                String dataNascimento = result.getString("dataNascimento");
+                String dataNascimento = result.getString("DataDeNascimento");
                 String cpf = result.getString("cpf");
                 String rg = result.getString("rg");
                 String Cep = result.getString("cep");
@@ -296,13 +296,18 @@ public class ClienteDAO {
             
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSobrenome());
-            preparedStatement.setString(3, cliente.getCpf());
-            preparedStatement.setString(4, cliente.getRg());
-            preparedStatement.setString(5, cliente.getComplemento());
-            preparedStatement.setString(6, cliente.getCidade());
-            preparedStatement.setString(7, cliente.getEstado());
-            preparedStatement.setString(8, cliente.getEndereco());
-            preparedStatement.setInt(9, cliente.getID());
+            preparedStatement.setString(3, cliente.getDataNascimento());
+            preparedStatement.setString(4, cliente.getCpf());
+            preparedStatement.setString(5, cliente.getRg());
+            preparedStatement.setString(6, cliente.getCEP());
+            preparedStatement.setString(7, cliente.getComplemento());
+            preparedStatement.setString(8, cliente.getCidade());
+            preparedStatement.setString(9, cliente.getEstado());
+            preparedStatement.setString(10, cliente.getEndereco());           
+            preparedStatement.setString(11,cliente.getTelefone());
+            preparedStatement.setString(12,cliente.getCelular());
+            preparedStatement.setString(13,cliente.getEmail());
+            preparedStatement.setInt(14, cliente.getID());
 
 
             preparedStatement.executeUpdate();

@@ -9,6 +9,8 @@ import DAO.ClienteDAO;
 import Modal.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
+import java.util.Enumeration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -45,13 +47,14 @@ public class ClienteCadastroServlet extends HttpServlet {
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
         String dataNascimento = request.getParameter("dataNascimento");
-        String cep = request.getParameter("cep");
-        String celular = request.getParameter("Celular");
+        String cep = request.getParameter("cep");   
+        String celular = request.getParameter("celular");
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
+         
 
         Cliente c = new Cliente(cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, email, telefone, celular);
-        System.out.println(celular);
+        
         try {
             ClienteDAO.inserir(c);
         } catch (Exception e) {
