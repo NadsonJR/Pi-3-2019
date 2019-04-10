@@ -22,7 +22,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO cliente (Nome,Sobrenome,CPF,RG,Complemento,Cidade,Estado,Endereco) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente (Nome,Sobrenome,DataDeNascimento,CPF,RG,CEP,Complemento,Cidade,Estado,Endereco,Telefone,Celular,Email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -36,12 +36,18 @@ public class ClienteDAO {
             //Configura os parâmetros do "PreparedStatement"
             preparedStatement.setString(1, cliente.getNome());
             preparedStatement.setString(2, cliente.getSobrenome());
-            preparedStatement.setString(3, cliente.getCpf());
-            preparedStatement.setString(4, cliente.getRg());
-            preparedStatement.setString(5, cliente.getComplemento());
-            preparedStatement.setString(6, cliente.getCidade());
-            preparedStatement.setString(7, cliente.getEstado());
-            preparedStatement.setString(8, cliente.getEndereco());           
+            preparedStatement.setString(3, cliente.getDataNascimento());
+            preparedStatement.setString(4, cliente.getCpf());
+            preparedStatement.setString(5, cliente.getRg());
+            preparedStatement.setString(6, cliente.getCEP());
+            preparedStatement.setString(7, cliente.getComplemento());
+            preparedStatement.setString(8, cliente.getCidade());
+            preparedStatement.setString(9, cliente.getEstado());
+            preparedStatement.setString(10, cliente.getEndereco());           
+            preparedStatement.setString(11,cliente.getTelefone());
+            preparedStatement.setString(12,cliente.getCelular());
+            preparedStatement.setString(13,cliente.getEmail());
+            
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch(Exception e){
@@ -94,15 +100,19 @@ public class ClienteDAO {
                 int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sobrenome = result.getString("sobrenome");
+                String dataNascimento = result.getString("DataDeNascimento");
                 String cpf = result.getString("cpf");
                 String rg = result.getString("rg");
+                String Cep = result.getString("cep");
                 String complemento = result.getString("complemento");
                 String cidade = result.getString("cidade"); 
-                String endereco = result.getString("endereco");
                 String estado = result.getString("estado");
-                String dataNascimento = result.getString("dataNascimento");
+                String endereco = result.getString("endereco");
+                String telefone = result.getString("Telefone");
+                String celular = result.getString("celular");
+                String Email = result.getString("email");
 
-                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento);
+                Cliente c = new Cliente(Cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, Email, telefone, celular);
                 c.setID(id);
                 //Adiciona a instância na lista
                 listaClientes.add(c);
@@ -128,7 +138,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Cliente WHERE Nome="+"'"+nomeBanco+"'";
+        String sql = "SELECT * FROM Cliente WHERE Nome=?";
         //Lista de clientes de resultado
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
@@ -136,7 +146,9 @@ public class ClienteDAO {
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
-        
+        preparedStatement.setString(1, nomeBanco);
+            //Executa a consulta SQL no banco de dados
+         preparedStatement.executeQuery();
         //Armazenará os resultados do banco de dados
         ResultSet result = null;
            
@@ -158,15 +170,20 @@ public class ClienteDAO {
                 int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sobrenome = result.getString("sobrenome");
+                String dataNascimento = result.getString("dataNascimento");
                 String cpf = result.getString("cpf");
                 String rg = result.getString("rg");
+                String Cep = result.getString("cep");
                 String complemento = result.getString("complemento");
                 String cidade = result.getString("cidade"); 
                 String estado = result.getString("estado");
                 String endereco = result.getString("endereco");
-                String dataNascimento = result.getString("dataNascimento");
+                String telefone = result.getString("Telefone");
+                String celular = result.getString("celular");
+                String Email = result.getString("email");
+                
 
-                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,dataNascimento);
+                Cliente c = new Cliente(Cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, Email, telefone, celular);
                 c.setID(id);
                 //Adiciona a instância na lista
                 listaClientes.add(c);
@@ -218,15 +235,19 @@ public class ClienteDAO {
                  int id = result.getInt("id");
                 String nome = result.getString("nome");
                 String sobrenome = result.getString("sobrenome");
+                String dataNascimento = result.getString("dataNascimento");
                 String cpf = result.getString("cpf");
                 String rg = result.getString("rg");
+                String Cep = result.getString("cep");
                 String complemento = result.getString("complemento");
                 String cidade = result.getString("cidade"); 
                 String estado = result.getString("estado");
                 String endereco = result.getString("endereco");
-                String dataNascimento = result.getString("dataNascimento");
+                String telefone = result.getString("Telefone");
+                String celular = result.getString("celular");
+                String Email = result.getString("email");
 
-                Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,dataNascimento);
+                Cliente c = new Cliente(Cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, Email, telefone, celular);
                 c.setID(id);
                 //Retorna o resultado
                 System.out.println("Retornando o objeto");
@@ -256,7 +277,7 @@ public class ClienteDAO {
       public static void AlterarCliente(Cliente cliente)  throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
         //comando sql
-        String sql = "update Cliente set Nome =?,Sobrenome =?,CPF =?,RG=?,Complemento=?,Cidade=?,Estado=?,Endereco=? where id=?";
+        String sql = "update Cliente set Nome =?,Sobrenome =?,DataDeNascimento =?,CPF =?,RG=?,Cep=?,Complemento=?,Cidade=?,Estado=?,Endereco=?,Celular =?,Telefone=?,Email=? where id=?";
          //Conexão para abertura e fechamento
         Connection connection = null;
        

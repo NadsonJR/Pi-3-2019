@@ -23,22 +23,19 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/CadastroCliente"})
 public class ClienteCadastroServlet extends HttpServlet {
 
- 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-                
 
-       RequestDispatcher dispatcher
+        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteCadastro.jsp");
         dispatcher.forward(request, response);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -48,10 +45,13 @@ public class ClienteCadastroServlet extends HttpServlet {
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
         String dataNascimento = request.getParameter("dataNascimento");
+        String cep = request.getParameter("cep");
+        String celular = request.getParameter("Celular");
+        String telefone = request.getParameter("telefone");
+        String email = request.getParameter("email");
 
-        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento);
-      
-        
+        Cliente c = new Cliente(cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, email, telefone, celular);
+        System.out.println(celular);
         try {
             ClienteDAO.inserir(c);
         } catch (Exception e) {
@@ -59,12 +59,10 @@ public class ClienteCadastroServlet extends HttpServlet {
             System.out.println(e);
         }
         request.setAttribute("cliente", c);
-        
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
         dispatcher.forward(request, response);
     }
-
-  
 
 }

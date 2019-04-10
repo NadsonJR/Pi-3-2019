@@ -36,7 +36,7 @@ public class ClienteEditarServlet extends HttpServlet {
         }
         request.setAttribute("id", ID);
         request.setAttribute("cliente", c);
-        
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteEditar.jsp");
         dispatcher.forward(request, response);
@@ -46,7 +46,7 @@ public class ClienteEditarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int id=  Integer.parseInt(request.getParameter("idCliente"));
+        int id = Integer.parseInt(request.getParameter("idCliente"));
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -56,8 +56,12 @@ public class ClienteEditarServlet extends HttpServlet {
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
         String dataNascimento = request.getParameter("dataNascimento");
-        
-        Cliente c = new Cliente(complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf,id,dataNascimento);
+        String cep = request.getParameter("cep");
+        String celular = request.getParameter("celular");
+        String telefone = request.getParameter("telefone");
+        String email = request.getParameter("email");
+       
+        Cliente c = new Cliente(cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, id, dataNascimento, email, telefone, celular);
         try {
             System.out.println("AlterarCliente POST");
             ClienteDAO.AlterarCliente(c);

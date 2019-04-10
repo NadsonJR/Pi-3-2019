@@ -28,23 +28,64 @@ public class Cliente extends Pessoa {
         this.ID = ID;
     }
 
-    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf,int Id, String dataNascimento) {
+    public Cliente(String cep,String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf,int Id, String dataNascimento, String Email, String Telefone, String Celular) {
         super(nome, sobrenome, cpf, rg, dataNascimento);
         this.complemento = complemento;
         this.cidade = cidade;
         this.estado = estado;
         this.endereco = endereco;
         this.ID = Id;
+        this.Celular= Celular;
+        this.Telefone = Telefone;
+        this.Email = Email;
+        this.CEP = cep;
         
     }
+    
 
-    public Cliente(String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf, String dataNascimento) {
+    public Cliente(String cep,String complemento, String endereco, String cidade, String estado, String nome, String sobrenome,String rg, String cpf,String dataNascimento, String Email, String Telefone, String Celular) {
         super(nome, sobrenome, cpf, rg, dataNascimento);
         this.complemento = complemento;
         this.cidade = cidade;
         this.estado = estado;
         this.endereco = endereco;
+        this.Celular= Celular;
+        this.Telefone = Telefone;
+        this.Email = Email;
+        this.CEP = cep;
         
+    }
+
+    public String getCEP() {
+        return CEP;
+    }
+
+    public void setCEP(String CEP) {
+        this.CEP = CEP;
+    }
+
+    public String getTelefone() {
+        return Telefone;
+    }
+
+    public void setTelefone(String Telefone) {
+        this.Telefone = Telefone;
+    }
+
+    public String getCelular() {
+        return Celular;
+    }
+
+    public void setCelular(String Celular) {
+        this.Celular = Celular;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getEndereco() {
