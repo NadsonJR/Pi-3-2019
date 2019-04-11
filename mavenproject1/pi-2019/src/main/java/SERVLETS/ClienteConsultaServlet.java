@@ -32,7 +32,6 @@ public class ClienteConsultaServlet extends HttpServlet {
         
         try {
               List<Cliente> listaClientes = ClienteDAO.listar();
-              System.out.println(listaClientes.get(0).getNome());
              request.setAttribute("listaClientes", listaClientes);
             sessao.setAttribute("listaClientes" , listaClientes);
         } catch (Exception e) {

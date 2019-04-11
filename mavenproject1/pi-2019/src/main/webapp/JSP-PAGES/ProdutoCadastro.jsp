@@ -3,7 +3,9 @@
     Created on : 08/02/2019, 14:48:44
     Author     : mt12732
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -77,14 +79,17 @@
                 </div>
                 <div class="form-group col-3">
                     <label> Categoria: </label>
-                    <select class="form-control" required name="Categoria">
-                        <option selected>Choose...</option>
-                        <option value="Terror">Terror</option>
-                        <option value="Suspense">Suspense</option>
-                        <option value="Ação">Ação</option>
-                        <option value="Aventura">Aventura</option>
+
+                    <select class="form-control" required name="Categoria">       
+                        
+                        <c:forEach items ="${listaCategoria}" var="categoria" begin="0">
+                            <option  value="${categoria.getId()}">
+                                <c:out value="${categoria.getNomeCategoria()}"/>
+                            </option>
+                        </c:forEach>
                     </select>
                 </div>
+
             </div>
             <div class="row ">
                 <div class ="form group col-9 ">

@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import Modal.Livro;
+import Modal.Categoria;
 import conexao.ConnectionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,13 +19,13 @@ import java.util.List;
  * @author mt12732
  */
 public class CategoriaDAO {
-    public static List<Livro> listar()
+    public static List<Categoria> listarCategoria()
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Livro";
+        String sql = "SELECT * FROM Categoria";
         //Lista de clientes de resultado
-        List<Livro> listaProduto = null;
+        List<Categoria> listaCategoria = null;
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -45,26 +45,17 @@ public class CategoriaDAO {
             //Itera por cada item do resultado
             while (result.next()) {
                 //Se a lista não foi inicializada, a inicializa
-                if (listaProduto == null) {
-                    listaProduto = new ArrayList<Livro>();
+                if (listaCategoria == null) {
+                    listaCategoria = new ArrayList<Categoria>();
                 }
-                //Cria uma instância de Cliente e popula com os valores do BD
+                //Cria uma instância de Categoria e popula com os valores do BD
 
-                int id = result.getInt("id");
-                String NomeLivro = result.getString("NomeLivro");
-                String Autor = result.getString("Autor");
-                String Editora = result.getString("Editora");
-                String Descricao = result.getString("Descricao");
-                float ValorVenda = Float.parseFloat(result.getString("ValorVenda"));
-                float ValorCusto = Float.parseFloat(result.getString("ValorCusto"));
-                String Categoria = result.getString("Categoria");
-                int Quantidade = Integer.parseInt(result.getString("Quantidade"));
-                String Data = result.getString("DataCadastro");
+                int id = result.getInt("IDCategoria");
+                String NomeLivro = result.getString("Nome");
 
-                Livro L = new Livro(NomeLivro, Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data);
-                L.setID(id);
+                Categoria C = new Categoria(id, NomeLivro);
                 //Adiciona a instância na lista
-                listaProduto.add(L);
+                listaCategoria.add(C);
             }
         }catch(Exception e){
             e.getLocalizedMessage();
@@ -86,7 +77,7 @@ public class CategoriaDAO {
             }
         }
         //Retorna a lista de clientes do banco de dados
-        return listaProduto;
+        return listaCategoria;
     }
 
 }
