@@ -57,7 +57,7 @@ public class ClienteConsultaServlet extends HttpServlet {
              request.setAttribute("listaClientes", listaClientes);
             sessao.setAttribute("listaClientes" , listaClientes);
         } catch (Exception e) {
-            System.out.println(e+"erro ao buscar cliente");
+            System.out.println(e + "erro ao buscar cliente");
         }
 
         RequestDispatcher dispatcher

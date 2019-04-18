@@ -144,6 +144,7 @@ public class ClienteDAO {
         //ESSA QUERY TA 100% FORA DAS BOAS PRÁTICAS ---->
         String sql = "SELECT * FROM Cliente WHERE Nome="+ "'" + nomeBanco + "'";
         //Lista de clientes de resultado
+        //oi
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
         Connection connection = null;
