@@ -19,6 +19,7 @@ public class Cliente extends Pessoa {
     private String Telefone;
     private String Celular;
     private String Email;
+    private boolean status;
 
     public int getID() {
         return ID;
@@ -60,7 +61,7 @@ public class Cliente extends Pessoa {
         return CEP;
     }
 
-    public void setCEP(String CEP) {
+        public void setCEP(String CEP) {
         this.CEP = CEP;
     }
 

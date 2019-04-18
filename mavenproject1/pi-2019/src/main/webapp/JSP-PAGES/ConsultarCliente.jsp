@@ -35,7 +35,7 @@
 
                 <div class="form-group col-4 ">
                     <label> CPF: </label>
-                    <input type="number" class="form-control" placeholder="111.111.111-11" id="cpf" name="cpf" >
+                    <input type="number" class="form-control" placeholder="Ainda nao funciona" id="cpf" name="cpf" >
                 </div>
                 <div class="form-group col-2">
                     <button type="submit" id="btn-form-search" style="margin-top: 30px;">Pesquisar <i class="fas fa-search"></i></button>

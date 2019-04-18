@@ -154,7 +154,6 @@ public class LivroDAO {
             connection = ConnectionBD.obterConexao();
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
-
             //Executa a consulta SQL no banco de dados
             result = preparedStatement.executeQuery();
             //Itera por cada item do resultado

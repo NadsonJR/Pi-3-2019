@@ -23,6 +23,7 @@
     <script src="main.js"></script>
     </head>
     <jsp:include page="Navbar-Component.jsp" />
+    <c:if></c:if>
     <body id="body-changes" class="text-center" > 
         <div id="bemvindo">
         <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
