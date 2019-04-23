@@ -33,7 +33,7 @@ public class ProdutoCadastroServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
-        
+        request.setCharacterEncoding("UTF-8");
         try {
             List<Categoria> listaCategoria = CategoriaDAO.listarCategoria();
             request.setAttribute("listaCategoria", listaCategoria);
@@ -50,7 +50,7 @@ public class ProdutoCadastroServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String NomeLivro = request.getParameter("NomeLivro");
         String Autor = request.getParameter("Autor");
         String Editora = request.getParameter("Editora");

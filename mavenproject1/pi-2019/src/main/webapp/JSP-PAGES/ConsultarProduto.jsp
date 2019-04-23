@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Consultar Produtos</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +23,7 @@
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center"  >  
-        <form id="FadeForm" class="form-type"action = "${pageContext.request.contextPath}/ConsultarProduto" method = "post" >
+        <form id="FadeForm" class="form-type"action = "${pageContext.request.contextPath}/ConsultarProduto" method = "post" accept-charset="UTF-8" >
             <div class="row justify-content-center">
                 <h2>Consulta</h2>
             </div>

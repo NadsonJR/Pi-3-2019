@@ -67,7 +67,7 @@ public class LivroDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Livro";
+        String sql = "select l.*, c.Nome as Categoria2 from Livro as l inner join categoria as c on c.IDCategoria = l.Categoria;";
         //Lista de clientes de resultado
         List<Livro> listaProduto = null;
         //Conexão para abertura e fechamento
@@ -101,7 +101,7 @@ public class LivroDAO {
                 String Descricao = result.getString("Descricao");
                 float ValorVenda = Float.parseFloat(result.getString("ValorVenda"));
                 float ValorCusto = Float.parseFloat(result.getString("ValorCusto"));
-                String Categoria = result.getString("Categoria");
+                String Categoria = result.getString("Categoria2");
                 int Quantidade = Integer.parseInt(result.getString("Quantidade"));
                 String Data = result.getString("DataCadastro");
 

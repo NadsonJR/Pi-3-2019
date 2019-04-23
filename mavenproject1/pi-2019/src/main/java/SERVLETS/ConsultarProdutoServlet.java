@@ -31,7 +31,7 @@ public class ConsultarProdutoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
-        
+        request.setCharacterEncoding("UTF-8");
         try {
               List<Livro> listaProduto = LivroDAO.listar();
              request.setAttribute("listaProduto", listaProduto);
@@ -48,6 +48,7 @@ public class ConsultarProdutoServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
+        request.setCharacterEncoding("UTF-8");
          
           try {
               String nome = request.getParameter("nome");

@@ -3,6 +3,8 @@
     Created on : 08/02/2019, 14:48:44
     Author     : mt12732
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +13,7 @@
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Cadastrar Venda</title>
-         <meta charset="UTF-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="JSP-STYLES/main.css" />
         <script src="main.js"></script>
@@ -40,15 +42,24 @@
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <label> Cliente </label>
-                    <select class="form-control" required name="CategoriaProduto">
-                        <option selected>Choose...</option>
-                    </select>
-                </div>
+                    <select class="form-control" required name="cliente">       
+                        <option>Choose... </option>
+                        <c:forEach items ="${listaClientes}" var="cliente" begin="0">
+                            <option value="${cliente.getID()}">
+                                <c:out value="${cliente.getNome()}"/>
+                            </option>
+                        </c:forEach>
+                    </select>               </div>
                 <div class="form-group col-6">
                     <label> Livro </label>
-                    <select class="form-control" required name="CategoriaProduto">
-                        <option selected>Choose...</option>
-                    </select>
+                    <select class="form-control" required name="cliente">
+                        <option>Choose... </option>
+                        <c:forEach items ="${listaProduto}" var="Livro" begin="0">
+                            <option value="${Livro.getID()}">
+                                <c:out value="${Livro.getNomeLivro()}"/>
+                            </option>
+                        </c:forEach>
+                    </select> 
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -79,22 +90,22 @@
                             </form>
                             <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
                             <%-- primeiro form ignorado pelo metodo! --%>
-                            <c:forEach items ="${listaProduto}" var="produto">
+                            <c:forEach items ="" var="produto">
                                 <tr>
                                     <td><c:out value="${produto.getNomeLivro()}"/></td>
-                                <td><c:out value="${produto.getAutor()}"/></td>
-                                <td><c:out value="${produto.getEditora()}"/></td>
-                                <td><c:out value="${produto.getCategoria()}"/></td>
-                                <td><c:out value="${produto.getValorVenda()}"/></td>
-                                <td><c:out value="${produto.getQuantidade()}"/></td>
-                                <td>
-                                    <div>
-                                        <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
-                                            <input type="hidden" value="${produto.getID()}" name="id">
-                                            <button class="form-button" id="btn-form-search"  type="submit"> <i class="fas fa-times"></i></button>
-                                        </form>
-                                    </div>    
-                                </td>
+                                    <td><c:out value="${produto.getAutor()}"/></td>
+                                    <td><c:out value="${produto.getEditora()}"/></td>
+                                    <td><c:out value="${produto.getCategoria()}"/></td>
+                                    <td><c:out value="${produto.getValorVenda()}"/></td>
+                                    <td><c:out value="${produto.getQuantidade()}"/></td>
+                                    <td>
+                                        <div>
+                                            <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
+                                                <input type="hidden" value="${produto.getID()}" name="id">
+                                                <button class="form-button" id="btn-form-search"  type="submit"> <i class="fas fa-times"></i></button>
+                                            </form>
+                                        </div>    
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

@@ -4,16 +4,23 @@
  * and open the template in the editor.
  */
 package SERVLETS;
+
+import DAO.ClienteDAO;
+import DAO.LivroDAO;
+import Modal.Cliente;
+import Modal.Livro;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -26,10 +33,23 @@ public class CadastroVenda extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Date data = new Date();
-        SimpleDateFormat formatador = new SimpleDateFormat("dd/MM/yyyy");
+        HttpSession sessao = request.getSession();
 
-        formatador.format(data);
+        try {
+            List<Cliente> listaClientes = ClienteDAO.listar();
+            request.setAttribute("listaClientes", listaClientes);
+            sessao.setAttribute("listaClientes", listaClientes);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        
+        try {
+              List<Livro> listaProduto = LivroDAO.listar();
+             request.setAttribute("listaProduto", listaProduto);
+            sessao.setAttribute("listaProduto" , listaProduto);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/JSP-PAGES/CadastroVenda.jsp");

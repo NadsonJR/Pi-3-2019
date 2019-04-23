@@ -29,6 +29,8 @@ public class ClienteCadastroServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+        
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteCadastro.jsp");
         dispatcher.forward(request, response);
@@ -38,6 +40,9 @@ public class ClienteCadastroServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("UTF-8");
+
+        
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -51,8 +56,7 @@ public class ClienteCadastroServlet extends HttpServlet {
         String celular = request.getParameter("celular");
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
-         
-
+        System.out.println(nome +" oi alo ");
         Cliente c = new Cliente(cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, email, telefone, celular);
         
         try {

@@ -18,6 +18,7 @@ public class Venda {
      private List IDLivro;
      private String tipoPagamento;
      private float ValorVenda;
+     private String NomeCliente;
      private int IDcliente;
 
     public int getIdVenda() {

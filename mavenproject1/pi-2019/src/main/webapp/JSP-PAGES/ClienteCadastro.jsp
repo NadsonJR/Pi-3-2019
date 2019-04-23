@@ -30,7 +30,7 @@
 </head>
 <jsp:include page="Navbar-Component.jsp"/>
 <body id="body-changes" class="text-center">
-    <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroCliente" >
+    <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroCliente" accept-charset="UTF-8">
         <div class="row justify-content-center">
             <div class="form-group col-6">
                 <h2>Cliente</h2>
