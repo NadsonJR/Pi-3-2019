@@ -26,7 +26,7 @@ public class ClienteEditarServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+            request.setCharacterEncoding("UTF-8");
         int ID = Integer.parseInt(request.getParameter("id"));
         Cliente c = null;
         try {
@@ -46,6 +46,8 @@ public class ClienteEditarServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        
         int id = Integer.parseInt(request.getParameter("idCliente"));
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");

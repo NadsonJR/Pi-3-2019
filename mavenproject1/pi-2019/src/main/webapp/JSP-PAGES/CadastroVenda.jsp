@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-6">
+                <div class="form-group col-5">
                     <label> Cliente </label>
                     <select class="form-control" required name="cliente">       
                         <option>Choose... </option>
@@ -50,7 +50,7 @@
                             </option>
                         </c:forEach>
                     </select>               </div>
-                <div class="form-group col-6">
+                <div class="form-group col-5">
                     <label> Livro </label>
                     <select class="form-control" required name="cliente">
                         <option>Choose... </option>
@@ -61,12 +61,7 @@
                         </c:forEach>
                     </select> 
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="form-group col-6">
-                    <button type="submit" id="btn-form-search">Confirmar</button>
-                </div>
-                <div class="form-group col-6">
+                <div class="form-group col-2 "style="margin-top: 30px;">
                     <button type="submit" id="btn-form-search">Adicionar</button>
                 </div>
             </div>

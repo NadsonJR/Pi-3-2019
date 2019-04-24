@@ -13,68 +13,83 @@ import java.util.List;
  * @author mt12732
  */
 public class Venda {
-     private int idVenda;
-     private Date DataCadastroVenda;
-     private List IDLivro;
-     private String tipoPagamento;
-     private float ValorVenda;
-     private String NomeCliente;
-     private int IDcliente;
+     
+    private int IDCliente;
+    private int IDVenda;
+    private Date DataVenda;
+    private int IDLivro;
+    private int QuantidadeLivro;
+    private float Valor;
+    private String FormaPagamento;
 
-    public int getIdVenda() {
-        return idVenda;
+    public int getIDCliente() {
+        return IDCliente;
     }
 
-    public void setIdVenda(int idVenda) {
-        this.idVenda = idVenda;
-    }
-    public Date getDataCadastroVenda() {
-        return DataCadastroVenda;
+    public void setIDCliente(int IDCliente) {
+        this.IDCliente = IDCliente;
     }
 
-    public void setDataCadastroVenda(Date DataCadastroVenda) {
-        this.DataCadastroVenda = DataCadastroVenda;
+    public int getIDVenda() {
+        return IDVenda;
     }
 
-    public List getIDLivro() {
+    public void setIDVenda(int IDVenda) {
+        this.IDVenda = IDVenda;
+    }
+
+    public Date getDataVenda() {
+        return DataVenda;
+    }
+
+    public void setDataVenda(Date DataVenda) {
+        this.DataVenda = DataVenda;
+    }
+
+    public int getIDLivro() {
         return IDLivro;
     }
 
-    public void setIDLivro(List IDLivro) {
+    public void setIDLivro(int IDLivro) {
         this.IDLivro = IDLivro;
     }
 
-    public String getTipoPagamento() {
-        return tipoPagamento;
+    public int getQuantidadeLivro() {
+        return QuantidadeLivro;
     }
 
-    public void setTipoPagamento(String tipoPagamento) {
-        this.tipoPagamento = tipoPagamento;
+    public void setQuantidadeLivro(int QuantidadeLivro) {
+        this.QuantidadeLivro = QuantidadeLivro;
     }
 
-    public float getValorVenda() {
-        return ValorVenda;
+    public float getValor() {
+        return Valor;
     }
 
-    public void setValorVenda(float ValorVenda) {
-        this.ValorVenda = ValorVenda;
+    public void setValor(float Valor) {
+        this.Valor = Valor;
     }
 
-    public int getIDcliente() {
-        return IDcliente;
+    public String getFormaPagamento() {
+        return FormaPagamento;
     }
 
-    public void setIDcliente(int IDcliente) {
-        this.IDcliente = IDcliente;
+    public void setFormaPagamento(String FormaPagamento) {
+        this.FormaPagamento = FormaPagamento;
     }
 
-    public Venda(int idVenda, Date DataCadastroVenda, List IDLivro, String tipoPagamento, float ValorVenda, int IDcliente) {
-        this.idVenda = idVenda;
-        this.DataCadastroVenda = DataCadastroVenda;
+    public Venda(int IDCliente, int IDVenda, Date DataVenda, int IDLivro, int QuantidadeLivro, float Valor, String FormaPagamento) {
+        this.IDCliente = IDCliente;
+        this.IDVenda = IDVenda;
+        this.DataVenda = DataVenda;
         this.IDLivro = IDLivro;
-        this.tipoPagamento = tipoPagamento;
-        this.ValorVenda = ValorVenda;
-        this.IDcliente = IDcliente;
+        this.QuantidadeLivro = QuantidadeLivro;
+        this.Valor = Valor;
+        this.FormaPagamento = FormaPagamento;
     }
+    
+    
+    
+    
      
 }

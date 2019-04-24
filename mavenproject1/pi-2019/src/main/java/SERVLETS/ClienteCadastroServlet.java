@@ -65,6 +65,7 @@ public class ClienteCadastroServlet extends HttpServlet {
             e.getLocalizedMessage();
             System.out.println(e);
         }
+        
         request.setAttribute("cliente", c);
 
         RequestDispatcher dispatcher

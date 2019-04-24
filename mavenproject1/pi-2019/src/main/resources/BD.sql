@@ -75,12 +75,13 @@
         );
 
         CREATE TABLE Venda(
-        IdVenda 	INT NOT NULL AUTO_INCREMENT,
+        IDCliente 	int not null,
+        IDVenda 	INT NOT NULL AUTO_INCREMENT,
         DataVenda 	date, 
-        Livros 		VARCHAR(255),
-        Pagamento 	VARCHAR(255),
+        IDLivro		VARCHAR(255),
+        QuantidadeLivro VARCHAR(255),
         Valor 		float4,
-        ClienteId 	int not null,
+        FormaPagamento 	VARCHAR(255),
         constraint PK_VendaID primary key(IdVenda)
         );
 
