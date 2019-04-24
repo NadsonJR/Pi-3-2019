@@ -6,13 +6,12 @@
 package SERVLETS;
 
 import DAO.ClienteDAO;
+import DAO.FormasDePagamentoDAO;
 import DAO.LivroDAO;
 import Modal.Cliente;
+import Modal.FormaDePagamento;
 import Modal.Livro;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,11 +41,19 @@ public class CadastroVenda extends HttpServlet {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
+
         try {
-              List<Livro> listaProduto = LivroDAO.listar();
-             request.setAttribute("listaProduto", listaProduto);
-            sessao.setAttribute("listaProduto" , listaProduto);
+            List<Livro> listaProduto = LivroDAO.listar();
+            request.setAttribute("listaProduto", listaProduto);
+            sessao.setAttribute("listaProduto", listaProduto);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        try {
+            List<FormaDePagamento> listaPagamento = FormasDePagamentoDAO.listarFormaPagamento();
+            request.setAttribute("listaPagamento", listaPagamento);
+            sessao.setAttribute("listaPagamento", listaPagamento);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -59,6 +66,18 @@ public class CadastroVenda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        int idLivro = Integer.parseInt(request.getParameter("ID"));
+        String Titulo = request.getParameter("NomeLivro");
+        String Autor = request.getParameter("Autor");
+        String Editora = request.getParameter("Editora");
+        int Valor = Integer.parseInt(request.getParameter("ValorVenda"));
+        int Quantidade = Integer.parseInt(request.getParameter("Quantidade"));
+        //adicionar livro no carrinho
+        Livro l = new Livro(Titulo, Autor, Editora, Valor, idLivro, Quantidade);
+        
+        //montar o tabela com o carrinho
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/JSP-PAGES/Home.jsp");
         dispatcher.forward(request, response);

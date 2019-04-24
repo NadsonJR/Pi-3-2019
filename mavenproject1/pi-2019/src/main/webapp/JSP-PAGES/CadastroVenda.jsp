@@ -33,7 +33,7 @@
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
-        <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ProdutoCadastro">
+        <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroVenda">
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <h2>Venda</h2>
@@ -113,11 +113,13 @@
                 </div>
                 <div class="form-group  col-4">
                     <label>Forma de pagamento:</label>
-                    <select class="form-control" required name="CategoriaProduto">
-                        <option selected>Choose...</option>
-                        <option value="debito">Débito</option>
-                        <option value="credito">Crédito</option>
-                        <option value="dinheiro">Dinheiro</option>
+                    <select class="form-control" required name="cliente">
+                        <option>Choose... </option>
+                        <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0">
+                            <option value="${Pagamento.getIdPagamento()}">
+                                <c:out value="${Pagamento.getDescricao()}"/>
+                            </option>
+                        </c:forEach>
                     </select>
                 </div>
                 <div class="form-group col-2">

@@ -128,4 +128,15 @@ public class Livro {
     this.DataCadastro =  DataCadastro;
     this.ID = id;
     }
+
+    public Livro(String nomelivro, String Autor, String Editora,float ValorVenda,Integer ID, Integer Quantidade) {
+        this.nomelivro = nomelivro;
+        this.Autor = Autor;
+        this.Editora = Editora;
+        this.ValorVenda = ValorVenda;
+        this.ID = ID;
+        this.Quantidade = Quantidade;
+    }
+    
+        
 }

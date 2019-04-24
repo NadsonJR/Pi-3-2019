@@ -69,23 +69,43 @@
 
         Create Table Categoria(
         IDCategoria int not null auto_increment,
-        Nome VArchar(255) not null,
+        Nome VARCHAR(255) not null,
         CONSTRAINT PK_CATEGORIA PRIMARY KEY (IDCategoria),
         CONSTRAINT UC_NOME UNIQUE (NOME)
         );
-
+        
         CREATE TABLE Venda(
         IDCliente 	int not null,
         IDVenda 	INT NOT NULL AUTO_INCREMENT,
         DataVenda 	date, 
-        IDLivro		VARCHAR(255),
-        QuantidadeLivro VARCHAR(255),
         Valor 		float4,
         FormaPagamento 	VARCHAR(255),
         constraint PK_VendaID primary key(IdVenda)
         );
 
+        CREATE TABLE ItensCarrinho(
+        IDLivro INT NOT NULL,
+        Quantidade INT NOT NULL,
+        IDCarrinho INT NOT NULL,
+        Valor Float,
+        FOREIGN KEY (IDCarrinho) REFERENCES Venda(IDVenda) 
+        );
+
+        CREATE TABLE FormaDePagamento(
+          IdPagamento INT NOT NULL AUTO_INCREMENT,
+          Descricao VARCHAR(255)
+        );
+
         INSERT INTO Usuario (Nome,Usuario,Senha) VALUE ('Antonio Nadson','NadsonJR','1234');
+
+        Insert into FormaDePagamento(Descricao) Values ("Crédito 1x");
+        Insert into FormaDePagamento(Descricao) Values ("Crédito 2x");
+        Insert into FormaDePagamento(Descricao) Values ("Crédito 3x");
+        Insert into FormaDePagamento(Descricao) Values ("Crédito 4x");
+        Insert into FormaDePagamento(Descricao) Values ("Crédito 5x");
+        Insert into FormaDePagamento(Descricao) Values ("Crédito 6x");
+        Insert into FormaDePagamento(Descricao) Values ("Débito");
+        Insert into FormaDePagamento(Descricao) Values ("Dinheiro");
 
         INSERT INTO CATEGORIA(NOME) VALUES ("Terror");
         INSERT INTO CATEGORIA(NOME) VALUES ("Ação");
