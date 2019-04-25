@@ -65,7 +65,7 @@
                   Relatório
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/Relatorio/EmitirRelatorio">Emitir</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/EmitirRelatorio">Emitir</a>
                 </div>
               </li>
           </ul>

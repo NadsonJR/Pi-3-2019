@@ -16,12 +16,24 @@ public class Venda {
      
     private int IDCliente;
     private int IDVenda;
-    private Date DataVenda;
-    private int IDLivro;
-    private int QuantidadeLivro;
+    private String DataVenda;
     private float Valor;
     private String FormaPagamento;
+    private String NomeCliente;
 
+    public Venda(int IDCliente, int IDVenda, String DataVenda, float Valor, String FormaPagamento, String NomeCliente) {
+        this.IDCliente = IDCliente;
+        this.IDVenda = IDVenda;
+        this.DataVenda = DataVenda;
+        this.Valor = Valor;
+        this.FormaPagamento = FormaPagamento;
+        this.NomeCliente = NomeCliente;
+    }
+
+    
+    
+    
+    
     public int getIDCliente() {
         return IDCliente;
     }
@@ -38,28 +50,12 @@ public class Venda {
         this.IDVenda = IDVenda;
     }
 
-    public Date getDataVenda() {
+    public String getDataVenda() {
         return DataVenda;
     }
 
-    public void setDataVenda(Date DataVenda) {
+    public void setDataVenda(String DataVenda) {
         this.DataVenda = DataVenda;
-    }
-
-    public int getIDLivro() {
-        return IDLivro;
-    }
-
-    public void setIDLivro(int IDLivro) {
-        this.IDLivro = IDLivro;
-    }
-
-    public int getQuantidadeLivro() {
-        return QuantidadeLivro;
-    }
-
-    public void setQuantidadeLivro(int QuantidadeLivro) {
-        this.QuantidadeLivro = QuantidadeLivro;
     }
 
     public float getValor() {
@@ -78,15 +74,17 @@ public class Venda {
         this.FormaPagamento = FormaPagamento;
     }
 
-    public Venda(int IDCliente, int IDVenda, Date DataVenda, int IDLivro, int QuantidadeLivro, float Valor, String FormaPagamento) {
-        this.IDCliente = IDCliente;
-        this.IDVenda = IDVenda;
-        this.DataVenda = DataVenda;
-        this.IDLivro = IDLivro;
-        this.QuantidadeLivro = QuantidadeLivro;
-        this.Valor = Valor;
-        this.FormaPagamento = FormaPagamento;
+    public String getNomeCliente() {
+        return NomeCliente;
     }
+
+    public void setNomeCliente(String NomeCliente) {
+        this.NomeCliente = NomeCliente;
+    }
+    
+    
+
+   
     
     
     
