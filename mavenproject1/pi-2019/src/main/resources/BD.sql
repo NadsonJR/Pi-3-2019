@@ -92,8 +92,9 @@
         );
 
         CREATE TABLE FormaDePagamento(
-          IdPagamento INT NOT NULL AUTO_INCREMENT,
-          Descricao VARCHAR(255)
+		IdPagamento INT NOT NULL AUTO_INCREMENT,
+		Descricao VARCHAR(255),
+		FOREIGN KEY (IDPagamento) REFERENCES Venda(IDPagamento) 
         );
 
         INSERT INTO Usuario (Nome,Usuario,Senha) VALUE ('Antonio Nadson','NadsonJR','1234');
