@@ -94,7 +94,7 @@
         CREATE TABLE FormaDePagamento(
 		IdPagamento INT NOT NULL AUTO_INCREMENT,
 		Descricao VARCHAR(255),
-		FOREIGN KEY (IDPagamento) REFERENCES Venda(IDPagamento) 
+		constraint PK_PagamentoID primary key(IdPagamento)) 
         );
 
         INSERT INTO Usuario (Nome,Usuario,Senha) VALUE ('Antonio Nadson','NadsonJR','1234');
