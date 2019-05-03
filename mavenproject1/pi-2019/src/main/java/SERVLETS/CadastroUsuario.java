@@ -9,9 +9,7 @@ import DAO.CargosDAO;
 import DAO.UsuarioDAO;
 import Modal.Cargos;
 import Modal.Usuario;
-import com.sun.xml.internal.ws.wsdl.writer.UsingAddressing;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,3 +65,5 @@ public class CadastroUsuario extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
+
+
