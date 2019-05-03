@@ -111,7 +111,7 @@
         constraint PK_IdCargo primary key(IdCargo)
         );	
 
-        INSERT INTO Usuario (Nome,Usuario,Senha) VALUE ('admin','admin','admin','GOD');
+        INSERT INTO Usuario (Nome,Usuario,Senha,Cargo) VALUE ('admin','admin','admin','GOD');
 
         Insert into FormaDePagamento(Descricao) Values ("Crédito 1x");
         Insert into FormaDePagamento(Descricao) Values ("Crédito 2x");
