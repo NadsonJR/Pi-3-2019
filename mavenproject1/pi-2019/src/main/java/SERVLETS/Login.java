@@ -5,6 +5,7 @@
  */
 package SERVLETS;
 
+import DAO.LoginDAO;
 import Modal.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,28 +38,29 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         int IdUsuario;
         String usuario = request.getParameter("inputName");
-        String senha = request.getParameter("inputSenha");
-        String status = "";
+        String senhaAberta = request.getParameter("inputSenha");
         Usuario user=null;
-        System.out.println("User: " + usuario + "\n Senha:" + senha);
-        String msgErro;
         try {
-            user = DAO.LoginDAO.Logar(usuario, senha);
+            user = LoginDAO.Logar(usuario);
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e + " Erro no Login!");
         }
-        if (user != null) {
-            
+        
+        System.out.println(user.getNomeFuncionario());
+        System.out.println(user.getHashSenha()+" Senha aberta: "+senhaAberta+" " + user.validarSenha(senhaAberta));
+        if (user != null && user.validarSenha(senhaAberta)) {
+            // Se sucesso, salva usuario na sessao e redireciona para /protegido/home
             HttpSession sessao = request.getSession();
             sessao.setAttribute("usuario", user);
-            
-            response.sendRedirect(request.getContextPath() + "/Home");
+            request.getRequestDispatcher("/JSP-PAGES/Home.jsp")
+                     .forward(request, response);
         } else {
-            msgErro = "<script>alert('Usuário ou senha incorretos!')</script>";
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("/JSP-PAGES/Login.jsp");
-            dispatcher.forward(request, response);
+             // Se erro, reapresenta tela de login com msg de erro
+             request.setAttribute("msgErro", "Usuário ou senha inválidos");
+             request.getRequestDispatcher("/JSP-PAGES/Login.jsp")
+                     .forward(request, response);
+             
         }
 
     }

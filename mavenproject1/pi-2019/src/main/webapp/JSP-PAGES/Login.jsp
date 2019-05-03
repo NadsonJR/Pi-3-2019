@@ -19,11 +19,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
-        <script>
-            $('#myModal').on('shown.bs.modal', function () {
-                $('#myInput').trigger('focus')
-            })
-        </script>
     </head>
     
     <body class="text-center" id=body-changes style="padding-top:10% "> 
@@ -36,10 +31,7 @@
             <input type="usuario" id="inputUsuario" class="form-control" placeholder="Usuário" required="" autofocus="" name="inputName">
             <label for="inputSenha" class="sr-only">Senha</label>
             <input type="password" id="inputSenha" class="form-control" placeholder="Senha" required="" name="inputSenha">
-            <div>
-                <input type="checkbox" value="remember-me">
-                Remember-me
-            </div>
+            <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn-singin"> Sign in <i class="fas fa-sign-in-alt"></i> </button>
             </div>
         </form>

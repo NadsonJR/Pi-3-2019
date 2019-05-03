@@ -27,7 +27,7 @@
     <body id="body-changes" class="text-center" > 
         <div id="bemvindo">
         <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
-        <label class="Func" id="fadeIn">${sessionScope.usuario.getNome()}</label>
+        <label class="Func" id="fadeIn"></label>
         </div>
     </body>
 </html>

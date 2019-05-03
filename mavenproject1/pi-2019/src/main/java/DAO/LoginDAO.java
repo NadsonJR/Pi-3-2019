@@ -10,6 +10,7 @@ import conexao.ConnectionBD;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -17,9 +18,8 @@ import java.sql.ResultSet;
  */
 public class LoginDAO {
 
-    public static Usuario Logar(String Username, String password) throws Exception {
-        String sql = "SELECT * FROM usuario WHERE usuario=? AND senha=? ";
-        String status = "";
+    public static Usuario Logar(String Username) throws Exception {
+        String sql = "SELECT * FROM usuario WHERE usuario=?";
         System.out.println("Passou pela DAO!");
         Usuario user = null ;
         Connection connection = null;
@@ -28,12 +28,14 @@ public class LoginDAO {
             connection = ConnectionBD.obterConexao();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, Username);
-            preparedStatement.setString(2, password);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 user = new Usuario();
                 user.setID(rs.getInt("ID"));
-                user.setNome(rs.getString("Nome"));
+                user.setNomeFuncionario(rs.getString("Nome"));
+                user.setUsername(rs.getString("Usuario"));
+                user.setHashSenha(rs.getString("Senha"));
+                user.setCargo(rs.getString("Cargo"));
             }
         } finally {
             if (preparedStatement != null && !preparedStatement.isClosed()) {
