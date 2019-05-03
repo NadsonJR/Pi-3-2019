@@ -52,7 +52,7 @@
                         <table class="table ">
                             <tr>
                                 <th scope="col">Número da Venda</th>
-                                <th scope="col">CLiente</th>
+                                <th scope="col">Cliente</th>
                                 <th scope="col">Data da Venda</th>
                                 <th scope="col">Valor</th>
                                 <th scope="col">Forma De Pagamento</th>
@@ -63,13 +63,13 @@
                             </form>
                             <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
                             <%-- primeiro form ignorado pelo metodo! --%>
-                            <c:forEach items ="${listaVenda}" var="Venda" begin="0">
+                            <c:forEach items ="${listaRelatorio}" var="Relatorio" begin="0">
                                 <tr>
-                                    <td><c:out value="${Venda.getIDVenda()}"/></td>
-                                    <td><c:out value="${Venda.getClienteNome()}"/></td>
-                                    <td><c:out value="${Venda.getDataVenda()}"/></td>
-                                    <td><c:out value="${Venda.getValor()}"/></td>
-                                    <td><c:out value="${Venda.getFormaPagamento()}"/></td>
+                                    <td><c:out value="${Relatorio.getIDRelatorio()}"/></td>
+                                    <td><c:out value="${Relatorio.getNome()}"/></td>
+                                    <td><c:out value="${Relatorio.getDataVenda()}"/></td>
+                                    <td><c:out value="${Relatorio.getValor()}"/></td>
+                                    <td><c:out value="${Relatorio.getDescricaoPagamento()}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

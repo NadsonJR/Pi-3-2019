@@ -5,10 +5,12 @@
  */
 package SERVLETS;
 
+import DAO.RelatoiroVendaDAO;
 import DAO.LivroDAO;
 import DAO.VendaDAO;
 import Modal.Livro;
 import Modal.Venda;
+import Modal.Relatorio;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -33,10 +35,10 @@ public class EmitirRelatorioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
         try {
-            List<Venda> listaVenda = VendaDAO.listarVenda();
-            request.setAttribute("listaVenda", listaVenda);
-            sessao.setAttribute("listaVenda" , listaVenda);
-            System.out.println(listaVenda);
+            List<Relatorio> listaRelatorio = RelatoiroVendaDAO.listar();
+            request.setAttribute("listaRelatorio", listaRelatorio);
+            sessao.setAttribute("listaRelatorio" , listaRelatorio);
+            System.out.println(listaRelatorio);
         } catch (Exception e) {
             System.out.println(e);
         }

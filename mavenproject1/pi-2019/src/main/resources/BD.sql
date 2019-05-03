@@ -118,3 +118,23 @@
         INSERT INTO CATEGORIA(NOME) VALUES ("Biografia");
         INSERT INTO CATEGORIA(NOME) VALUES ("Games");
         INSERT INTO CATEGORIA(NOME) VALUES ("Investigação");
+
+
+
+
+
+
+create table EmitirRelatorio(
+        
+        Nome VARCHAR (255) NOT NULL,
+        IDRelatorio INT NOT NULL,
+        DataVenda 	VARCHAR (255), 
+        Valor 		float4,
+        DescricaoPagamento VARCHAR(255)
+        
+        );
+        
+        select * from EmitirRelatorio;
+        
+         Insert into EmitirRelatorio(Nome, IDRelatorio, DataVenda, Valor, DescricaoPagamento) Values ('Vitor', 1, '2019', 20.4, 'LIVROROOR');
+         Insert into EmitirRelatorio(Nome, IDRelatorio, DataVenda, Valor, DescricaoPagamento) Values ('Rodrigo', 2, '2018', 30.7, 'LivroTOP');
