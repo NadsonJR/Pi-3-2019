@@ -1,31 +1,38 @@
 package Modal;
 
+import java.io.Serializable;
+import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
  * @author Matheus
  */
-public class Usuario extends Pessoa {
+public class Usuario implements Serializable {
+
     private Integer ID;
-    private String nivel;
+    private String Cargo;
     private String username;
-    private String senha;
+    private String NomeFuncionario;
+    private String hashSenha;
 
-    public Usuario(String nome, String senhaAberta) {
-        super.getNome();
+    public Usuario(String username, String nomeCompleto, String senhaAberta, String nivel) {
+        this.username = username;
+        this.NomeFuncionario = nomeCompleto;
         setSenha(senhaAberta);
-
-    }
-
-    public Usuario(String nivel, String nome, String cpf, String rg, String sobrenome, String ID,String dataNascimento) {
-        super(nome, sobrenome, cpf, rg, dataNascimento);
-        this.nivel = nivel;
-        
+        this.Cargo = nivel;
     }
 
     public Usuario() {
     }
 
+    public String getNomeFuncionario() {
+        return NomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String NomeFuncionario) {
+        this.NomeFuncionario = NomeFuncionario;
+    }
+    
     public String getUsername() {
         return username;
     }
@@ -42,21 +49,28 @@ public class Usuario extends Pessoa {
         this.ID = ID;
     }
 
-
-    public String getNivel() {
-        return nivel;
+    public String getCargo() {
+        return Cargo;
     }
 
-    public void setNivel(String nivel) {
-        this.nivel = nivel;
+    public void setCargo(String nivel) {
+        this.Cargo = nivel;
     }
 
-
-    public String getSenha() {
-        return senha;
+    public String getHashSenha() {
+        return hashSenha;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setHashSenha(String senha) {
+        this.hashSenha = senha;
     }
+
+    public void setSenha(String senhaAberta) {
+        this.hashSenha = BCrypt.hashpw(senhaAberta, BCrypt.gensalt());
+    }
+
+    public boolean validarSenha(String senhaAberta) {
+        return BCrypt.checkpw(senhaAberta, hashSenha);
+    }
+
 }
