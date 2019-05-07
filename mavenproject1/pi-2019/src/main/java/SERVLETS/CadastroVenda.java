@@ -6,6 +6,7 @@
 package SERVLETS;
 
 import DAO.ClienteDAO;
+import DAO.VendaDAO;
 import DAO.FormasDePagamentoDAO;
 import DAO.LivroDAO;
 import Modal.Cliente;
@@ -31,7 +32,8 @@ public class CadastroVenda extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
+        
         HttpSession sessao = request.getSession();
 
         try {
@@ -77,6 +79,14 @@ public class CadastroVenda extends HttpServlet {
         Livro l = new Livro(Titulo, Autor, Editora, Valor, idLivro, Quantidade);
         
         //montar o tabela com o carrinho
+        try {
+            VendaDAO.inserir(l);
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println(e);
+        }
+        
+        request.setAttribute("venda", l);
 
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/JSP-PAGES/Home.jsp");

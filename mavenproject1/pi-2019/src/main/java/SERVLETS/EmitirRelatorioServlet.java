@@ -37,7 +37,7 @@ public class EmitirRelatorioServlet extends HttpServlet {
         try {
             List<Relatorio> listaRelatorio = RelatoiroVendaDAO.listar();
             request.setAttribute("listaRelatorio", listaRelatorio);
-            sessao.setAttribute("listaRelatorio" , listaRelatorio);
+            sessao.setAttribute("listaRelatorio", listaRelatorio);
             System.out.println(listaRelatorio);
         } catch (Exception e) {
             System.out.println(e);
@@ -52,6 +52,20 @@ public class EmitirRelatorioServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        HttpSession sessao = request.getSession();
+        
+        try {
+              String DataVenda = request.getParameter("DataVenda");
+              System.out.println(DataVenda);
+              List<Relatorio> listaRelatorio = RelatoiroVendaDAO.listarPorRelatorio(DataVenda);
+              System.out.println(listaRelatorio.size());
+             request.setAttribute("listaRelatorio", listaRelatorio);
+            sessao.setAttribute("listaRelatorio" , listaRelatorio);
+        } catch (Exception e) {
+            System.out.println(e + "erro ao buscar Data");
+        }
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("/JSP-PAGES/EmitirRelatorio.jsp");
         dispatcher.forward(request, response);

@@ -33,7 +33,7 @@
             <div class="row justify-content-center">
                 <div class="form-group col-5 ">
                     <label> Data Inicial: </label>
-                    <input type="text" class="form-control" placeholder="Ainda nao funciona" id="nome" name="nome">
+                    <input type="text" class="form-control" placeholder="Ainda nao funciona" id="DataVenda" name="DataVenda">
                 </div>
 
                 <div class="form-group col-5 ">
