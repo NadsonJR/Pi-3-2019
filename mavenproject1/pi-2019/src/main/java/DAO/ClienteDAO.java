@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class ClienteDAO {
 
-    public static void inserir(Cliente cliente)
+    public static boolean inserir(Cliente cliente)
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
@@ -53,9 +53,10 @@ public class ClienteDAO {
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
-
+            
             e.getLocalizedMessage();
             System.out.println(e);
+            return false;
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -66,6 +67,7 @@ public class ClienteDAO {
                 connection.close();
             }
         }
+        return true;
     }
 
     public static List<Cliente> listar()
@@ -275,7 +277,7 @@ public class ClienteDAO {
         return null;
     }
 
-    public static void AlterarCliente(Cliente cliente) throws Exception {
+    public static boolean AlterarCliente(Cliente cliente) throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
         //comando sql
         String sql = "update Cliente set Nome =?,Sobrenome =?,DataDeNascimento =?,CPF =?,RG=?,Cep=?,Complemento=?,Cidade=?,Estado=?,Endereco=?,Celular =?,Telefone=?,Email=? where id=?";
@@ -314,6 +316,7 @@ public class ClienteDAO {
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
+            return false;
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -324,6 +327,7 @@ public class ClienteDAO {
                 connection.close();
             }
         }
+        return true;
     }
 
     public static void delCliente(int ID) throws Exception {

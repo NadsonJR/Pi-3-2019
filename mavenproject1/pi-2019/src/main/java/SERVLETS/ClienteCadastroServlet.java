@@ -32,7 +32,7 @@ public class ClienteCadastroServlet extends HttpServlet {
             throws ServletException, IOException {
 
         request.setCharacterEncoding("UTF-8");
-        
+
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ClienteCadastro.jsp");
         dispatcher.forward(request, response);
@@ -44,7 +44,6 @@ public class ClienteCadastroServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
 
-        
         String nome = request.getParameter("nome");
         String sobrenome = request.getParameter("sobrenome");
         String cpf = request.getParameter("cpf");
@@ -54,20 +53,23 @@ public class ClienteCadastroServlet extends HttpServlet {
         String estado = request.getParameter("estado");
         String endereco = request.getParameter("endereco");
         String dataNascimento = request.getParameter("dataNascimento");
-        String cep = request.getParameter("cep");   
+        String cep = request.getParameter("cep");
         String celular = request.getParameter("celular");
         String telefone = request.getParameter("telefone");
         String email = request.getParameter("email");
-        System.out.println(nome +" oi alo ");
         Cliente c = new Cliente(cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, email, telefone, celular);
-        
+
         try {
-            ClienteDAO.inserir(c);
+            if (ClienteDAO.inserir(c)) {
+                request.setAttribute("msgResposta", "Cadastrado com sucesso!");
+            } else {
+                request.setAttribute("msgResposta", "Não Foi possível efetuar o cadastro!");
+            }
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
         }
-        
+
         request.setAttribute("cliente", c);
 
         RequestDispatcher dispatcher

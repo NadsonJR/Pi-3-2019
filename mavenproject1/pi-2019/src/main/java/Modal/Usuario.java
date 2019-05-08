@@ -32,7 +32,7 @@ public class Usuario implements Serializable {
     public void setNomeFuncionario(String NomeFuncionario) {
         this.NomeFuncionario = NomeFuncionario;
     }
-    
+
     public String getUsername() {
         return username;
     }
@@ -73,4 +73,11 @@ public class Usuario implements Serializable {
         return BCrypt.checkpw(senhaAberta, hashSenha);
     }
 
+    public boolean verificarPapel(String Cargos) {
+        if (Cargo.contains(Cargos)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
