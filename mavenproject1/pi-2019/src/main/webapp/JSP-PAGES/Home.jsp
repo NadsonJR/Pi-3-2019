@@ -4,7 +4,8 @@
     Author     : mt12732
 --%>
 
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
     <!DOCTYPE html>
@@ -23,11 +24,10 @@
     <script src="main.js"></script>
     </head>
     <jsp:include page="Navbar-Component.jsp" />
-    <c:if></c:if>
     <body id="body-changes" class="text-center" > 
         <div id="bemvindo">
         <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
-        <label class="Func" id="fadeIn"></label>
+        <label class="Func" id="fadeIn"><c:out value="${msgResposta}"/></label>
         </div>
     </body>
 </html>

@@ -65,8 +65,11 @@ public class ClienteEditarServlet extends HttpServlet {
        
         Cliente c = new Cliente(cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, id, dataNascimento, email, telefone, celular);
         try {
-            System.out.println("AlterarCliente POST");
-            ClienteDAO.AlterarCliente(c);
+            if (ClienteDAO.AlterarCliente(c)) {
+                request.setAttribute("msgResposta", "Alterado com sucesso!");
+            } else {
+                request.setAttribute("msgResposta", "Não Foi possível efetuar o cadastro!");
+            }
             RequestDispatcher dispatcher
                     = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
             dispatcher.forward(request, response);

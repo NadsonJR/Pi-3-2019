@@ -51,13 +51,18 @@ public class CadastroUsuario extends HttpServlet {
         String Cargo = request.getParameter("cargo");
         String username = request.getParameter("username");
         String senhaAberta = request.getParameter("Senha");
-        System.out.println(senhaAberta +" Cadastro");
+        System.out.println(senhaAberta + " Cadastro");
         Usuario user = new Usuario(username, Nome, senhaAberta, Cargo);
 
         try {
-            System.out.println("asdasd" + Cargo);
-            UsuarioDAO.inserir(user);
+            if (UsuarioDAO.inserir(user)) {
+                request.setAttribute("msgResposta", "Cadastrado com sucesso!");
+            } else {
+                request.setAttribute("msgResposta", "Não Foi possível efetuar o cadastro!");
+            }
         } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println(e);
         }
 
         RequestDispatcher dispatcher
@@ -65,5 +70,3 @@ public class CadastroUsuario extends HttpServlet {
         dispatcher.forward(request, response);
     }
 }
-
-

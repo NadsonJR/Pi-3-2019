@@ -3,7 +3,8 @@
     Created on : 05/02/2019, 14:08:05
     Author     : mt12732
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -24,13 +25,14 @@
     <body class="text-center" id=body-changes style="padding-top:10% "> 
         <form class="form-singin" id="fadeIn" action = "${pageContext.request.contextPath}/Login" method = "post">
             <div>
-            <c:out value="${msgErro}" />
+            
             <i class="fas fa-journal-whills"></i>
             <h1 class="h3 mb-3 font-weight-normal">Insira seus dados</h1>
             <label for="inputUsuario" class="sr-only">Usuário</label>
             <input type="usuario" id="inputUsuario" class="form-control" placeholder="Usuário" required="" autofocus="" name="inputName">
             <label for="inputSenha" class="sr-only">Senha</label>
             <input type="password" id="inputSenha" class="form-control" placeholder="Senha" required="" name="inputSenha">
+            <c:out value="${msgErro}" />
             <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit" id="btn-singin"> Sign in <i class="fas fa-sign-in-alt"></i> </button>
             </div>

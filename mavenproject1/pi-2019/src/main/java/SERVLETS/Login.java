@@ -47,8 +47,6 @@ public class Login extends HttpServlet {
             System.out.println(e + " Erro no Login!");
         }
         
-        System.out.println(user.getNomeFuncionario());
-        System.out.println(user.getHashSenha()+" Senha aberta: "+senhaAberta+" " + user.validarSenha(senhaAberta));
         if (user != null && user.validarSenha(senhaAberta)) {
             // Se sucesso, salva usuario na sessao e redireciona para /protegido/home
             HttpSession sessao = request.getSession();

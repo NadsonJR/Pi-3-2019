@@ -20,7 +20,7 @@
         Email               VARCHAR (255) NOT NULL,
         CONSTRAINT PK_CLIENTE PRIMARY KEY (ID)
         );
- 
+ s
         CREATE TABLE Usuario(
         ID 		INT NOT NULL UNIQUE NOT NULL AUTO_INCREMENT,
         Nome 		VARCHAR(255),
@@ -97,18 +97,18 @@
         );
 
         CREATE TABLE FormaDePagamento(
-		IdPagamento INT NOT NULL AUTO_INCREMENT,
-		Descricao VARCHAR(255),
-		constraint PK_PagamentoID primary key(IdPagamento)
+        IdPagamento INT NOT NULL AUTO_INCREMENT,
+	Descricao VARCHAR(255),
+	constraint PK_PagamentoID primary key(IdPagamento)
         );
         
-		Create Table Cargos(
+        Create Table Cargos(
         idCargo INT NOT NULL auto_increment,
         NomeCargo Varchar(255),
         constraint PK_IdCargo primary key(IdCargo)
         );	
 
-        INSERT INTO Usuario (Nome,Usuario,Senha,Cargo) VALUE ('admin','admin','admin','GOD');
+        INSERT INTO Usuario (Nome,Usuario,Senha,Cargo) VALUE ('Antonio Nadson','NadsonJR','$2a$10$nzAmEFObbTIe66g.dAZyYeRrKsfECiaU4u3svJTgVN3drvmjIxw.y','Diretor');
 
         Insert into FormaDePagamento(Descricao) Values ("Crédito 1x");
         Insert into FormaDePagamento(Descricao) Values ("Crédito 2x");
@@ -124,6 +124,7 @@
         Insert into Cargos(NomeCargo) Values ("Estoquista");
 	Insert into Cargos(NomeCargo) Values ("Suporte");
         Insert into Cargos(NomeCargo) Values ("Diretor");        
+        Insert into Cargos(NomeCargo) Values ("TI");        
         
         INSERT INTO CATEGORIA(NOME) VALUES ("Terror");
         INSERT INTO CATEGORIA(NOME) VALUES ("Ação");

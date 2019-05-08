@@ -16,7 +16,7 @@ import java.sql.SQLException;
  * @author antonio.ncgjunior
  */
 public class UsuarioDAO {
-     public static void inserir(Usuario usuario)
+     public static boolean inserir(Usuario usuario)
             throws SQLException, Exception {
         //Monta a string de inserção de um usuario no BD,
         //utilizando os dados do usuario passados como parâmetro
@@ -40,9 +40,9 @@ public class UsuarioDAO {
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
-
             e.getLocalizedMessage();
             System.out.println(e);
+            return false;
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -53,5 +53,6 @@ public class UsuarioDAO {
                 connection.close();
             }
         }
+        return true;
     }
 }

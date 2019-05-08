@@ -19,23 +19,23 @@ li,a{
 }
 #style-1::-webkit-scrollbar-track
 {
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: rgba(0, 0, 0, 0.0);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 #style-1::-webkit-scrollbar
 {
-        border-radius: 10px;
-        width: 12px;
-	background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    width: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #style-1::-webkit-scrollbar-thumb
 {
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-	background-color: #555;
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    background-color: #555;
 }
 
 .table-wrapper-scroll-y {
@@ -49,8 +49,8 @@ i.fa-journal-whills {
     margin-bottom: 0.5em;
 }
 #navbarMain{
-    padding-left: 19%;  
-    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
 }
 #body-changes{
     background-image: url("../JSP-STYLES/MainBackground.jpg");
@@ -101,7 +101,7 @@ i.fa-journal-whills {
     margin: auto;
     padding: 2%;
     font-size: 100px;
-    color: black;
+    color: white;
     text-shadow:  10px 10px 10px rgba(0, 0, 0, 0.5);
 }
 .Func{
@@ -110,7 +110,7 @@ i.fa-journal-whills {
     margin: auto;
     padding: 2%;
     font-size: 30px;
-    color: black;
+    color: white;
     text-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
 }
 #btn-sair{
