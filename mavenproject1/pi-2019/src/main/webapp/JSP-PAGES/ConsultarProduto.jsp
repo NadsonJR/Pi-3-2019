@@ -68,14 +68,13 @@
                                     <td><c:out value="${produto.getValorVenda()}"/></td>
                                     <td><c:out value="${produto.getQuantidade()}"/></td>
                                     <td>
-                                        <div>
-                                            <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
-                                                <input type="hidden" value="${produto.getID()}" name="id">
-                                                <button class="form-button " id="btn-form-search"  type="submit"><i class="far fa-edit"></i></button>
-                                            </form>
-                                        </div>    
+                                        <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
+                                            <input type="hidden" value="${produto.getID()}" name="id">
+                                            <button class="form-button " id="btn-form-search"  type="submit"><i class="far fa-edit"></i></button>
+                                        </form>
                                     </td>
-                                    <td><form  method="post" action="${pageContext.request.contextPath}/ProdutoExcluir">
+                                    <td>
+                                        <form  method="post" action="${pageContext.request.contextPath}/ProdutoExcluir">
                                             <input type="hidden" value="${produto.getID()}" name="id">
                                             <button id="btn-form-search" type="submit"><i class="fas fa-times"></i></button>                                        
                                         </form>

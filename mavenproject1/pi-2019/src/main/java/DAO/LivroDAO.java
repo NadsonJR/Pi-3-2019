@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class LivroDAO {
 
-    public static void inserir(Livro livro)
+    public static boolean inserir(Livro livro)
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
@@ -48,9 +48,9 @@ public class LivroDAO {
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
-
             e.getLocalizedMessage();
             System.out.println(e);
+            return false;
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -61,6 +61,7 @@ public class LivroDAO {
                 connection.close();
             }
         }
+        return true;
     }
 
     public static List<Livro> listar()
@@ -110,12 +111,10 @@ public class LivroDAO {
                 //Adiciona a instância na lista
                 listaProduto.add(L);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
-        }
-        
-        finally {
+        } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
             if (result != null && !result.isClosed()) {
                 result.close();
@@ -174,7 +173,7 @@ public class LivroDAO {
                 int Quantidade = Integer.parseInt(result.getString("Quantidade"));
                 String Data = result.getString("DataCadastro");
 
-                Livro L = new Livro(NomeLivro,Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data);
+                Livro L = new Livro(NomeLivro, Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data);
                 L.setID(id);
                 //Adiciona a instância na lista
                 listaProduto.add(L);
@@ -234,8 +233,8 @@ public class LivroDAO {
                 String Categoria = result.getString("Categoria");
                 int Quantidade = Integer.parseInt(result.getString("Quantidade"));
                 String Data = result.getString("DataCadastro");
-                
-                Livro L = new Livro(NomeLivro, Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data,id);
+
+                Livro L = new Livro(NomeLivro, Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data, id);
                 System.out.println(L.getNomeLivro());
                 //Retorna o resultado
                 return L;
@@ -260,7 +259,7 @@ public class LivroDAO {
         return null;
     }
 
-    public static void AlterarProduto(Livro livro, int ID) throws Exception {
+    public static boolean AlterarProduto(Livro livro, int ID) throws Exception {
         System.out.println("Iniciando processo de atualização de Produto...");
 
         //comando sql
@@ -278,7 +277,7 @@ public class LivroDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
-            
+
             preparedStatement.setString(1, livro.getNomeLivro());
             preparedStatement.setString(2, livro.getAutor());
             preparedStatement.setString(3, livro.getEditora());
@@ -297,6 +296,7 @@ public class LivroDAO {
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println("Produto Alterar ERRO: " + e);
+            return false;
         } finally {
             //Se o statement ainda estiver aberto, realiza seu fechamento
             if (preparedStatement != null && !preparedStatement.isClosed()) {
@@ -307,30 +307,33 @@ public class LivroDAO {
                 connection.close();
             }
         }
+        return true;
     }
-     public static void delLivro (int ID) throws Exception{
-            String sql = "DELETE From Livro WHere ID=?";
 
-	 Connection connection = null;
+    public static boolean delLivro(int ID) throws Exception {
+        String sql = "DELETE From Livro WHere ID=?";
+        Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet result = null;
-        try{
+        try {
             connection = ConnectionBD.obterConexao();
             preparedStatement = connection.prepareStatement(sql);
 //            result = preparedStatement.executeQuery();
             preparedStatement.setInt(1, ID);
             preparedStatement.execute();
-            
-        
-        }finally {
-            
+        }catch(Exception e){
+            e.getLocalizedMessage();
+            System.out.println(e);
+            return false;
+        } 
+        finally {
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
             }
-            
             if (connection != null && !connection.isClosed()) {
                 connection.close();
             }
         }
+        return true;
     }
 }
