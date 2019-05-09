@@ -59,7 +59,7 @@
                                     <td><c:out value="${Filial.getRazao()}"/></td>
                                     <td><c:out value="${Filial.getContato()}"/></td>
                                     <td>
-                                        <form method="get" action="${pageContext.request.contextPath}/FilialEditar">
+                                        <form method="get" action="${pageContext.request.contextPath}/AlterarFilial">
                                             <input type="hidden" value="${Filial.getIDFilial()}" name="id">
                                             <button class="form-button " id="btn-form-search"  type="submit"><i class="far fa-edit"></i></button>
                                         </form>
