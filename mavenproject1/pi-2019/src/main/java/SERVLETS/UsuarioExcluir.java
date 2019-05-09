@@ -5,12 +5,9 @@
  */
 package SERVLETS;
 
-import DAO.LivroDAO;
-import Modal.Cliente;
-import Modal.Livro;
+import DAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,41 +17,36 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mt12732
+ * @author nadso
  */
-@WebServlet(name = "ProdutoExcluir", urlPatterns = {"/ProdutoExcluir"})
-public class ProdutoExcluir extends HttpServlet {
-
-   
+@WebServlet(name = "UsuarioExcluir", urlPatterns = {"/UsuarioExcluir"})
+public class UsuarioExcluir extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/ConsultarProduto.jsp");
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("JSP-PAGES/ConsultarUsuario.jsp");
         dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      int IdLivro = Integer.parseInt(request.getParameter("id"));
+        int IdUsuario = Integer.parseInt(request.getParameter("ID"));
         try {
-            
-            if(LivroDAO.delLivro(IdLivro)){
+
+            if (UsuarioDAO.delUsuario(IdUsuario)) {
                 request.setAttribute("msgResposta", "Excluido com sucesso!");
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível realizar a exclusão!");
             }
-
         } catch (Exception e) {
-            System.out.println("oi "+e);
+            System.out.println("oi " + e);
         }
-        
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
         dispatcher.forward(request, response);
     }
-
 
 }

@@ -42,7 +42,6 @@ public class ProdutoEditarServlet extends HttpServlet {
         request.setAttribute("livro", L);
         RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ProdutoEditar.jsp");
-        
         dispatcher.forward(request, response);
     }
 
@@ -64,7 +63,11 @@ public class ProdutoEditarServlet extends HttpServlet {
         Livro L = new Livro(NomeLivro,Descricao, Autor, Editora,  ValorVenda, ValorCusto, Categoria, Quantidade, Data, ID);
 
         try {
-            LivroDAO.AlterarProduto(L, ID);
+            if(LivroDAO.AlterarProduto(L, ID)){
+                request.setAttribute("msgResposta", "Alterado com sucesso!");
+            } else {
+                request.setAttribute("msgResposta", "Não Foi possível finalizar a alteração!");
+            }
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);

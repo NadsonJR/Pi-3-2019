@@ -66,7 +66,11 @@ public class ProdutoCadastroServlet extends HttpServlet {
 
         try {
             System.out.println("asdasd" + Categoria);
-            LivroDAO.inserir(L);
+            if(LivroDAO.inserir(L)){
+                request.setAttribute("msgResposta", "Cadastrado com sucesso!");
+            } else {
+                request.setAttribute("msgResposta", "Não Foi possível efetuar o cadastro!");
+            }
         } catch (Exception e) {
         }
 

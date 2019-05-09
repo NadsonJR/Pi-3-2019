@@ -330,7 +330,7 @@ public class ClienteDAO {
         return true;
     }
 
-    public static void delCliente(int ID) throws Exception {
+    public static boolean delCliente(int ID) throws Exception {
         String sql = "DELETE From Cliente WHere ID=?";
 
         Connection connection = null;
@@ -343,7 +343,13 @@ public class ClienteDAO {
             preparedStatement.setInt(1, ID);
             preparedStatement.execute();
 
-        } finally {
+        }catch(Exception e){
+            e.getLocalizedMessage();
+            System.out.println(e);
+            return false;
+        }
+        
+        finally {
 
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
@@ -353,5 +359,6 @@ public class ClienteDAO {
                 connection.close();
             }
         }
+        return true;
     }
 }

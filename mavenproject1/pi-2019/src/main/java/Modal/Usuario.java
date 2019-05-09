@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
     private String NomeFuncionario;
     private String hashSenha;
 
-    public Usuario(String username, String nomeCompleto, String senhaAberta, String nivel) {
+    public Usuario( String nomeCompleto,String username, String senhaAberta, String nivel) {
         this.username = username;
         this.NomeFuncionario = nomeCompleto;
         setSenha(senhaAberta);
@@ -72,7 +72,7 @@ public class Usuario implements Serializable {
     public boolean validarSenha(String senhaAberta) {
         return BCrypt.checkpw(senhaAberta, hashSenha);
     }
-
+    
     public boolean verificarPapel(String Cargos) {
         if (Cargo.contains(Cargos)) {
             return true;
