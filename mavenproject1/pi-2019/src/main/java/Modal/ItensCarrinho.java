@@ -14,6 +14,9 @@ public class ItensCarrinho {
     private int IDcarrinho;
     private float Valor;
 
+    public ItensCarrinho() {
+    }
+ 
     public ItensCarrinho(int IDLivro, int Quantidade, int IDcarrinho, float Valor) {
         this.IDLivro = IDLivro;
         this.Quantidade = Quantidade;

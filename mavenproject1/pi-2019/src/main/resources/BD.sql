@@ -1,8 +1,7 @@
         CREATE DATABASE PI_III;
 
         USE PI_III;
-
-
+	
         CREATE TABLE Cliente(
         ID                  INT NOT NULL AUTO_INCREMENT,
         Nome                VARCHAR (255) NOT NULL,
@@ -74,27 +73,31 @@
         CONSTRAINT UC_NOME UNIQUE (NOME)
         );
         
+        
+        
         CREATE TABLE Venda(
-        IDCliente 	int not null,
-        IDVenda 	INT NOT NULL AUTO_INCREMENT,
+        IDCliente 	INT NOT NULL,
+        IDVenda 	INT NOT NULL,
         DataVenda 	date, 
-        Valor 		float4,
-        FormaPagamento 	VARCHAR(255),
-        constraint PK_VendaID primary key(IdVenda)
+        Valor 		float,
+        FormaPagamento 	varchar(255),
+        primary key(IDVenda),
+        foreign key (IDCliente) references Cliente (ID)
         );
-
-        CREATE TABLE ItensCarrinho(
+		DROP TABLE Carrinho;
+        SELECT * FROM Carrinho;
+        CREATE TABLE Carrinho(
         IDLivro INT NOT NULL,
         Quantidade INT NOT NULL,
         IDCarrinho INT NOT NULL,
         Valor Float,
         FOREIGN KEY (IDCarrinho) REFERENCES Venda(IDVenda) 
         );
-
+		SELECT * FROM FormaDePagamento;
         CREATE TABLE FormaDePagamento(
 		IdPagamento INT NOT NULL AUTO_INCREMENT,
 		Descricao VARCHAR(255),
-		constraint PK_PagamentoID primary key(IdPagamento)) 
+		constraint PK_PagamentoID primary key(IdPagamento)
         );
 
         INSERT INTO Usuario (Nome,Usuario,Senha) VALUE ('Antonio Nadson','NadsonJR','1234');
@@ -120,16 +123,12 @@
         INSERT INTO CATEGORIA(NOME) VALUES ("Investigação");
 
 
-
-
-
-
-create table EmitirRelatorio(
+        create table EmitirRelatorio(
         
         Nome VARCHAR (255) NOT NULL,
         IDRelatorio INT NOT NULL,
         DataVenda 	VARCHAR (255), 
-        Valor 		float4,
+        Valor 		float,
         DescricaoPagamento VARCHAR(255)
         
         );
@@ -138,3 +137,6 @@ create table EmitirRelatorio(
         
          Insert into EmitirRelatorio(Nome, IDRelatorio, DataVenda, Valor, DescricaoPagamento) Values ('Vitor', 1, '2019', 20.4, 'LIVROROOR');
          Insert into EmitirRelatorio(Nome, IDRelatorio, DataVenda, Valor, DescricaoPagamento) Values ('Rodrigo', 2, '2018', 30.7, 'LivroTOP');
+         
+         SELECT * FROM Venda join Carrinho ON Venda.IDVenda = Carrinho.IDCarrinho join Livro ON Livro.ID = Carrinho.IDLivro join FormadePagamento ON
+        Venda.FormaPagamento = FormadePagamento.IDPagamento join Cliente ON Cliente.ID = Venda.IDCliente ORDER BY IDVenda;

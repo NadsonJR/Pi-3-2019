@@ -20,6 +20,7 @@ public class Venda {
     private float Valor;
     private String FormaPagamento;
     private String NomeCliente;
+    private int IDPagamento;
 
     public Venda(int IDCliente, int IDVenda, String DataVenda, float Valor, String FormaPagamento, String NomeCliente) {
         this.IDCliente = IDCliente;
@@ -30,10 +31,10 @@ public class Venda {
         this.NomeCliente = NomeCliente;
     }
 
-    
-    
-    
-    
+    public Venda() {
+        
+    }
+     
     public int getIDCliente() {
         return IDCliente;
     }
@@ -80,6 +81,14 @@ public class Venda {
 
     public void setNomeCliente(String NomeCliente) {
         this.NomeCliente = NomeCliente;
+    }
+
+    public int getIDPagamento() {
+        return IDPagamento;
+    }
+
+    public void setIDPagamento(int IDPagamento) {
+        this.IDPagamento = IDPagamento;
     }
     
     

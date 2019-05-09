@@ -58,7 +58,7 @@ public class ConsultarProdutoServlet extends HttpServlet {
              request.setAttribute("listaProduto", listaProduto);
             sessao.setAttribute("listaProduto" , listaProduto);
         } catch (Exception e) {
-            System.out.println(e + " erro ao buscar cliente");
+            System.out.println(e + " erro ao buscar produto");
         }
        RequestDispatcher dispatcher
                 = request.getRequestDispatcher("JSP-PAGES/ConsultarProduto.jsp");

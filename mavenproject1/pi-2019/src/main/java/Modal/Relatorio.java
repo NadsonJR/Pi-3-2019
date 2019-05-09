@@ -15,6 +15,7 @@ public class Relatorio {
     private String DataVenda;
     private float valor;
     private String DescricaoPagamento;
+    private int IDVenda;
 
     public Relatorio(String Nome, int IDRelatorio, String DataVenda, float valor, String DescricaoPagamento) {
         this.Nome = Nome;

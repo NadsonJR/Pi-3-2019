@@ -5,15 +5,22 @@
  */
 package SERVLETS;
 
+import DAO.CarrinhoDAO;
 import DAO.ClienteDAO;
 import DAO.VendaDAO;
 import DAO.FormasDePagamentoDAO;
 import DAO.LivroDAO;
 import Modal.Cliente;
 import Modal.FormaDePagamento;
+import Modal.ItensCarrinho;
 import Modal.Livro;
+import Modal.Venda;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -68,29 +75,54 @@ public class CadastroVenda extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        int idLivro = Integer.parseInt(request.getParameter("ID"));
-        String Titulo = request.getParameter("NomeLivro");
-        String Autor = request.getParameter("Autor");
-        String Editora = request.getParameter("Editora");
-        int Valor = Integer.parseInt(request.getParameter("ValorVenda"));
-        int Quantidade = Integer.parseInt(request.getParameter("Quantidade"));
-        //adicionar livro no carrinho
-        Livro l = new Livro(Titulo, Autor, Editora, Valor, idLivro, Quantidade);
         
-        //montar o tabela com o carrinho
         try {
-            VendaDAO.inserir(l);
-        } catch (Exception e) {
-            e.getLocalizedMessage();
-            System.out.println(e);
-        }
-        
-        request.setAttribute("venda", l);
+            
+            Venda v = new Venda();
+            
+            LocalDate data = LocalDate.now();
+            
+            //Dados Principais
+            int idCliente = Integer.parseInt(request.getParameter("cliente"));
+            int idLivro = Integer.parseInt(request.getParameter("produto"));
+            int idVenda = VendaDAO.getVendaNumber();
+            //Dados do livro sendo vendido
+            Livro l = LivroDAO.procurarId(idLivro);
+            
+            v.setIDCliente(idCliente);
+            v.setDataVenda(data.toString());
+            v.setValor(l.getValorVenda());
+            String Pagamento = request.getParameter("pagamento");
+            v.setFormaPagamento(Pagamento);
+            
+            v.setIDVenda(idVenda);
+            
+            ItensCarrinho iCarrinho = new ItensCarrinho();
+            iCarrinho.setIDLivro(idLivro);
+            iCarrinho.setIDcarrinho(idVenda);
+            iCarrinho.setQuantidade(1);
+            iCarrinho.setValor(v.getValor());
 
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+            try {
+                //VendaDAO.inserir(l);
+                VendaDAO.inserirVenda(v);
+                CarrinhoDAO.inserirVendaCarrinho(iCarrinho);
+                
+            } catch (Exception e) {
+                e.getLocalizedMessage();
+                System.out.println(e);
+            }
+            
+            request.setAttribute("venda", v);
+            
+            RequestDispatcher dispatcher
+                    = request.getRequestDispatcher("/JSP-PAGES/Home.jsp");
+            dispatcher.forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(CadastroVenda.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(CadastroVenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

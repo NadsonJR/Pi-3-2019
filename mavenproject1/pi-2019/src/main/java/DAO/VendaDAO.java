@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DAO;
+
 import Modal.Livro;
 import Modal.Produto;
 import Modal.Venda;
@@ -14,15 +15,54 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author nadso
  */
 public class VendaDAO {
-    
-    
-   public static void inserir(Livro l)
+
+    public static void inserirVenda(Venda v)
+            throws SQLException, Exception {
+        //Monta a string de inserção de um cliente no BD,
+        //utilizando os dados do clientes passados como parâmetro
+        String sql = "INSERT INTO Venda (IDCliente,DataVenda,Valor,FormaPagamento,IDVenda) VALUES (?,?,?,?,?)";
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            preparedStatement.setInt(1, v.getIDCliente());
+            preparedStatement.setString(2, v.getDataVenda());
+            preparedStatement.setFloat(3, v.getValor());
+            preparedStatement.setString(4, v.getFormaPagamento());
+            preparedStatement.setInt(5, v.getIDVenda());
+            //Executa o comando no banco de dados
+            preparedStatement.execute();
+        } catch (Exception e) {
+
+            e.getLocalizedMessage();
+            System.out.println(e);
+        } finally {
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+    }
+
+    public static void inserir(Livro l)
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
@@ -44,7 +84,6 @@ public class VendaDAO {
             preparedStatement.setString(4, l.getEditora());
             preparedStatement.setFloat(5, l.getValorVenda());
             preparedStatement.setInt(6, l.getQuantidade());
-            
 
             //Executa o comando no banco de dados
             preparedStatement.execute();
@@ -58,12 +97,13 @@ public class VendaDAO {
                 preparedStatement.close();
             }
             //Se a conexão ainda estiver aberta, realiza seu fechamento
-            if (connection  != null && !connection.isClosed()) {
+            if (connection != null && !connection.isClosed()) {
                 connection.close();
             }
         }
     }
-   public static List<Venda> listarVenda()
+
+    public static List<Venda> listarVenda()
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
@@ -103,12 +143,10 @@ public class VendaDAO {
                 //Adiciona a instância na lista
                 listaVenda.add(V);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
-        }
-        
-        finally {
+        } finally {
             //Se o result ainda estiver aberto, realiza seu fechamento
             if (result != null && !result.isClosed()) {
                 result.close();
@@ -125,4 +163,44 @@ public class VendaDAO {
         //Retorna a lista de clientes do banco de dados
         return listaVenda;
     }
+
+    public static int getVendaNumber() throws SQLException {
+        int CodVenda = 0;
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet result = null;
+        
+        String sql = "SELECT IDVenda FROM Venda";
+        
+        try {
+            connection = ConnectionBD.obterConexao();
+            preparedStatement = connection.prepareStatement(sql);
+
+            result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                CodVenda++;
+            }
+
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println(e);
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        return CodVenda;
+    }
+       
 }

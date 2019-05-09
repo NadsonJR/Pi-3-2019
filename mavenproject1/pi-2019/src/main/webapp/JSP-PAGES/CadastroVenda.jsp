@@ -52,18 +52,18 @@
                     </select>               </div>
                 <div class="form-group col-5">
                     <label> Livro </label>
-                    <select class="form-control" required name="cliente">
+                    <select class="form-control" required name="produto">
                         <option>Choose... </option>
                         <c:forEach items ="${listaProduto}" var="Livro" begin="0">
                             <option value="${Livro.getID()}">
                                 <c:out value="${Livro.getNomeLivro()}"/>
-                            </option>
+                            </option> 
                         </c:forEach>
                     </select> 
                 </div>
-                <div class="form-group col-2 "style="margin-top: 30px;">
-                    <button type="submit" id="btn-form-search">Adicionar</button>
-                </div>
+                <%--<div class="form-group col-2 "style="margin-top: 30px;">
+                    <button type="submit" id="btn-form-search">Adicionar<i class="fas fa-search"></i></button>
+                </div>--%>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-12">
@@ -101,9 +101,9 @@
                                             </form>
                                         </div>    
                                     </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
+
+                                </c:forEach>
+                                </tbody>
                         </table>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="form-group  col-4">
                     <label>Forma de pagamento:</label>
-                    <select class="form-control" required name="cliente">
+                    <select class="form-control" required name="pagamento">
                         <option>Choose... </option>
                         <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0">
                             <option value="${Pagamento.getIdPagamento()}">
@@ -123,12 +123,6 @@
                     </select>
                 </div>
                 <div class="form-group col-2">
-                    <label>
-                        Data:01/04/2019
-                    </label>
-                    <label>
-                        Total:R$20,20
-                    </label>
                 </div>
             </div>
             <br>

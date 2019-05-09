@@ -5,7 +5,7 @@
  */
 package SERVLETS;
 
-import DAO.RelatoiroVendaDAO;
+import DAO.RelatorioVendaDAO;
 import DAO.LivroDAO;
 import DAO.VendaDAO;
 import Modal.Livro;
@@ -35,7 +35,7 @@ public class EmitirRelatorioServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
         try {
-            List<Relatorio> listaRelatorio = RelatoiroVendaDAO.listar();
+            List<Relatorio> listaRelatorio = RelatorioVendaDAO.listar();
             request.setAttribute("listaRelatorio", listaRelatorio);
             sessao.setAttribute("listaRelatorio", listaRelatorio);
             System.out.println(listaRelatorio);
@@ -58,7 +58,7 @@ public class EmitirRelatorioServlet extends HttpServlet {
         try {
               String DataVenda = request.getParameter("DataVenda");
               System.out.println(DataVenda);
-              List<Relatorio> listaRelatorio = RelatoiroVendaDAO.listarPorRelatorio(DataVenda);
+              List<Relatorio> listaRelatorio = RelatorioVendaDAO.listarPorRelatorio(DataVenda);
               System.out.println(listaRelatorio.size());
              request.setAttribute("listaRelatorio", listaRelatorio);
             sessao.setAttribute("listaRelatorio" , listaRelatorio);
