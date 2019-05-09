@@ -5,8 +5,8 @@
  */
 package SERVLETS;
 
-import DAO.LivroDAO;
-import Modal.Livro;
+import DAO.FilialDAO;
+import Modal.Filial;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,10 +20,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mt12732
+ * @author nadso
  */
-@WebServlet(name = "ConsultarProdutoServlet", urlPatterns = {"/ConsultarProduto"})
-public class ConsultarProdutoServlet extends HttpServlet {
+@WebServlet(name = "ConsultaFilial", urlPatterns = {"/ConsultaFilial"})
+public class ConsultaFilial extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,37 +31,38 @@ public class ConsultarProdutoServlet extends HttpServlet {
         HttpSession sessao = request.getSession();
         request.setCharacterEncoding("UTF-8");
         try {
-              List<Livro> listaProduto = LivroDAO.listar();
-             request.setAttribute("listaProduto", listaProduto);
-            sessao.setAttribute("listaProduto" , listaProduto);
+            List<Filial> listaFilial = FilialDAO.listar();
+            request.setAttribute("listaFilial", listaFilial);
+            sessao.setAttribute("listaFilial", listaFilial);
         } catch (Exception e) {
             System.out.println(e);
         }
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/ConsultarProduto.jsp");
+                = request.getRequestDispatcher("JSP-PAGES/ConsultaFilial.jsp");
         dispatcher.forward(request, response);
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession sessao = request.getSession();
+
+
+      HttpSession sessao = request.getSession();
         request.setCharacterEncoding("UTF-8");
          
           try {
-              String nome = request.getParameter("nomeLivro");
-              System.out.println(nome);
-              List<Livro> listaProduto = LivroDAO.listarPorNome(nome);
-              System.out.println(listaProduto.size());
-             request.setAttribute("listaProduto", listaProduto);
-            sessao.setAttribute("listaProduto" , listaProduto);
+              String CNPJ = request.getParameter("CNPJ");
+              List<Filial> listaFilial = FilialDAO.listarPorCNPJ(CNPJ);
+             request.setAttribute("listaFilial", listaFilial);
+            sessao.setAttribute("listaFilial" , listaFilial);
         } catch (Exception e) {
-            System.out.println(e + " erro ao buscar produto");
+            System.out.println(e+" erro ao buscar cliente");
         }
        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/ConsultarProduto.jsp");
+                = request.getRequestDispatcher("JSP-PAGES/ConsultaFilial.jsp");
         dispatcher.forward(request, response);
     }
+    
 
- 
 }

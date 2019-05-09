@@ -29,9 +29,9 @@
             </div>
             <div class="row justify-content-center">
                 <div class="input-group col-12">
-                    <input type="text" class="form-control" placeholder="Nome do Livro" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <input type="text" class="form-control" placeholder="Nome do Livro" aria-label="Recipient's username" aria-describedby="button-addon2" name="nomeLivro">
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Pesquisar <i class="fas fa-search"></i></button>
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Pesquisar <i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </div>

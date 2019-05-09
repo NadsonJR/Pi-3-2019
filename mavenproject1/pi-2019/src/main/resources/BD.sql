@@ -51,9 +51,12 @@
         ID		INT NOT NULL AUTO_INCREMENT,
         CNPJ		VARCHAR (20) NOT NULL UNIQUE,
         Razao		VARCHAR (100) NOT NULL,
-        UF		VARCHAR (30) NOT NULL,
+        CEP			VARCHAR (30) NOT NULL,
         Cidade 		VARCHAR (30) NOT NULL,
-        Resp		VARCHAR (255) NOT NULL,
+        Estado		VARCHAR (255) NOT NULL,
+        Endereco 	VARCHAR(255) NOT NULL,
+        Complemento	VARCHAR(255) NOT NULL,
+        Contato		VARCHAR(255) NOT NULL,
         CONSTRAINT PK_FILIAL PRIMARY KEY (ID)
         );
 
