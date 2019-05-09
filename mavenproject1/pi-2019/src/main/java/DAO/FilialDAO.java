@@ -188,4 +188,30 @@ public class FilialDAO {
         //Retorna a lista de clientes do banco de dados
         return listaFilial;
     }
+        public static boolean delFilial(int ID) throws Exception {
+        String sql = "DELETE From Filial WHere ID=?";
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet result = null;
+        try {
+            connection = ConnectionBD.obterConexao();
+            preparedStatement = connection.prepareStatement(sql);
+//            result = preparedStatement.executeQuery();
+            preparedStatement.setInt(1, ID);
+            preparedStatement.execute();
+        }catch(Exception e){
+            e.getLocalizedMessage();
+            System.out.println(e);
+            return false;
+        } 
+        finally {
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        return true;
+    }
 }
