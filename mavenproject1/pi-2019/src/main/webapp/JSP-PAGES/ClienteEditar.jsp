@@ -43,11 +43,11 @@
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> Nome: </label>
-                <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" maxlength="255" minlength = "4" value="${cliente.nome}">
+                <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" maxlength="100" minlength = "4" value="${cliente.nome}">
             </div>
             <div class="form-group col-6 ">
                 <label> Sobrenome: </label>
-                <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome" maxlength="255" minlength = "4" value="${cliente.sobrenome}">
+                <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome" maxlength="100" minlength = "4" value="${cliente.sobrenome}">
             </div>
         </div>
         <div class="row justify-content-center">
@@ -71,7 +71,7 @@
             </div>
             <div class="form-group col-4 ">
                 <label> Cidade: </label>
-                <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" maxlength="255" minlength = "10" value="${cliente.cidade}">
+                <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" maxlength="100" minlength = "4" value="${cliente.cidade}">
             </div>
             <div class="form-group col-4">
                 <label> Estado: </label>
@@ -110,7 +110,7 @@
         <div class="row justify-content-center">
             <div class="form-group col-8 ">
                 <label> Endereço: </label>
-                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" maxlength="255" minlength = "4" value="${cliente.endereco}" required>
+                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" maxlength="100" minlength = "4" value="${cliente.endereco}" required>
             </div>
             <div class="form-group col-4">
                 <label> Complemento: </label>
@@ -120,7 +120,7 @@
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> E-mail: </label>
-                <input type="text" class="form-control" placeholder="example@example.com" name="email" id="email" maxlength="40" minlength = "5" value="${cliente.email}" required>
+                <input type="text" class="form-control" placeholder="example@email.com" name="email" id="email" maxlength="40" minlength = "5" value="${cliente.email}" required>
             </div>
             <div class="form-group col-3">
                 <label> Telefone: </label>
