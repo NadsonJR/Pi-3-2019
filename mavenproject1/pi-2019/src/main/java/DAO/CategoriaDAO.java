@@ -32,6 +32,7 @@ public class CategoriaDAO {
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
         //Armazenará os resultados do banco de dados
+        //Teste
         ResultSet result = null;
         try {
             //Abre uma conexão com o banco de dados
