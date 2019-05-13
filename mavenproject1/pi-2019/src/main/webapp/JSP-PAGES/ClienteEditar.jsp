@@ -18,55 +18,60 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("input.data").mask("99/99/9999");
-            $("input.cpf").mask("999.999.999-99");
-            $("input.cep").mask("99.999-999");
-            $('#dinheiro').mask('#.##9,99', {reverse: true});
-        });
-    </script>
+    <script type="text/javascript"> 
+            jQuery.noConflict();
+            jQuery(function ($) {
+                //Máscaras
+                $("#dataNascimento").mask("99/99/9999");
+                $("#telefone").mask("(99) 9999-9999");
+                $("#cpf").mask("999.999.999-99");
+                $("#cep").mask("99999-999");
+                $("#rg").mask("99.999.999-9");
+                $("#celular").mask("(99) 99999-9999");
+                
+            });
+        </script>
 </head>
 <jsp:include page="Navbar-Component.jsp"/>
 <body id="body-changes" class="text-center">
     <form id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ClienteEditar" >
         <div class="row justify-content-center">
             <div class="form-group col-6">
-                <h2>Client</h2>
+                <h2>Cliente Editar</h2>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> Nome: </label>
-                <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" value="${cliente.nome}">
+                <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" maxlength="255" minlength = "4" value="${cliente.nome}">
             </div>
             <div class="form-group col-6 ">
                 <label> Sobrenome: </label>
-                <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome" value="${cliente.sobrenome}">
+                <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome" maxlength="255" minlength = "4" value="${cliente.sobrenome}">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-4 ">
                 <label> CPF: </label>
-                <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="14" value="${cliente.cpf}">
+                <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="12" value="${cliente.cpf}">
             </div>
             <div class=" form-group col-4 ">
                 <label> R.G: </label>
-                <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14"  value="${cliente.rg}">
+                <input type="text" class="form-control" placeholder="11.111.111-1" required name="rg" id="rg" maxlength="9"  value="${cliente.rg}">
             </div>
             <div class="form-group col-4 ">
                 <label> Data de Nascimento: </label>
-                <input type="text" class="cpf form-control" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10" value="${cliente.dataNascimento}">
+                <input type="text" class="cpf form-control" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="8" value="${cliente.dataNascimento}">
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-4 ">
                 <label> CEP: </label>
-                <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" value="${cliente.CEP}">
+                <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" maxlength="8" value="${cliente.CEP}">
             </div>
             <div class="form-group col-4 ">
                 <label> Cidade: </label>
-                <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" value="${cliente.cidade}">
+                <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" maxlength="255" minlength = "10" value="${cliente.cidade}">
             </div>
             <div class="form-group col-4">
                 <label> Estado: </label>
@@ -105,25 +110,25 @@
         <div class="row justify-content-center">
             <div class="form-group col-8 ">
                 <label> Endereço: </label>
-                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" value="${cliente.endereco}" required>
+                <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" maxlength="255" minlength = "4" value="${cliente.endereco}" required>
             </div>
             <div class="form-group col-4">
                 <label> Complemento: </label>
-                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" value="${cliente.complemento}" required>
+                <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" maxlength="20" value="${cliente.complemento}" required>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="form-group col-6 ">
                 <label> E-mail: </label>
-                <input type="text" class="form-control" placeholder="example@example.com" name="email" id="email" value="${cliente.email}" required>
+                <input type="text" class="form-control" placeholder="example@example.com" name="email" id="email" maxlength="40" minlength = "5" value="${cliente.email}" required>
             </div>
             <div class="form-group col-3">
                 <label> Telefone: </label>
-                <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" value="${cliente.telefone}" required>
+                <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" maxlength="10" value="${cliente.telefone}" required>
             </div>
             <div class="form-group col-3">
                 <label> Celular: </label>
-                <input type="text" class="form-control" placeholder="(00)0000-00000" name="celular" id="celular" value="${cliente.celular}" required>
+                <input type="text" class="form-control" placeholder="(00)90000-00000" name="celular" id="celular" maxlength="11" value="${cliente.celular}" required>
             </div>
         </div>
         <input type="hidden" name="idCliente" id="idCliente" value="${cliente.ID}"/>

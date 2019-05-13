@@ -33,7 +33,7 @@
                 $("#telefone").mask("(99) 9999-9999");
                 $("#cpf").mask("999.999.999-99");
                 $("#cep").mask("99999-999");
-                $("#rg").mask("99.999.999-99");
+                $("#rg").mask("99.999.999-9");
                 $("#celular").mask("(99) 99999-9999");
                 
             });
@@ -50,25 +50,25 @@
             <div class="row justify-content-center">
                 <div class="form-group col-6 ">
                     <label> Nome: </label>
-                    <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" maxlength="255">
+                    <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" maxlength="255" minlength = "4">
                 </div>
                 <div class="form-group col-6 ">
                     <label> Sobrenome: </label>
-                    <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome" maxlength="255">
+                    <input type="text" class="form-control" placeholder="Sobrenome" required name="sobrenome" id="sobrenome" maxlength="255" minlength = "4">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> CPF: </label>
-                    <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="14" onkeypress="return onlynumber();">
+                    <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="12" onkeypress="return onlynumber();">
                 </div>
                 <div class=" form-group col-4 ">
                     <label> R.G: </label>
-                    <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14"onkeypress="return onlynumber();">
+                    <input type="text" class="form-control" placeholder="11.111.111-1" required name="rg" id="rg" maxlength="9"onkeypress="return onlynumber();">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Data de Nascimento: </label>
-                    <input type="text" class="cpf form-control data-mask" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10"  onkeypress="return onlynumber();">
+                    <input type="text" class="cpf form-control data-mask" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="8"  onkeypress="return onlynumber();">
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group col-4 ">
                     <label> Cidade: </label>
-                    <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" maxlength="255">
+                    <input type="text" class="form-control" placeholder="Chicago" required name="cidade" id="cidade" maxlength="255" minlength = "10">
                 </div>
                 <div class="form-group col-4">
                     <label> Estado: </label>
@@ -117,17 +117,17 @@
             <div class="row justify-content-center">
                 <div class="form-group col-8 ">
                     <label> Endereço: </label>
-                    <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" required maxlength="255">
+                    <input type="text" class="form-control" placeholder="1234 Main St" name="endereco" id="endereco" required maxlength="255" minlength = "4">
                 </div>
                 <div class="form-group col-4">
                     <label> Complemento: </label>
-                    <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento" required maxlength="20">
+                    <input type="text" class="form-control" placeholder="Apartament" name="complemento" id="complemento"  maxlength="20" >
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-6 ">
                     <label> E-mail: </label>
-                    <input type="text" class="form-control" placeholder="example@example.com" name="email" id="email" required maxlength="40">
+                    <input type="text" class="form-control" placeholder="example@example.com" name="email" id="email" required maxlength="40" minlength = "5">
                 </div>
                 <div class="form-group col-3">
                     <label> Telefone: </label>

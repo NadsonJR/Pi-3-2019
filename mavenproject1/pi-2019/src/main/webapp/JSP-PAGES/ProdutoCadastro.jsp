@@ -21,12 +21,13 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("input.data").mask("99/99/9999");
-                $("input.cpf").mask("999.999.999-99");
-                $("input.cep").mask("99.999-999");
-                $('#dinheiro').mask('#.##9,99', {reverse: true});
+        <script type="text/javascript"> 
+            jQuery.noConflict();
+            jQuery(function ($) {
+                //Máscaras
+                $("#venda").mask("#.##9.99", {reverse: true});
+                $("#compra").mask("#.##9.99", {reverse: true});
+                
             });
         </script>
     </head>
@@ -41,21 +42,21 @@
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <label> Título do livro: </label>
-                    <input type="text" class="form-control" placeholder="Título do Livro" required id="ProdutoName" name="NomeLivro">
+                    <input type="text" class="form-control" placeholder="Título do Livro" required id="ProdutoName" name="NomeLivro" maxlength="40" minlength = "5">
                 </div>
                 <div class="form-group col-6">
                     <label> Quantidade: </label>
-                    <input type="number" class="form-control" placeholder="10" required id="ProdutoName" name="Quantidade">
+                    <input type="number" class="form-control" placeholder="10" required id="ProdutoName" onkeypress="return onlynumber(); "name="Quantidade" maxlength="4" minlength = "1">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <label> Autor: </label>
-                    <input type="text" class="form-control" placeholder="Autor" required id="ProdutoName" name="Autor">
+                    <input type="text" class="form-control" placeholder="Autor" required id="ProdutoName" name="Autor" maxlength="40" minlength = "5">
                 </div>
                 <div class="form-group col-6">
                     <label> Editora: </label>
-                    <input type="text" class="form-control" placeholder="Editora" required id="ProdutoName" name="Editora">
+                    <input type="text" class="form-control" placeholder="Editora" required id="ProdutoName" name="Editora" maxlength="40" minlength = "5">
                 </div>
             </div>
             <div class="row justify-content-center">
@@ -67,15 +68,15 @@
             <div class="row justify-content-center">
                 <div class="form-group col-3">
                     <label>Valor Venda:</label>
-                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00"/>
+                    R$:<input type="int" id="venda" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" maxlength="10" minlength = "2"/>
                 </div>
                 <div class="form-group col-3">
                     <label>Valor Compra:</label>
-                    R$:<input type="int" id="dinheiro" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" />
+                    R$:<input type="int" id="compra" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" maxlength="10" minlength = "2"/>
                 </div>
                 <div class="form-group col-3">
                     <label>Ano:</label>
-                    <input type="String" name="DataCadastro" class=" form-control" style="display:inline-block"  />
+                    <input type="String" name="DataCadastro" class=" form-control" style="display:inline-block" maxlength="4" minlength = "4" />
                 </div>
                 <div class="form-group col-3">
                     <label> Categoria: </label>
