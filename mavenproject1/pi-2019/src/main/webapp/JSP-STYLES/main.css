@@ -203,3 +203,8 @@ i.fa-journal-whills {
     border: 5px;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
+#msgResposta{
+    font-style: italic;
+    font-weight: bold;
+    font-size: 2em;
+}

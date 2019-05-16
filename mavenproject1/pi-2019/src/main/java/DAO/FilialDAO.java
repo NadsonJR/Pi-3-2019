@@ -218,24 +218,21 @@ public class FilialDAO {
     }
 
     public static boolean AlterarFilial(Filial Filial, int ID) throws Exception {
-        System.out.println("Iniciando processo de atualização de Filial...");
-
-        //comando sql
-        String sql = "update Filial set CNPJ=?,Razao=?,CEP=?,Cidade=?,Estado=?,Endereco=?,Complemento=?,Contato=? WHERE ID=?";
-        //Conexão para abertura e fechamento
-        Connection connection = null;
-        //Statement para obtenção através da conexão, execução de
-        //comandos SQL e fechamentos
-        PreparedStatement preparedStatement = null;
-
-        try {
+    System.out.println("Iniciando processo de atualização de Filial...");
+    //comando sql
+    String sql = "update Filial set CNPJ=?,Razao=?,CEP=?,Cidade=?,Estado=?,Endereco=?,Complemento=?,Contato=? WHERE ID=?";
+    //Conexão para abertura e fechamento
+    Connection connection = null;
+    //Statement para obtenção através da conexão, execução de
+    //comandos SQL e fechamentos
+    PreparedStatement preparedStatement = null;
+    try {
             //abre conexão com banco de dados
             connection = ConnectionBD.obterConexao();
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
-
             preparedStatement.setString(1, Filial.getCNPJ());
             preparedStatement.setString(2, Filial.getRazao());
             preparedStatement.setString(3, Filial.getCEP());
@@ -246,7 +243,8 @@ public class FilialDAO {
             preparedStatement.setString(8, Filial.getContato());
             preparedStatement.setInt(9, Filial.getIDFilial());
             preparedStatement.executeUpdate();
-        } catch (Exception e) {
+            System.out.println("alo");
+    } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println("Filial Alterar ERRO: " + e);
             return false;

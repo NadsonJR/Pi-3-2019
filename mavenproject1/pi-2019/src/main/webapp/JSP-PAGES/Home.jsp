@@ -26,8 +26,7 @@
     <jsp:include page="Navbar-Component.jsp" />
     <body id="body-changes" class="text-center" > 
         <div id="bemvindo">
-        <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
-        <label class="Func" id="fadeIn"><c:out value="${msgResposta}"/></label>
+            <h1 class="Intro" id="fadeIn"> Bem-Vindo </h1>
         </div>
     </body>
 </html>

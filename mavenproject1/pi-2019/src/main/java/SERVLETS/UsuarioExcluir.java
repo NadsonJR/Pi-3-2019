@@ -38,15 +38,13 @@ public class UsuarioExcluir extends HttpServlet {
 
             if (UsuarioDAO.delUsuario(IdUsuario)) {
                 request.setAttribute("msgResposta", "Excluido com sucesso!");
+                
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível realizar a exclusão!");
             }
         } catch (Exception e) {
             System.out.println("oi " + e);
         }
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("ConsultaUsuario");
     }
-
 }

@@ -52,21 +52,23 @@ public class CadastroUsuario extends HttpServlet {
         String username = request.getParameter("username");
         String senhaAberta = request.getParameter("Senha");
         System.out.println(senhaAberta + " Cadastro");
-        Usuario user = new Usuario(username, Nome, senhaAberta, Cargo);
+        Usuario user = new Usuario( Nome,username, senhaAberta, Cargo);
 
         try {
             if (UsuarioDAO.inserir(user)) {
                 request.setAttribute("msgResposta", "Cadastrado com sucesso!");
+                response.sendRedirect("ConsultaUsuario");
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível efetuar o cadastro!");
+                response.sendRedirect("ConsultaUsuario");
             }
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
         }
-
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        //response.sendRedirect("ConsultaUsuario");
+//        RequestDispatcher dispatcher
+  //              = request.getRequestDispatcher("JSP-PAGES/ConsultaUsuario.jsp");
+    //    dispatcher.forward(request, response);
     }
 }

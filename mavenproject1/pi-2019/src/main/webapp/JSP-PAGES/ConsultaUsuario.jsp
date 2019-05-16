@@ -36,6 +36,7 @@
                     <button type="submit" id="btn-form-search" style="margin-top: 30px;">Pesquisar <i class="fas fa-search"></i></button>
                 </div>
             </div>
+            <label class="msgResposta" id="msgResposta"><c:out value="${msgResposta}"/></label>
             <br>
             <div class="row justify-content-center">
                 <div class="form-group col-12">

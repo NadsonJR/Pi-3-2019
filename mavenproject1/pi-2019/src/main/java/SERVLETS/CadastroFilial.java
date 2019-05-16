@@ -55,9 +55,10 @@ public class CadastroFilial extends HttpServlet {
             System.out.println(e);
         }
         request.setAttribute("Filial", f);
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("ConsultaFilial");
+        //RequestDispatcher dispatcher
+         //       = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
+        //dispatcher.forward(request, response);
     }
 
 }
