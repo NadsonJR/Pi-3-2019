@@ -5,7 +5,7 @@ import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
- * @author Matheus
+ * @author Antonio
  */
 public class Usuario implements Serializable {
 
@@ -13,18 +13,22 @@ public class Usuario implements Serializable {
     private String Cargo;
     private String username;
     private String NomeFuncionario;
+    private String Nascimento;
+    private Integer CPF;
+    private String Celular;
+    private String Email;
     private String hashSenha;
-
+    
     public Usuario( String nomeCompleto,String username, String senhaAberta, String nivel) {
         this.username = username;
         this.NomeFuncionario = nomeCompleto;
         setSenha(senhaAberta);
         this.Cargo = nivel;
     }
-
+    
     public Usuario() {
     }
-
+    
     public String getNomeFuncionario() {
         return NomeFuncionario;
     }

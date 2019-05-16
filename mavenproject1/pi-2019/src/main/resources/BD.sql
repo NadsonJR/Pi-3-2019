@@ -20,36 +20,22 @@
         Email               VARCHAR (255) NOT NULL,
         CONSTRAINT PK_CLIENTE PRIMARY KEY (ID)
         );
- s
+        
         CREATE TABLE Usuario(
         ID 		INT NOT NULL UNIQUE NOT NULL AUTO_INCREMENT,
         Nome 		VARCHAR(255),
+        DatNasc 	VARCHAR (10)NOT NULL,
+        CPF 		VARCHAR (14) UNIQUE NOT NULL,
         Usuario 	VARCHAR(255) UNIQUE NOT NULL,
         Senha		VARCHAR(255) UNIQUE NOT NULL,
         Cargo		VARCHAR(255),
+        Celular		VARCHAR	(14) NOT NULL,
+        Email		VARCHAR (100) NOT NULL,
         CONSTRAINT PK_USUARIO PRIMARY KEY (ID)
         );
         
-        
-        CREATE TABLE Funcionario(
-        ID 		INT NOT NULL AUTO_INCREMENT,
-        IdFilial	INT NOT NULL ,
-        Nome 		VARCHAR(255) NOT NULL,
-        Sexo 		VARCHAR (9) NOT NULL,
-        DatNasc 	VARCHAR (10)NOT NULL,
-        CPF 		VARCHAR (14) UNIQUE NOT NULL,
-        Cargo		VARCHAR (30) NOT NULL,
-        Deptmento	VARCHAR (30) NOT NULL,
-        Celular		VARCHAR	(14) NOT NULL,
-        Email		VARCHAR (100) NOT NULL,
-        UserName        VARCHAR (30) NOT NULL,
-        Senha           VARCHAR (30) NOT NULL,
-        Ativo		BOOLEAN,
-        CONSTRAINT PK_FUNCIONARIO PRIMARY KEY (ID)
-        );
-
         CREATE TABLE Filial(
-        ID		INT NOT NULL AUTO_INCREMENT,
+        ID			INT NOT NULL AUTO_INCREMENT,
         CNPJ		VARCHAR (20) NOT NULL UNIQUE,
         Razao		VARCHAR (100) NOT NULL,
         CEP			VARCHAR (30) NOT NULL,
