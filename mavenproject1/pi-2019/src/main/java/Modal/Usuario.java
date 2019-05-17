@@ -1,15 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Modal;
 
-import java.io.Serializable;
 import org.mindrot.jbcrypt.BCrypt;
 
 /**
  *
- * @author Antonio
+ * @author nadso
  */
-public class Usuario implements Serializable {
+public class Usuario {
 
-    private Integer ID;
+    private int ID;
     private String Cargo;
     private String username;
     private String NomeFuncionario;
@@ -18,23 +22,41 @@ public class Usuario implements Serializable {
     private String Celular;
     private String Email;
     private String hashSenha;
+    private int IDFilial;
     
-    public Usuario( String nomeCompleto,String username, String senhaAberta, String nivel) {
+
+    public Usuario(String NomeFuncionario, int CPF, String Nascimento, String Celular, String Email,int idFilial, String username, String senhaAberta, String Cargo) {
+        this.IDFilial = idFilial;
+        this.Cargo = Cargo;
         this.username = username;
-        this.NomeFuncionario = nomeCompleto;
+        this.NomeFuncionario = NomeFuncionario;
+        this.Nascimento = Nascimento;
+        this.CPF = CPF;
+        this.Celular = Celular;
+        this.Email = Email;
         setSenha(senhaAberta);
-        this.Cargo = nivel;
+    }
+    public Integer getidFilial(){
+        return IDFilial;
     }
     
-    public Usuario() {
+    public void setidFilial(Integer IDFilial){
+        this.IDFilial=IDFilial;
     }
-    
-    public String getNomeFuncionario() {
-        return NomeFuncionario;
+    public Integer getID() {
+        return ID;
     }
 
-    public void setNomeFuncionario(String NomeFuncionario) {
-        this.NomeFuncionario = NomeFuncionario;
+    public void setID(Integer ID) {
+        this.ID = ID;
+    }
+
+    public String getCargo() {
+        return Cargo;
+    }
+
+    public void setCargo(String Cargo) {
+        this.Cargo = Cargo;
     }
 
     public String getUsername() {
@@ -45,20 +67,44 @@ public class Usuario implements Serializable {
         this.username = username;
     }
 
-    public int getID() {
-        return ID;
+    public String getNomeFuncionario() {
+        return NomeFuncionario;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setNomeFuncionario(String NomeFuncionario) {
+        this.NomeFuncionario = NomeFuncionario;
     }
 
-    public String getCargo() {
-        return Cargo;
+    public String getNascimento() {
+        return Nascimento;
     }
 
-    public void setCargo(String nivel) {
-        this.Cargo = nivel;
+    public void setNascimento(String Nascimento) {
+        this.Nascimento = Nascimento;
+    }
+
+    public Integer getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(Integer CPF) {
+        this.CPF = CPF;
+    }
+
+    public String getCelular() {
+        return Celular;
+    }
+
+    public void setCelular(String Celular) {
+        this.Celular = Celular;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
     public String getHashSenha() {
@@ -76,7 +122,7 @@ public class Usuario implements Serializable {
     public boolean validarSenha(String senhaAberta) {
         return BCrypt.checkpw(senhaAberta, hashSenha);
     }
-    
+
     public boolean verificarPapel(String Cargos) {
         if (Cargo.contains(Cargos)) {
             return true;

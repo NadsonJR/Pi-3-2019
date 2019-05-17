@@ -26,6 +26,19 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
         <script src="http://digitalbush.com/files/jquery/maskedinput/rc3/jquery.maskedinput.js" type="text/javascript"></script>
+        <script type="text/javascript"> 
+            jQuery.noConflict();
+            jQuery(function ($) {
+                //Máscaras
+                $("#dataNascimento").mask("99/99/9999");
+                $("#telefone").mask("(99) 9999-9999");
+                $("#cpf").mask("999.999.999-99");
+                $("#cep").mask("99999-999");
+                $("#rg").mask("99.999.999-99");
+                $("#celular").mask("(99) 99999-9999");
+                
+            });
+        </script>
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">
@@ -36,25 +49,49 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-6 ">
+                <div class="form-group col-4">
                     <label> Nome Completo: </label>
                     <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome">
                 </div>
-                <div class="form-group col-6 ">
-                    <label> Usuário: </label>
-                    <input type="text" class="form-control" placeholder="Username/Login" required name="username" id="username">
+                <div class="form-group col-4 ">
+                    <label> CPF: </label>
+                    <input type="text" class="form-control" placeholder="000000000-00" required name="CPF" id="cpf">
+                </div>
+                <div class="form-group col-4">
+                    <label> Data de Nascimento: </label>
+                    <input type="text" class="form-control" placeholder="00/00/0000" required name="DataNascimento" id="dataNascimento">
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-6 ">
+                <div class="form-group col-4 ">
+                    <label> Celular: </label>
+                    <input type="text" class="form-control" placeholder="(00)0000-0000" required name="celular" id="celular">
+                </div>
+                <div class="form-group col-4 ">
+                    <label> Email: </label>
+                    <input type="text" class="form-control" placeholder="exemplo@email.com" required name="email" id="email">
+                </div>
+                <div class="form-group col-4 ">
+                    <label> Filial: </label>
+                    <select class="form-control" name="filial" id="Filial" required >
+                        <option>FIlial</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group col-4 ">
+                    <label> Usuário: </label>
+                    <input type="text" class="form-control" placeholder="Username/Login" required name="username" id="username">
+                </div>
+                <div class="form-group col-4 ">
                     <label> Senha: </label>
                     <input type="text" class=" form-control" placeholder="*********" required name="Senha" id="Senha">
                 </div>
-                <div class=" form-group col-6 ">
+                <div class=" form-group col-4 ">
                     <label> Cargo: </label>
                     <select class="form-control" name="cargo" id="cargo" required >
-                       <option selected>Escolha...</option>
-                       <c:forEach items ="${listarCargo}" var="cargo" begin="0">
+                        <option selected>Escolha...</option>
+                        <c:forEach items ="${listarCargo}" var="cargo" begin="0">
                             <option  value="${cargo.getNomeCargo()}">
                                 <c:out value="${cargo.getNomeCargo()}"/>
                             </option>

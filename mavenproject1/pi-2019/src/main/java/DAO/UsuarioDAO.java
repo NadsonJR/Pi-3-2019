@@ -24,7 +24,7 @@ public class UsuarioDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um usuario no BD,
         //utilizando os dados do usuario passados como parâmetro
-        String sql = "INSERT INTO usuario (Nome,usuario,Senha,Cargo) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,idFilial) VALUES (?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -37,9 +37,14 @@ public class UsuarioDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             preparedStatement.setString(1, usuario.getNomeFuncionario());
-            preparedStatement.setString(2, usuario.getUsername());
-            preparedStatement.setString(3, usuario.getHashSenha());
-            preparedStatement.setString(4, usuario.getCargo());
+            preparedStatement.setString(2, usuario.getNascimento());
+            preparedStatement.setInt(3, usuario.getCPF());
+            preparedStatement.setString(4, usuario.getUsername());
+            preparedStatement.setString(5, usuario.getHashSenha());
+            preparedStatement.setString(6, usuario.getCargo());
+            preparedStatement.setString(7,usuario.getCelular());
+            preparedStatement.setString(8, usuario.getEmail());
+            preparedStatement.setInt(9, usuario.set);
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
@@ -91,10 +96,15 @@ public class UsuarioDAO {
                 //Cria uma instância de Usuario e popula com os valores do BD
                 int id = result.getInt("id");
                 String NomeCompleto = result.getString("Nome");
+                String DatNasc = result.getString("datNasc");
+                int CPF = result.getInt("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
                 String Cargo = result.getString("Cargo");
-                Usuario user = new Usuario(NomeCompleto, Username, Senha, Cargo);
+                String Celular = result.getString("Celular");
+                String Email = result.getString("Email");
+                int idFilial = result.getInt("idFilial");
+                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, idFilial, Username, Senha, Cargo);
                 user.setID(id);
                 //Adiciona a instância na lista
                 listaUsuario.add(user);
@@ -148,10 +158,15 @@ public class UsuarioDAO {
                 //Cria uma instância de Usuario e popula com os valores do BD
                 int id = result.getInt("id");
                 String NomeCompleto = result.getString("Nome");
+                String DatNasc = result.getString("datNasc");
+                int CPF = result.getInt("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
                 String Cargo = result.getString("Cargo");
-                Usuario user = new Usuario(NomeCompleto, Username, Senha, Cargo);
+                String Celular = result.getString("Celular");
+                String Email = result.getString("Email");
+                int idFilial = result.getInt("idFilial");
+                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, idFilial, Username, Senha, Cargo);
                 user.setID(id);
                 //Adiciona a instância na lista
                 listaUsuarios.add(user);
@@ -238,6 +253,7 @@ public class UsuarioDAO {
         }
         return true;
     }
+
     public static Usuario procurarId(int idUsuario)
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o Usuario
@@ -264,12 +280,17 @@ public class UsuarioDAO {
             //Verifica se há pelo menos um resultado
             if (result.next()) {
                 //Cria uma instância de Usuario e popula com os valores do BD
-                 int id = result.getInt("id");
+                int id = result.getInt("id");
                 String NomeCompleto = result.getString("Nome");
+                String DatNasc = result.getString("datNasc");
+                int CPF = result.getInt("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
                 String Cargo = result.getString("Cargo");
-                Usuario user = new Usuario(NomeCompleto, Username, Senha, Cargo);
+                String Celular = result.getString("Celular");
+                String Email = result.getString("Email");
+                int idFilial = result.getInt("idFilial");
+                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, idFilial, Username, Senha, Cargo);
                 user.setID(id);
                 //Retorna o resultado
                 System.out.println("Retornando o objeto");
