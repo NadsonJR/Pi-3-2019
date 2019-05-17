@@ -28,7 +28,6 @@ public class AlterarFilial extends HttpServlet {
             throws ServletException, IOException {
 
         int ID = Integer.parseInt(request.getParameter("id"));
-        System.out.println(ID + " <= ID encontrado!");
         Filial F = null;
         try {
             F = FilialDAO.procurarId(ID);

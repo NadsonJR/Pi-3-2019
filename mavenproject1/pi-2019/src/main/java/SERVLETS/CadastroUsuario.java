@@ -59,7 +59,7 @@ public class CadastroUsuario extends HttpServlet {
         String senhaAberta = request.getParameter("Senha");
         String Celular = request.getParameter("celular");
         String Email = request.getParameter("email");
-        int idFilial = 1;
+        int idFilial = Integer.parseInt(request.getParameter("filial"));
         Usuario user = new Usuario(Nome, CPF, DatNasc, Celular, Email, idFilial, username, senhaAberta, Cargo);
         try {
             if (UsuarioDAO.inserir(user)) {

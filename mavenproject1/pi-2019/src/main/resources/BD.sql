@@ -70,20 +70,20 @@
         );
         
         CREATE TABLE Venda(
-        IDCliente 	INT NOT NULL,
-        IDVenda 	INT NOT NULL AUTO_INCREMENT,
-        DataVenda 	date, 
-        Valor 		float4,
-        FormaPagamento 	VARCHAR(255),
+        IDCliente           INT NOT NULL,
+        IDVenda             INT NOT NULL AUTO_INCREMENT,
+        DataVenda           CURRENT_TIMESTAMP, 
+        Valor               float4,
+        IDFormaPagamento    INT NOT NULL,
         constraint PK_VendaID primary key(IdVenda)
         );
 
         CREATE TABLE ItensCarrinho(
         IDLivro     INT NOT NULL,
         Quantidade  INT NOT NULL,
-        IDCarrinho  INT NOT NULL,
+        IDVenda     INT NOT NULL,
         Valor Float INT NOT NULL,
-        FOREIGN KEY (IDCarrinho) REFERENCES Venda(IDVenda) 
+        FOREIGN KEY (IDVenda) REFERENCES Venda(IDVenda) 
         );
 
         CREATE TABLE FormaDePagamento(
