@@ -41,6 +41,7 @@
                     <div class="table-wrapper-scroll-y my-custom-scrollbar" id="style-1">
                         <table class="table">
                             <tr>
+                                <th scope="col">Empresa/Estado</th>
                                 <th scope="col">CNPJ</th>
                                 <th scope="col">Razão</th>
                                 <th scope="col">Contato</th>
@@ -55,6 +56,7 @@
                             <%-- primeiro form ignorado pelo metodo! --%>
                             <c:forEach items ="${listaFilial}" var="Filial">
                                 <tr>
+                                    <td><c:out value ="${Filial.getNomeFilial()}"/></td>
                                     <td><c:out value="${Filial.getCNPJ()}"/></td>
                                     <td><c:out value="${Filial.getRazao()}"/></td>
                                     <td><c:out value="${Filial.getContato()}"/></td>

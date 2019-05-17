@@ -37,8 +37,10 @@ public class FilialExcluir extends HttpServlet {
         try {
             if(FilialDAO.delFilial(IDFilial)){
                 request.setAttribute("msgResposta", "Excluido com sucesso!");
+                response.sendRedirect("ConsultaFilial");
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível realizar a exclusão!");
+                response.sendRedirect("ConsultaFilial");
             }
         } catch (Exception e) {
             e.getLocalizedMessage();

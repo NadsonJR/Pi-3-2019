@@ -24,7 +24,7 @@ public class FilialDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um Filial no BD,
         //utilizando os dados do Filials passados como parâmetro
-        String sql = "INSERT INTO Filial (CNPJ,Razao,CEP,Cidade,Estado,Endereco,Complemento,Contato) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Filial (NomeFilial,CNPJ,Razao,CEP,Cidade,Estado,Endereco,Complemento,Contato) VALUES (?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -36,15 +36,15 @@ public class FilialDAO {
             //Cria um statement para execução de instruções SQL
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
-            preparedStatement.setString(1, Filial.getCNPJ());
-            preparedStatement.setString(2, Filial.getRazao());
-            preparedStatement.setString(3, Filial.getCEP());
-            preparedStatement.setString(4, Filial.getCidade());
-            preparedStatement.setString(5, Filial.getEstado());
-            preparedStatement.setString(6, Filial.getEndereco());
-            preparedStatement.setString(7, Filial.getComplemento());
-            preparedStatement.setString(8, Filial.getContato());
-
+            preparedStatement.setString(1, Filial.getNomeFilial());
+            preparedStatement.setString(2, Filial.getCNPJ());
+            preparedStatement.setString(3, Filial.getRazao());
+            preparedStatement.setString(4, Filial.getCEP());
+            preparedStatement.setString(5, Filial.getCidade());
+            preparedStatement.setString(6, Filial.getEstado());
+            preparedStatement.setString(7, Filial.getEndereco());
+            preparedStatement.setString(8, Filial.getComplemento());
+            preparedStatement.setString(9, Filial.getContato());
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
@@ -65,7 +65,7 @@ public class FilialDAO {
         return true;
     }
 
-    public static List<Filial> listar()
+    public static List<Filial> listarFilial()
             throws SQLException, Exception {
         //Monta a string de listagem de Filials no banco, considerando
         //apenas a coluna de ativação de Filials ("enabled")
@@ -96,6 +96,7 @@ public class FilialDAO {
                 }
                 //Cria uma instância de Filial e popula com os valores do BD
                 int IDFilial = result.getInt("ID");
+                String NomeFilial = result.getString("NomeFilial");
                 String CNPJ = result.getString("CNPJ");
                 String Razao = result.getString("razao");
                 String CEP = result.getString("cep");
@@ -105,7 +106,7 @@ public class FilialDAO {
                 String Complemento = result.getString("Complemento");
                 String Contato = result.getString("Contato");
 
-                Filial f = new Filial(CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
+                Filial f = new Filial(NomeFilial,CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
                 f.setIDFilial(IDFilial);
                 //Adiciona a instância na lista
                 listaFilial.add(f);
@@ -125,6 +126,7 @@ public class FilialDAO {
             }
         }
         //Retorna a lista de Filial do banco de dados
+        System.out.println("Finalizou a Listagem!");
         return listaFilial;
     }
 
@@ -159,6 +161,7 @@ public class FilialDAO {
                 }
                 //Cria uma instância de Filial e popula com os valores do BD
                 int IDFilial = result.getInt("ID");
+                String NomeFilial = result.getString("NomeFilial");
                 String CNPJ = result.getString("CNPJ");
                 String Razao = result.getString("razao");
                 String CEP = result.getString("cep");
@@ -168,7 +171,7 @@ public class FilialDAO {
                 String Complemento = result.getString("Complemento");
                 String Contato = result.getString("Contato");
 
-                Filial f = new Filial(CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
+                Filial f = new Filial(NomeFilial,CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
                 f.setIDFilial(IDFilial);
                 //Adiciona a instância na lista
                 listaFilial.add(f);
@@ -217,10 +220,10 @@ public class FilialDAO {
         return true;
     }
 
-    public static boolean AlterarFilial(Filial Filial, int ID) throws Exception {
+    public static boolean AlterarFilial(Filial Filial) throws Exception {
     System.out.println("Iniciando processo de atualização de Filial...");
     //comando sql
-    String sql = "update Filial set CNPJ=?,Razao=?,CEP=?,Cidade=?,Estado=?,Endereco=?,Complemento=?,Contato=? WHERE ID=?";
+    String sql = "UPDATE Filial set NomeFilial=?,CNPJ=?,Razao=?,CEP=?,Cidade=?,Estado=?,Endereco=?,Complemento=?,Contato=? WHERE id=?";
     //Conexão para abertura e fechamento
     Connection connection = null;
     //Statement para obtenção através da conexão, execução de
@@ -233,17 +236,18 @@ public class FilialDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
-            preparedStatement.setString(1, Filial.getCNPJ());
-            preparedStatement.setString(2, Filial.getRazao());
-            preparedStatement.setString(3, Filial.getCEP());
-            preparedStatement.setString(4, Filial.getCidade());
-            preparedStatement.setString(5, Filial.getEstado());
-            preparedStatement.setString(6, Filial.getEndereco());
-            preparedStatement.setString(7, Filial.getComplemento());
-            preparedStatement.setString(8, Filial.getContato());
-            preparedStatement.setInt(9, Filial.getIDFilial());
+            preparedStatement.setString(1, Filial.getNomeFilial());
+            preparedStatement.setString(2, Filial.getCNPJ());
+            preparedStatement.setString(3, Filial.getRazao());
+            preparedStatement.setString(4, Filial.getCEP());
+            preparedStatement.setString(5, Filial.getCidade());
+            preparedStatement.setString(6, Filial.getEstado());
+            preparedStatement.setString(7, Filial.getEndereco());
+            preparedStatement.setString(8, Filial.getComplemento());
+            preparedStatement.setString(9, Filial.getContato());
+            preparedStatement.setInt(10, Filial.getIDFilial());
+
             preparedStatement.executeUpdate();
-            System.out.println("alo");
     } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println("Filial Alterar ERRO: " + e);
@@ -286,6 +290,7 @@ public class FilialDAO {
             if (result.next()) {
                 //Cria uma instância de Filial e popula com os valores do BD
                 int IDFilial = result.getInt("ID");
+                String NomeFilial = result.getString("NomeFilial");
                 String CNPJ = result.getString("CNPJ");
                 String Razao = result.getString("razao");
                 String CEP = result.getString("cep");
@@ -294,8 +299,7 @@ public class FilialDAO {
                 String Endereco = result.getString("Endereco");
                 String Complemento = result.getString("Complemento");
                 String Contato = result.getString("Contato");
-
-                Filial f = new Filial(CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
+                Filial f = new Filial(NomeFilial,CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
                 
                 //Retorna o resultado
                 return f;

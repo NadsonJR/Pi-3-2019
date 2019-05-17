@@ -62,11 +62,18 @@
                                     <td><c:out value="${usuario.getNomeFuncionario()}"/></td>   
                                     <td><c:out value="${usuario.getUsername()}"/></td>
                                     <td><c:out value="${usuario.getCargo()}"/></td>
-                                    <td><form  method="post" action="${pageContext.request.contextPath}/UsuarioExcluir">
-                                            <input type="hidden" value="${usuario.getID()}" name="ID">
+                                    <td>
+                                        <form  method="post" action="${pageContext.request.contextPath}/UsuarioEditar">
+                                            <input type="hidden" value="${usuario.getID()}" name="id">
+                                            <button id="btn-form-search" type="submit"><i class="far fa-edit"></i></button>                                        
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form  method="post" action="${pageContext.request.contextPath}/UsuarioExcluir">
+                                            <input type="hidden" value="${usuario.getID()}" name="ID" >
                                             <button id="btn-form-search" type="submit"><i class="fas fa-times"></i></button>                                        
                                         </form>
-                                    </td>    
+                                    </td>  
                                 </tr>
                             </c:forEach>
                             </tbody>

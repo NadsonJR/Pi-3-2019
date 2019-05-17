@@ -22,12 +22,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "UsuarioEditar", urlPatterns = {"/UsuarioEditar"})
 public class UsuarioEditar extends HttpServlet {
-
  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         int ID = Integer.parseInt(request.getParameter("id"));
+
+        int ID = Integer.parseInt(request.getParameter("id"));
         Usuario user = null;
         try {
             user = UsuarioDAO.procurarId(ID);
@@ -40,13 +40,16 @@ public class UsuarioEditar extends HttpServlet {
         request.setAttribute("id", ID);
         request.setAttribute("usuario", user);
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/EditarUsuario.jsp");
+                = request.getRequestDispatcher("JSP-PAGES/UsuarioEditar.jsp");
         dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        RequestDispatcher dispatcher
+                = request.getRequestDispatcher("JSP-PAGES/UsuarioEditar.jsp");
+        dispatcher.forward(request, response);  
     }
 
 }

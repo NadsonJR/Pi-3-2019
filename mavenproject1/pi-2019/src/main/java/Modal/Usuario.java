@@ -18,14 +18,14 @@ public class Usuario {
     private String username;
     private String NomeFuncionario;
     private String Nascimento;
-    private Integer CPF;
+    private String CPF;
     private String Celular;
     private String Email;
     private String hashSenha;
     private int IDFilial;
     
 
-    public Usuario(String NomeFuncionario, int CPF, String Nascimento, String Celular, String Email,int idFilial, String username, String senhaAberta, String Cargo) {
+    public Usuario(String NomeFuncionario, String CPF, String Nascimento, String Celular, String Email,int idFilial, String username, String senhaAberta, String Cargo) {
         this.IDFilial = idFilial;
         this.Cargo = Cargo;
         this.username = username;
@@ -36,6 +36,10 @@ public class Usuario {
         this.Email = Email;
         setSenha(senhaAberta);
     }
+
+    public Usuario() {
+    }
+    
     public Integer getidFilial(){
         return IDFilial;
     }
@@ -83,11 +87,11 @@ public class Usuario {
         this.Nascimento = Nascimento;
     }
 
-    public Integer getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(Integer CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 

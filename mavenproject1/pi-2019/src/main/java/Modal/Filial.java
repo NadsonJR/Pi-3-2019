@@ -11,6 +11,7 @@ package Modal;
  */
 public class Filial {
     private int IDFilial;
+    private String NomeFilial;
     private String CNPJ;
     private String Razao;
     private String CEP;
@@ -20,7 +21,8 @@ public class Filial {
     private String Complemento;
     private String Contato;
 
-    public Filial(String CNPJ, String Razao, String CEP, String Cidade, String Estado, String Endereco, String Complemento, String Contato) {
+    public Filial(String NomeFilial,String CNPJ, String Razao, String CEP, String Cidade, String Estado, String Endereco, String Complemento, String Contato) {
+        this.NomeFilial = NomeFilial;
         this.CNPJ = CNPJ;
         this.Razao = Razao;
         this.CEP = CEP;
@@ -29,6 +31,14 @@ public class Filial {
         this.Endereco = Endereco;
         this.Complemento = Complemento;
         this.Contato = Contato;
+    }
+
+    public String getNomeFilial() {
+        return NomeFilial;
+    }
+
+    public void setNomeFilial(String NomeFilial) {
+        this.NomeFilial = NomeFilial;
     }
 
     

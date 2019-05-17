@@ -69,10 +69,10 @@ public class ClienteCadastroServlet extends HttpServlet {
         }
 
         request.setAttribute("cliente", c);
-
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("ClienteConsulta");
+   //     RequestDispatcher dispatcher
+     //           = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
+       // dispatcher.forward(request, response);
     }
 
 }

@@ -6,8 +6,10 @@
 package SERVLETS;
 
 import DAO.CargosDAO;
+import DAO.FilialDAO;
 import DAO.UsuarioDAO;
 import Modal.Cargos;
+import Modal.Filial;
 import Modal.Usuario;
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +36,9 @@ public class CadastroUsuario extends HttpServlet {
         try {
             List<Cargos> listarCargo = CargosDAO.listarCargo();
             request.setAttribute("listarCargo", listarCargo);
-            sessao.setAttribute("listarCargo", listarCargo);
+
+            List<Filial> listarFilial = FilialDAO.listarFilial();
+            request.setAttribute("listarFilial", listarFilial);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -46,14 +50,17 @@ public class CadastroUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        request.setCharacterEncoding("UTF-8");
         String Nome = request.getParameter("nome");
+        String CPF = request.getParameter("CPF");
+        String DatNasc = request.getParameter("dataNascimento");
         String Cargo = request.getParameter("cargo");
         String username = request.getParameter("username");
         String senhaAberta = request.getParameter("Senha");
-        System.out.println(senhaAberta + " Cadastro");
-        Usuario user = new Usuario( Nome,username, senhaAberta, Cargo);
-
+        String Celular = request.getParameter("celular");
+        String Email = request.getParameter("email");
+        int idFilial = 1;
+        Usuario user = new Usuario(Nome, CPF, DatNasc, Celular, Email, idFilial, username, senhaAberta, Cargo);
         try {
             if (UsuarioDAO.inserir(user)) {
                 request.setAttribute("msgResposta", "Cadastrado com sucesso!");
@@ -68,7 +75,7 @@ public class CadastroUsuario extends HttpServlet {
         }
         //response.sendRedirect("ConsultaUsuario");
 //        RequestDispatcher dispatcher
-  //              = request.getRequestDispatcher("JSP-PAGES/ConsultaUsuario.jsp");
-    //    dispatcher.forward(request, response);
+        //              = request.getRequestDispatcher("JSP-PAGES/ConsultaUsuario.jsp");
+        //    dispatcher.forward(request, response);
     }
 }

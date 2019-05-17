@@ -35,6 +35,7 @@ public class CadastroFilial extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
+        String NomeFilial = request.getParameter("nome");
         String CNPJ = request.getParameter("CNPJ");
         String Razao = request.getParameter("razao");
         String CEP = request.getParameter("cep");
@@ -43,7 +44,7 @@ public class CadastroFilial extends HttpServlet {
         String Endereco = request.getParameter("endereco");
         String Complemento = request.getParameter("complemento");
         String Contato = request.getParameter("contato");
-        Filial f = new Filial(CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
+        Filial f = new Filial(NomeFilial,CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
         try {
             if (FilialDAO.inserir(f)) {
                 request.setAttribute("msgResposta", "Cadastrado com sucesso!");

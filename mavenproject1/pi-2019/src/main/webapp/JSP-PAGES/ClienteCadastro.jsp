@@ -3,7 +3,6 @@
     Created on : 05/02/2019, 10:32:54
     Author     : mt12732
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -14,31 +13,8 @@
         <title>Cadastrar Cliente</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="JSP-STYLES/main.css" />
-        <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mask.min.js"></script>
         <script type="text/javascript" src="JSP-JS/main.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
-        <script src="http://digitalbush.com/files/jquery/maskedinput/rc3/jquery.maskedinput.js" type="text/javascript"></script>
-        <script type="text/javascript"> 
-            jQuery.noConflict();
-            jQuery(function ($) {
-                //Máscaras
-                $("#dataNascimento").mask("99/99/9999");
-                $("#telefone").mask("(99) 9999-9999");
-                $("#cpf").mask("999.999.999-99");
-                $("#cep").mask("99999-999");
-                $("#rg").mask("99.999.999-99");
-                $("#celular").mask("(99) 99999-9999");
-                
-            });
-        </script>
-    </head>
+       </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">
         <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroCliente" accept-charset="UTF-8">
@@ -60,21 +36,21 @@
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> CPF: </label>
-                    <input type="text" class="cpf form-control" placeholder="111.111.111-11" required name="cpf" id="cpf" maxlength="14" onkeypress="return onlynumber();">
+                    <input type="text" class="cpf form-control" placeholder="###.###.###-##" required name="cpf" id="cpf" maxlength="14" onkeypress="return onlynumber();" onkeyup="mascara('###.###.###-##',this,event)">
                 </div>
                 <div class=" form-group col-4 ">
                     <label> R.G: </label>
-                    <input type="text" class="form-control" placeholder="11.111.111-11" required name="rg" id="rg" maxlength="14"onkeypress="return onlynumber();">
+                    <input type="text" class="form-control" placeholder="##.###.###-##" required name="rg" id="rg" maxlength="14"onkeypress="return onlynumber();" onkeyup="mascara('##.###.###-##',this,event)">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Data de Nascimento: </label>
-                    <input type="text" class="cpf form-control data-mask" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10"  onkeypress="return onlynumber();">
+                    <input type="text" class="cpf form-control data-mask" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10"  onkeypress="return onlynumber();" onkeyup="mascara('##/##/####',this,event)">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> CEP: </label>
-                    <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" maxlength="8" onkeypress="return onlynumber();">
+                    <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" maxlength="10" onkeypress="return onlynumber();" onkeyup="mascara('#####-###',this,event)">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Cidade: </label>
@@ -131,11 +107,11 @@
                 </div>
                 <div class="form-group col-3">
                     <label> Telefone: </label>
-                    <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" required onkeypress="return onlynumber();" maxlength="10">
+                    <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" required onkeypress="return onlynumber();" maxlength="20" onkeyup="mascara('(##)####-####',this,event)">
                 </div>
                 <div class="form-group col-3">
                     <label> Celular: </label>
-                    <input type="text" class="form-control" placeholder="(00)90000-00000" name="celular" id="celular" required onkeypress="return onlynumber();" maxlength="11">
+                    <input type="text" class="form-control" placeholder="(00)90000-0000" name="celular" id="celular" required onkeypress="return onlynumber();" maxlength="15" onkeyup="mascara('(##)#####-####',this,event)">
                 </div>
             </div>
             <div class="row ">
@@ -146,7 +122,6 @@
                     <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
                 </div>
             </div>
-
         </form>
     </body>
 </html>

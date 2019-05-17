@@ -22,9 +22,10 @@ public class UsuarioDAO {
 
     public static boolean inserir(Usuario usuario)
             throws SQLException, Exception {
+        System.out.println("Entrou no Inserir");
         //Monta a string de inserção de um usuario no BD,
         //utilizando os dados do usuario passados como parâmetro
-        String sql = "INSERT INTO usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,idFilial) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,idFilial) VALUES (?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -38,13 +39,13 @@ public class UsuarioDAO {
             //Configura os parâmetros do "PreparedStatement"
             preparedStatement.setString(1, usuario.getNomeFuncionario());
             preparedStatement.setString(2, usuario.getNascimento());
-            preparedStatement.setInt(3, usuario.getCPF());
+            preparedStatement.setString(3, usuario.getCPF());
             preparedStatement.setString(4, usuario.getUsername());
             preparedStatement.setString(5, usuario.getHashSenha());
             preparedStatement.setString(6, usuario.getCargo());
             preparedStatement.setString(7,usuario.getCelular());
             preparedStatement.setString(8, usuario.getEmail());
-            preparedStatement.setInt(9, usuario.set);
+            preparedStatement.setInt(9, usuario.getidFilial());
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
@@ -97,7 +98,7 @@ public class UsuarioDAO {
                 int id = result.getInt("id");
                 String NomeCompleto = result.getString("Nome");
                 String DatNasc = result.getString("datNasc");
-                int CPF = result.getInt("CPF");
+                String CPF = result.getString("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
                 String Cargo = result.getString("Cargo");
@@ -159,7 +160,7 @@ public class UsuarioDAO {
                 int id = result.getInt("id");
                 String NomeCompleto = result.getString("Nome");
                 String DatNasc = result.getString("datNasc");
-                int CPF = result.getInt("CPF");
+                String CPF = result.getString("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
                 String Cargo = result.getString("Cargo");
@@ -256,6 +257,7 @@ public class UsuarioDAO {
 
     public static Usuario procurarId(int idUsuario)
             throws SQLException, Exception {
+        System.out.println("Entrou na DAO");
         //Compõe uma String de consulta que considera apenas o Usuario
         //com o ID informado e que esteja ativo ("enabled" com "true")
         String sql = "SELECT * FROM Usuario WHERE ID=?";
@@ -283,7 +285,7 @@ public class UsuarioDAO {
                 int id = result.getInt("id");
                 String NomeCompleto = result.getString("Nome");
                 String DatNasc = result.getString("datNasc");
-                int CPF = result.getInt("CPF");
+                String CPF = result.getString("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
                 String Cargo = result.getString("Cargo");

@@ -34,7 +34,6 @@ public class ConsultaUsuario extends HttpServlet {
 
         try {
             List<Usuario> listaUsuario = UsuarioDAO.listar();
-            System.out.println(listaUsuario.get(1).getUsername());
             request.setAttribute("listaUsuario", listaUsuario);
             sessao.setAttribute("listaUsuario", listaUsuario);
         } catch (Exception e) {

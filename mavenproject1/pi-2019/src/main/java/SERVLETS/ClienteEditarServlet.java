@@ -70,9 +70,10 @@ public class ClienteEditarServlet extends HttpServlet {
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível efetuar o cadastro!");
             }
-            RequestDispatcher dispatcher
-                    = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-            dispatcher.forward(request, response);
+//            RequestDispatcher dispatcher
+ //                   = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
+   //         dispatcher.forward(request, response);
+   response.sendRedirect("ClienteConsulta");
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);

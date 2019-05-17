@@ -31,7 +31,7 @@ public class ConsultaFilial extends HttpServlet {
         HttpSession sessao = request.getSession();
         request.setCharacterEncoding("UTF-8");
         try {
-            List<Filial> listaFilial = FilialDAO.listar();
+            List<Filial> listaFilial = FilialDAO.listarFilial();
             request.setAttribute("listaFilial", listaFilial);
             sessao.setAttribute("listaFilial", listaFilial);
         } catch (Exception e) {

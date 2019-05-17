@@ -23,16 +23,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "AlterarFilial", urlPatterns = {"/AlterarFilial"})
 public class AlterarFilial extends HttpServlet {
 
- 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         int ID = Integer.parseInt(request.getParameter("id"));
-        System.out.println(ID +" <= ID encontrado!");
+        System.out.println(ID + " <= ID encontrado!");
         Filial F = null;
         try {
-           F = FilialDAO.procurarId(ID);
+            F = FilialDAO.procurarId(ID);
         } catch (Exception e) {
             e.printStackTrace();
             e.getLocalizedMessage();
@@ -50,6 +49,7 @@ public class AlterarFilial extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         int ID = Integer.parseInt(request.getParameter("id"));
+        String NomeFilial = request.getParameter("nome");
         String CNPJ = request.getParameter("CNPJ");
         String Razao = request.getParameter("razao");
         String CEP = request.getParameter("cep");
@@ -58,20 +58,21 @@ public class AlterarFilial extends HttpServlet {
         String Endereco = request.getParameter("endereco");
         String Complemento = request.getParameter("complemento");
         String Contato = request.getParameter("contato");
-        Filial f = new Filial(CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
+        Filial f = new Filial(NomeFilial, CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
+        f.setIDFilial(ID);
+        System.out.println(f.getNomeFilial());
         try {
-            if (FilialDAO.AlterarFilial(f, ID)) {
+            if (FilialDAO.AlterarFilial(f)) {
                 request.setAttribute("msgResposta", "Alterado com sucesso!");
+                response.sendRedirect("ConsultaFilial");
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível efetuar a alteração!");
+                response.sendRedirect("ConsultaFilial");
             }
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
         }
         request.setAttribute("Filial", f);
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
-    }
+     }
 }

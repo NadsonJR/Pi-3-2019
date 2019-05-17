@@ -10,7 +10,7 @@
         CPF                 VARCHAR (14) UNIQUE NOT NULL,
         RG                  VARCHAR (14) UNIQUE NOT NULL,
         Cep                 VARCHAR (255) NOT NULL,
-        Complemento         VARCHAR (255),
+        Complemento         VARCHAR (255) ,
         Cidade              VARCHAR (30) NOT NULL,
         Estado              VARCHAR (30) NOT NULL,
         Endereco            VARCHAR (255) NOT NULL,
@@ -23,22 +23,23 @@
         
         CREATE TABLE Usuario(
         ID 		INT NOT NULL UNIQUE NOT NULL AUTO_INCREMENT,
-        Nome 		VARCHAR(255),
+        Nome 		VARCHAR(255) NOT NULL,
         DatNasc 	VARCHAR (10)NOT NULL,
         CPF 		VARCHAR (14) UNIQUE NOT NULL,
         Usuario 	VARCHAR(255) UNIQUE NOT NULL,
         Senha		VARCHAR(255) UNIQUE NOT NULL,
-        Cargo		VARCHAR(255),
+        Cargo		VARCHAR(255) NOT NULL,
         Celular		VARCHAR	(14) NOT NULL,
         Email		VARCHAR (100) NOT NULL,
         CONSTRAINT PK_USUARIO PRIMARY KEY (ID)
         );
         
         CREATE TABLE Filial(
-        ID			INT NOT NULL AUTO_INCREMENT,
+        ID		INT NOT NULL AUTO_INCREMENT,
+        NomeFilial      VARCHAR (255) UNIQUE NOT NULL,
         CNPJ		VARCHAR (20) NOT NULL UNIQUE,
         Razao		VARCHAR (100) NOT NULL,
-        CEP			VARCHAR (30) NOT NULL,
+        CEP		VARCHAR (30) NOT NULL,
         Cidade 		VARCHAR (30) NOT NULL,
         Estado		VARCHAR (255) NOT NULL,
         Endereco 	VARCHAR(255) NOT NULL,
@@ -49,27 +50,27 @@
 
         CREATE TABLE Livro(
         ID 		INT NOT NULL AUTO_INCREMENT,
-        NomeLivro	VARCHAR (255) NOT NULL ,
+        NomeLivro	VARCHAR (255) NOT NULL UNIQUE,
         Autor		VARCHAR (255) NOT NULL,
         Editora		VARCHAR (255) NOT NULL,
         Descricao	VARCHAR (255) NOT NULL,
         ValorVenda	float4 NOT NULL,
         ValorCusto	float4 NOT NULL,
-        Categoria	VARCHAR (30) NOT NULL,
-        Quantidade 	int,
-        DataCadastro VARCHAR(255),
+        Categoria	VARCHAR (5) NOT NULL,
+        Quantidade 	int NOT NULL,
+        DataCadastro    VARCHAR(255),
         CONSTRAINT PK_Livro PRIMARY KEY (ID)
         );
 
         Create Table Categoria(
-        IDCategoria int not null auto_increment,
-        Nome VARCHAR(255) not null,
+        IDCategoria     INT NOT NULL AUTO_INCREMENT,
+        Nome            VARCHAR(255) NOT NULL UNIQUE,
         CONSTRAINT PK_CATEGORIA PRIMARY KEY (IDCategoria),
         CONSTRAINT UC_NOME UNIQUE (NOME)
         );
         
         CREATE TABLE Venda(
-        IDCliente 	int not null,
+        IDCliente 	INT NOT NULL,
         IDVenda 	INT NOT NULL AUTO_INCREMENT,
         DataVenda 	date, 
         Valor 		float4,
@@ -78,22 +79,22 @@
         );
 
         CREATE TABLE ItensCarrinho(
-        IDLivro INT NOT NULL,
-        Quantidade INT NOT NULL,
-        IDCarrinho INT NOT NULL,
-        Valor Float,
+        IDLivro     INT NOT NULL,
+        Quantidade  INT NOT NULL,
+        IDCarrinho  INT NOT NULL,
+        Valor Float INT NOT NULL,
         FOREIGN KEY (IDCarrinho) REFERENCES Venda(IDVenda) 
         );
 
         CREATE TABLE FormaDePagamento(
-        IdPagamento INT NOT NULL AUTO_INCREMENT,
-	Descricao VARCHAR(255),
+        IdPagamento     INT NOT NULL AUTO_INCREMENT,
+	Descricao       VARCHAR(255),
 	constraint PK_PagamentoID primary key(IdPagamento)
         );
         
         Create Table Cargos(
-        idCargo INT NOT NULL auto_increment,
-        NomeCargo Varchar(255),
+        idCargo     INT NOT NULL AUTO_INCREMENT,
+        NomeCargo   Varchar(255),
         constraint PK_IdCargo primary key(IdCargo)
         );	
 

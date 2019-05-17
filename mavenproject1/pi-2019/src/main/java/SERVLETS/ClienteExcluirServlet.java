@@ -44,9 +44,9 @@ public class ClienteExcluirServlet extends HttpServlet {
         } catch (Exception e) {
             System.out.println("oi "+e);
         }
-        
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("ClienteConsulta");
+       // RequestDispatcher dispatcher
+         //       = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
+        //dispatcher.forward(request, response);
     }
 }

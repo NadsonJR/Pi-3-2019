@@ -4,10 +4,7 @@
  * and open the template in the editor.
  */
 //
-jQuery(function($){
-   $(".datas").mask("99/99/9999");
-   $("#cpf").mask("999.999.999-99");
-});
+
 function onlynumber(evt) {
     var theEvent = evt || window.event;
     var key = theEvent.keyCode || theEvent.which;
