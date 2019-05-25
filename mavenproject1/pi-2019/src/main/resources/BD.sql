@@ -31,6 +31,7 @@
         Cargo		VARCHAR(255) NOT NULL,
         Celular		VARCHAR	(14) NOT NULL,
         Email		VARCHAR (100) NOT NULL,
+        IdFilial        INT NOT NULL,
         CONSTRAINT PK_USUARIO PRIMARY KEY (ID)
         );
         
