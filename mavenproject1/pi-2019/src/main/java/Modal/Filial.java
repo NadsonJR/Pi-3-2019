@@ -33,6 +33,20 @@ public class Filial {
         this.Contato = Contato;
     }
 
+    public Filial(int IDFilial, String NomeFilial, String CNPJ, String Razao, String CEP, String Cidade, String Estado, String Endereco, String Complemento, String Contato) {
+        this.IDFilial = IDFilial;
+        this.NomeFilial = NomeFilial;
+        this.CNPJ = CNPJ;
+        this.Razao = Razao;
+        this.CEP = CEP;
+        this.Cidade = Cidade;
+        this.Estado = Estado;
+        this.Endereco = Endereco;
+        this.Complemento = Complemento;
+        this.Contato = Contato;
+    }
+    
+
     public String getNomeFilial() {
         return NomeFilial;
     }

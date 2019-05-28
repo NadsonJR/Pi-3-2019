@@ -26,7 +26,7 @@ public class AlterarFilial extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+         request.setCharacterEncoding("UTF-8");
         int ID = Integer.parseInt(request.getParameter("id"));
         Filial F = null;
         try {
@@ -57,21 +57,20 @@ public class AlterarFilial extends HttpServlet {
         String Endereco = request.getParameter("endereco");
         String Complemento = request.getParameter("complemento");
         String Contato = request.getParameter("contato");
-        Filial f = new Filial(NomeFilial, CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
-        f.setIDFilial(ID);
-        System.out.println(f.getNomeFilial());
+        Filial F = new Filial(ID, NomeFilial, CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
         try {
-            if (FilialDAO.AlterarFilial(f)) {
+            if (FilialDAO.AlterarFilial(F)) {
                 request.setAttribute("msgResposta", "Alterado com sucesso!");
-                response.sendRedirect("ConsultaFilial");
+                
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível efetuar a alteração!");
-                response.sendRedirect("ConsultaFilial");
+                
             }
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
         }
-        request.setAttribute("Filial", f);
+        request.setAttribute("Filial", F);
+        response.sendRedirect("ConsultaFilial");
      }
 }

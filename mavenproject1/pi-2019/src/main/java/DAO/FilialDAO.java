@@ -246,8 +246,8 @@ public class FilialDAO {
             preparedStatement.setString(8, Filial.getComplemento());
             preparedStatement.setString(9, Filial.getContato());
             preparedStatement.setInt(10, Filial.getIDFilial());
-
             preparedStatement.executeUpdate();
+
     } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println("Filial Alterar ERRO: " + e);
@@ -300,7 +300,7 @@ public class FilialDAO {
                 String Complemento = result.getString("Complemento");
                 String Contato = result.getString("Contato");
                 Filial f = new Filial(NomeFilial,CNPJ, Razao, CEP, Cidade, Estado, Endereco, Complemento, Contato);
-                
+                f.setIDFilial(IDFilial);
                 //Retorna o resultado
                 return f;
             }

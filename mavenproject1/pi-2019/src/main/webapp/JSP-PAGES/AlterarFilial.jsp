@@ -105,7 +105,7 @@
                 <div class ="form group col-9 ">
                 </div>
                 <div class ="form group   col-sm-3 ">
-                    <input type="hidden" value="${filial.getIDFilial()}" name="id">
+                    <input type="hidden" value="${filial.IDFilial}" name="id">
                     <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
                     <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
                 </div>
