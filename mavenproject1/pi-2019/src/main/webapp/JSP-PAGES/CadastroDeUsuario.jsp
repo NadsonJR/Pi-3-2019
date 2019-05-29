@@ -52,7 +52,7 @@
                     <select class="form-control" name="filial" id="filial" required >
                         <option selected>Escolha...</option>
                         <c:forEach items ="${listarFilial}" var="filial" begin="0">
-                            <option  value="${filial.getIDFilial()}">
+                            <option  value="${filial.getNomeFilial()}">
                                 <c:out value="${filial.getNomeFilial()}"/>
                             </option>
                         </c:forEach>

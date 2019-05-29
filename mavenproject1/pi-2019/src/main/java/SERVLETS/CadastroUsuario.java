@@ -59,8 +59,8 @@ public class CadastroUsuario extends HttpServlet {
         String senhaAberta = request.getParameter("Senha");
         String Celular = request.getParameter("celular");
         String Email = request.getParameter("email");
-        int idFilial = Integer.parseInt(request.getParameter("filial"));
-        Usuario user = new Usuario(Nome, CPF, DatNasc, Celular, Email, idFilial, username, senhaAberta, Cargo);
+        String Filial = request.getParameter("filial");
+        Usuario user = new Usuario(Nome, CPF, DatNasc, Celular, Email, Filial, username, senhaAberta, Cargo);
         try {
             if (UsuarioDAO.inserir(user)) {
                 request.setAttribute("msgResposta", "Cadastrado com sucesso!");

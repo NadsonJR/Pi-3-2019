@@ -26,7 +26,7 @@
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">
-        <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroUsuario" accept-charset="UTF-8">
+        <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/UsuarioEditar" accept-charset="UTF-8">
             <div class="row justify-content-center">
                 <div class="form-group col-6">
                     <h2>Usuário</h2>
@@ -35,52 +35,54 @@
             <div class="row justify-content-center">
                 <div class="form-group col-4">
                     <label> Nome Completo: </label>
-                    <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome">
+                    <input type="text" class="form-control" placeholder="Nome" required name="nome" id="nome" value="${usuario.nomeFuncionario}">
                 </div>
                 <div class="form-group col-4 ">
                     <label> CPF: </label>
-                    <input type="text" class="form-control" placeholder="###.###.###-##" required name="CPF" id="cpf" onkeyup="mascara('###.###.###-##',this,event)">
+                    <input type="text" class="form-control" placeholder="###.###.###-##" required name="CPF" id="cpf" onkeyup="mascara('###.###.###-##',this,event)" value="${usuario.CPF}">
                 </div>
                 <div class="form-group col-4">
                     <label> Data de Nascimento: </label>
-                    <input type="text" class="form-control" placeholder="00/00/0000" required name="dataNascimento" id="dataNascimento"  onkeyup="mascara('##/##/####',this,event)" >
+                    <input type="text" class="form-control" placeholder="00/00/0000" required name="dataNascimento" id="dataNascimento"  onkeyup="mascara('##/##/####',this,event)" value="${usuario.nascimento}">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> Celular: </label>
-                    <input type="text" class="form-control" placeholder="(00)0000-0000" required name="celular" id="celular" maxlength="20" onkeyup="mascara('(##)#####-#####',this,event)">
+                    <input type="text" class="form-control" placeholder="(00)0000-0000" required name="celular" id="celular" maxlength="20" onkeyup="mascara('(##)#####-#####',this,event)"value="${usuario.celular}">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Email: </label>
-                    <input type="text" class="form-control" placeholder="exemplo@email.com" required name="email" id="email">
+                    <input type="text" class="form-control" placeholder="exemplo@email.com" required name="email" id="email" value="${usuario.email}">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Filial: </label>
                     <select class="form-control" name="filial" id="filial" required >
                         <option selected>Escolha...</option>
                         <c:forEach items ="${listarFilial}" var="filial" begin="0">
-                            <option  value="${filial.getIDFilial()}">
+                            <option selected>${usuario.filial}</option>
+                            <option  value="${filial.getNomeFilial()}">
                                 <c:out value="${filial.getNomeFilial()}"/>
                             </option>
                         </c:forEach>
-                    </select>
+                    </select> 
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> Usuário: </label>
-                    <input type="text" class="form-control" placeholder="Username/Login" required name="username" id="username">
+                    <input type="text" class="form-control" placeholder="Username/Login" required name="username" id="username" value="${usuario.username}">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Senha: </label>
-                    <input type="text" class=" form-control" placeholder="*********" required name="Senha" id="Senha">
+                    <input type="text" class=" form-control" placeholder="*********" required name="Senha" id="Senha" value="${usuario.hashSenha}"/>
                 </div>
                 <div class=" form-group col-4 ">
                     <label> Cargo: </label>
                     <select class="form-control" name="cargo" id="cargo" required >
                         <option selected>Escolha...</option>
                         <c:forEach items ="${listarCargo}" var="cargo" begin="0">
+                            <option selected > ${usuario.cargo}</option>
                             <option  value="${cargo.getNomeCargo()}">
                                 <c:out value="${cargo.getNomeCargo()}"/>
                             </option>
@@ -92,6 +94,7 @@
                 <div class ="form group col-9 ">
                 </div>
                 <div class ="form group   col-sm-3 ">
+                    <input type="hidden" value="${usuario.getID()}" name="ID">
                     <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
                     <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
                 </div>

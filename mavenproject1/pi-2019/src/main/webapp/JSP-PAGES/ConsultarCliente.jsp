@@ -59,6 +59,7 @@
                             <form method="get" action="${pageContext.request.contextPath}/ClienteEditar">
                                 <input type="hidden" value="${cliente.getID()}" name="id">
                             </form>
+                            
                             <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
                             <%-- primeiro form ignorado pelo metodo! --%>
                             <c:forEach items ="${listaClientes}" var="cliente" begin="0">

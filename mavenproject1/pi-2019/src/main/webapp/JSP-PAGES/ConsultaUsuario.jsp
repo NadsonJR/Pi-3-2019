@@ -63,7 +63,7 @@
                                     <td><c:out value="${usuario.getUsername()}"/></td>
                                     <td><c:out value="${usuario.getCargo()}"/></td>
                                     <td>
-                                        <form  method="post" action="${pageContext.request.contextPath}/UsuarioEditar">
+                                        <form  method="get" action="${pageContext.request.contextPath}/UsuarioEditar">
                                             <input type="hidden" value="${usuario.getID()}" name="id">
                                             <button id="btn-form-search" type="submit"><i class="far fa-edit"></i></button>                                        
                                         </form>

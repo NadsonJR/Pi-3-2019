@@ -22,11 +22,11 @@ public class Usuario {
     private String Celular;
     private String Email;
     private String hashSenha;
-    private int IDFilial;
+    private String Filial;
     
 
-    public Usuario(String NomeFuncionario, String CPF, String Nascimento, String Celular, String Email,int idFilial, String username, String senhaAberta, String Cargo) {
-        this.IDFilial = idFilial;
+    public Usuario(String NomeFuncionario, String CPF, String Nascimento, String Celular, String Email,String Filial, String username, String senhaAberta, String Cargo) {
+        this.Filial = Filial;
         this.Cargo = Cargo;
         this.username = username;
         this.NomeFuncionario = NomeFuncionario;
@@ -37,15 +37,28 @@ public class Usuario {
         setSenha(senhaAberta);
     }
 
+    public Usuario(int ID, String NomeFuncionario, String CPF, String Nascimento, String Celular, String Email,String Filial, String username, String senhaAberta, String Cargo) {
+        this.ID = ID;
+        this.Filial = Filial;
+        this.Cargo = Cargo;
+        this.username = username;
+        this.NomeFuncionario = NomeFuncionario;
+        this.Nascimento = Nascimento;
+        this.CPF = CPF;
+        this.Celular = Celular;
+        this.Email = Email;
+        setSenha(senhaAberta);
+    }
+        
     public Usuario() {
     }
     
-    public Integer getidFilial(){
-        return IDFilial;
+    public String getFilial(){
+        return Filial;
     }
     
-    public void setidFilial(Integer IDFilial){
-        this.IDFilial=IDFilial;
+    public void setFilial(String Filial){
+        this.Filial=Filial;
     }
     public Integer getID() {
         return ID;
@@ -122,7 +135,7 @@ public class Usuario {
     public void setSenha(String senhaAberta) {
         this.hashSenha = BCrypt.hashpw(senhaAberta, BCrypt.gensalt());
     }
-
+    
     public boolean validarSenha(String senhaAberta) {
         return BCrypt.checkpw(senhaAberta, hashSenha);
     }

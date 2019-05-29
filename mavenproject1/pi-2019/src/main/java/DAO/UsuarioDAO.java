@@ -25,7 +25,7 @@ public class UsuarioDAO {
         System.out.println("Entrou no Inserir");
         //Monta a string de inserção de um usuario no BD,
         //utilizando os dados do usuario passados como parâmetro
-        String sql = "INSERT INTO usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,idFilial) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,FilialNome) VALUES (?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -45,7 +45,7 @@ public class UsuarioDAO {
             preparedStatement.setString(6, usuario.getCargo());
             preparedStatement.setString(7,usuario.getCelular());
             preparedStatement.setString(8, usuario.getEmail());
-            preparedStatement.setInt(9, usuario.getidFilial());
+            preparedStatement.setString(9, usuario.getFilial());
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
@@ -104,8 +104,8 @@ public class UsuarioDAO {
                 String Cargo = result.getString("Cargo");
                 String Celular = result.getString("Celular");
                 String Email = result.getString("Email");
-                int idFilial = result.getInt("idFilial");
-                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, idFilial, Username, Senha, Cargo);
+                String Filial = result.getString("FilialNome");
+                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, Filial, Username, Senha, Cargo);
                 user.setID(id);
                 //Adiciona a instância na lista
                 listaUsuario.add(user);
@@ -166,8 +166,8 @@ public class UsuarioDAO {
                 String Cargo = result.getString("Cargo");
                 String Celular = result.getString("Celular");
                 String Email = result.getString("Email");
-                int idFilial = result.getInt("idFilial");
-                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, idFilial, Username, Senha, Cargo);
+                String Filial = result.getString("FilialNome");
+                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, Filial, Username, Senha, Cargo);
                 user.setID(id);
                 //Adiciona a instância na lista
                 listaUsuarios.add(user);
@@ -190,13 +190,13 @@ public class UsuarioDAO {
         return listaUsuarios;
     }
 
-    public static boolean AlterarUsuario(Usuario Usuario) throws Exception {
+    public static boolean AlterarUsuario(Usuario usuario) throws Exception {
         System.out.println("Iniciando processo de atualização de Usuario...");
         //comando sql
-        String sql = "update Usuario set Nome =?,Usuario =?,senha =?,Cargo =? where id=?";
+        String sql = "update Usuario set Nome =?,DatNasc =?,CPF =?,usuario =?,Senha =?,Cargo =?,Celular =?,Email =?,FilialNome =? where id =?";
         //Conexão para abertura e fechamento
         Connection connection = null;
-        System.out.println(Usuario.getID());
+        System.out.println(usuario.getID());
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos
         PreparedStatement preparedStatement = null;
@@ -207,10 +207,16 @@ public class UsuarioDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
-            preparedStatement.setString(1, Usuario.getNomeFuncionario());
-            preparedStatement.setString(2, Usuario.getUsername());
-            preparedStatement.setString(3, Usuario.getHashSenha());
-            preparedStatement.setString(4, Usuario.getCargo());
+            preparedStatement.setString(1,usuario.getNomeFuncionario());
+            preparedStatement.setString(2,usuario.getNascimento());
+            preparedStatement.setString(3,usuario.getCPF());
+            preparedStatement.setString(4,usuario.getUsername());
+            preparedStatement.setString(5,usuario.getHashSenha());
+            preparedStatement.setString(6,usuario.getCargo());
+            preparedStatement.setString(7,usuario.getCelular());
+            preparedStatement.setString(8,usuario.getEmail());
+            preparedStatement.setString(9,usuario.getFilial());
+            preparedStatement.setInt(10,usuario.getID());
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.getLocalizedMessage();
@@ -291,9 +297,10 @@ public class UsuarioDAO {
                 String Cargo = result.getString("Cargo");
                 String Celular = result.getString("Celular");
                 String Email = result.getString("Email");
-                int idFilial = result.getInt("idFilial");
-                Usuario user = new Usuario(NomeCompleto, CPF, DatNasc, Celular, Email, idFilial, Username, Senha, Cargo);
+                String Filial = result.getString("FilialNome");
+                Usuario user = new Usuario(id, NomeCompleto, CPF, DatNasc, Celular, Email, Filial, Username, Senha, Cargo);
                 user.setID(id);
+                
                 //Retorna o resultado
                 System.out.println("Retornando o objeto");
                 return user;

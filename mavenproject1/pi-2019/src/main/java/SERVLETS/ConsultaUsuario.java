@@ -8,7 +8,6 @@ package SERVLETS;
 import DAO.UsuarioDAO;
 import Modal.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -53,7 +52,6 @@ public class ConsultaUsuario extends HttpServlet {
          
           try {
               String nome = request.getParameter("nome"); 
-              System.out.println(nome);
               List<Usuario> listaUsuario = UsuarioDAO.listarPorNome(nome);
              request.setAttribute("listaUsuario", listaUsuario);
             sessao.setAttribute("listaUsuario" , listaUsuario);
