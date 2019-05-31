@@ -203,7 +203,7 @@ public class LivroDAO {
         //com o ID informado e que esteja ativo ("enabled" com "true")
         String sql = "SELECT * FROM Livro WHERE ID=?";
         //Conexão para abertura e fechamento
-        System.out.println("oi");
+        System.out.println("Livro DAO Procurar ID");
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
         //comandos SQL e fechamentos

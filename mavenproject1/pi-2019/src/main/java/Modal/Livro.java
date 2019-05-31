@@ -23,6 +23,11 @@ public class Livro {
     private Integer Quantidade;
     private String DataCadastro;
 
+    public Livro() {
+    }
+    
+    
+    
     public String getDataCadastro() {
         return DataCadastro;
     }

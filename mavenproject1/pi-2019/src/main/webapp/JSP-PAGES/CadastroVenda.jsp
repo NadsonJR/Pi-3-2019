@@ -3,9 +3,13 @@
     Created on : 08/02/2019, 14:48:44
     Author     : mt12732
 --%>
+<%@page import="Modal.Cliente"%>
+<%@page import="java.time.LocalDate"%>
+<%@page import="DAO.LivroDAO"%>
+<%@page import="Modal.Livro"%>
+<%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -20,117 +24,152 @@
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
-        <form  id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroVenda">
-            <div class="row justify-content-center">
-                <div class="form-group col-6">
-                    <h2>Venda</h2>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="form-group col-4">
-                    <label> Cliente </label>
-                    <select class="form-control" required name="cliente">       
-                        <option>Choose... </option>
-                        <c:forEach items ="${listaClientes}" var="cliente" begin="0">
-                            <option value="${cliente.getID()}">
-                                <c:out value="${cliente.getNome()}"/>
-                            </option>
-                        </c:forEach>
-                    </select>               
-                </div>
-                <div class="form-group col-2 "style="margin-top: 30px;">
-                    <button type="submit" id="btn-form-search">Selecionar</button>
-                </div>
-                <div class="form-group col-4">
-                    <label> Livro </label>
-                    <select class="form-control" required name="cliente">
-                        <option>Choose... </option>
-                        <c:forEach items ="${listaProduto}" var="Livro" begin="0">
-                            <option value="${Livro.getID()}">
-                                <c:out value="${Livro.getNomeLivro()}"/>
-                            </option>
-                        </c:forEach>
-                    </select> 
-                </div>
-                <div class="form-group col-2 "style="margin-top: 30px;">
-                    <button type="submit" id="btn-form-search">Adicionar</button>
-                </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="form-group col-12">
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar" id="style-1">
-                        <table class="table">
-                            <tr>
-                                <th scope="col">Título</th>
-                                <th scope="col">Autor</th>
-                                <th scope="col">Editora</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Opções</th>
-                            </tr>
-
-                            <tbody>
-                                <%-- primeiro form ignorado pelo metodo! --%>
-                            <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
-                                <input type="hidden" value="${Livro.getID()}" name="id">
-                            </form>
-                            <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
-                            <%-- primeiro form ignorado pelo metodo! --%>
-                            <c:forEach items ="" var="produto">
-                                <tr>
-                                    <td><c:out value="${produto.getNomeLivro()}"/></td>
-                                    <td><c:out value="${produto.getAutor()}"/></td>
-                                    <td><c:out value="${produto.getEditora()}"/></td>
-                                    <td><c:out value="${produto.getCategoria()}"/></td>
-                                    <td><c:out value="${produto.getValorVenda()}"/></td>
-                                    <td><c:out value="${produto.getQuantidade()}"/></td>
-                                    <td>
-                                        <div>
-                                            <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
-                                                <input type="hidden" value="${produto.getID()}" name="id">
-                                                <button class="form-button" id="btn-form-search"  type="submit"> <i class="fas fa-times"></i></button>
-                                            </form>
-                                        </div>    
-                                    </td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
+        <div id="FadeForm" class="form-type">
+            <form  method="get" action="${pageContext.request.contextPath}/CadastroVenda">
+                <div class="row justify-content-center">
+                    <div class="form-group col-6">
+                        <h2>Venda</h2>
                     </div>
                 </div>
-            </div>
-            <div class="row justify-content-center">
-                <div class="form-group  col-6">
+                <div class="row justify-content-center">
+                    <div class="form-group col-4">
+                        <label> Cliente </label>
+                        <%
+                            out.print(request.getAttribute("NomeCliente"));
+                            if (request.getAttribute("NomeCliente") != null) {
+                                out.print("<select class='form-control' required name='cliente'>"
+                                        + "<option value=" + request.getAttribute("IDCliente") + ">");
+                                out.print(request.getAttribute("NomeCliente").toString());
+
+                                out.print("</option>"
+                                        + "</select>");
+                            } else {
+
+                                List<Cliente> lista = (List) request.getAttribute("listaClientes");
+                                out.print("<select class='form-control' required name='cliente'>");
+                                out.print("<option>Choose...</option>");
+                                for (int i = 0; i < lista.size(); i++) {
+                                    Cliente c = lista.get(i);
+                                    out.print("<option value=" + c.getID() + ">" + c.getNome() + "</option>");
+                                }
+
+                                out.print("</select>");
+                            }
+                        %>
+                    </div>
+                    <div class="form-group col-4">
+                        <label> Livro </label>
+                        <select class="form-control" required name="produto">
+                            <option>Choose... </option>
+                            <c:forEach items ="${listaProduto}" var="Livro" begin="0">
+                                <option value="${Livro.getID()}">
+                                    <c:out value="${Livro.getNomeLivro()}"/>
+                                </option>
+                            </c:forEach>
+                        </select> 
+                    </div>
+                    <div class="form-group col-2 "style="margin-top: 30px;">
+                        <button type="submit" id="btn-form-search">Adicionar</button>
+                    </div>
                 </div>
-                <div class="form-group  col-4">
-                    <label>Forma de pagamento:</label>
-                    <select class="form-control" required name="cliente">
-                        <option>Choose... </option>
-                        <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0">
-                            <option value="${Pagamento.getIdPagamento()}">
-                                <c:out value="${Pagamento.getDescricao()}"/>
-                            </option>
-                        </c:forEach>
-                    </select>
+                <div class="row justify-content-center">
+                    <div class="form-group col-12">
+                        <div class="table-wrapper-scroll-y my-custom-scrollbar" id="style-1">
+                            <table class="table">
+                                <tr>
+                                    <th scope="col">Título</th>
+                                    <th scope="col">Autor</th>
+                                    <th scope="col">Editora</th>
+                                    <th scope='col'>Categoria</th>
+                                    <th scope="col">Valor</th>
+                                    <th scope="col">Quantidade</th>
+                                    <th scope="col">Opções</th>
+                                </tr>
+
+                                <tbody>
+                                    <%
+                                        if (request.getAttribute("listaProdutoCarrinho") == null) {
+                                        } else {
+                                            List<Livro> listaProduto;
+                                            listaProduto = (List) request.getAttribute("listaProdutoCarrinho");
+
+                                            for (int i = 0; i < listaProduto.size(); i++) {
+                                                Livro livro = listaProduto.get(i);
+                                                out.print("<tr>");
+                                                out.print("<td>" + livro.getNomeLivro() + "</td>");
+                                                out.print("<td>" + livro.getAutor() + "</td>");
+                                                out.print("<td>" + livro.getEditora() + "</td>");
+                                                out.print("<td>" + livro.getCategoria() + "</td>");
+                                                out.print("<td>" + livro.getValorVenda() + "</td>");
+                                                out.print("<td>" + livro.getQuantidade() + "</td>");
+                                                out.print("</tr>");
+
+                                            }
+                                        }
+                                    %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group col-2">
-                    <label>
-                        Data:01/04/2019
-                    </label>
-                    <label>
-                        Total:R$20,20
-                    </label>
-                </div>
-            </div>
-            <br>
-            <div class="row ">
-                <div class ="form group col-9 ">
-                </div>
-                <div class ="form group   col-sm-3 ">
-                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancelar </button>
-                    <button type="submit" class="btn btn-primary" id="btn-form"> Confirmar </button>
-                </div>
-            </div>
-        </form>
+                <div class="row justify-content-center">
+                    <div class="form-group  col-6">
+                    </div>
+                    <div class="form-group  col-4">
+                        <label>Forma de pagamento:</label>
+                        <select class="form-control" required name="cliente">
+                            <option>Choose... </option>
+                            <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0">
+                                <option value="${Pagamento.getIdPagamento()}">
+                                    <c:out value="${Pagamento.getDescricao()}"/>
+                                </option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group col-2">
+                        <label>
+                            <%
+                                String dataFormatada;
+                                LocalDate data = LocalDate.now();
+                                dataFormatada = String.valueOf(data.getDayOfMonth());
+                                dataFormatada += "/" + data.getMonthValue() + "/";
+                                dataFormatada += String.valueOf(data.getYear());
+                                out.print(dataFormatada);
+                            %>
+                        </label>
+                        <label>
+                            <%
+                                if (request.getAttribute("listaProdutoCarrinho") == null) {
+                                } else {
+                                    List<Livro> listaProduto;
+                                    listaProduto = (List) request.getAttribute("listaProdutoCarrinho");
+                                    float ValorTotal = 0;
+                                    for (int i = 0; i < listaProduto.size(); i++) {
+                                        Livro livro = listaProduto.get(i);
+                                        ValorTotal += livro.getValorVenda();
+                                    }
+                                    out.print("Valor Total:<br>R$: " + ValorTotal);
+                                    out.print("<input type='hidden' required name='valorTotal' value='" + ValorTotal + "'>");
+                                }
+                            %>
+                        </label>
+                    </div>
+                </div> 
+            </form>
+            <table>
+                <tr>
+                    <td width="1000" style='text-align: right'>
+                        <form method="post" action="${pageContext.request.contextPath}/CancelarVenda">
+                            <button  type="submit" class="btn btn-primary" id="btn-form"> Cancelar </button>
+                        </form>
+                    </td>
+                    <td width="50" >
+                        <form method="post" action="${pageContext.request.contextPath}/ConfirmarVenda">
+                            <button type="submit"  class="btn btn-primary" id="btn-form"> Confirmar </button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>

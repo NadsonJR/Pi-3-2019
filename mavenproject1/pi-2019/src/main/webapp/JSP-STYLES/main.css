@@ -208,3 +208,9 @@ i.fa-journal-whills {
     font-weight: bold;
     font-size: 2em;
 }
+
+#btn-venda {
+    position: absolute;
+    margin-left: 50px;
+    margin-top: -20;
+}

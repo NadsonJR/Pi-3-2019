@@ -30,6 +30,10 @@ public class Venda {
         this.NomeCliente = NomeCliente;
     }
 
+    public Venda() {
+        
+    }
+
     
     
     

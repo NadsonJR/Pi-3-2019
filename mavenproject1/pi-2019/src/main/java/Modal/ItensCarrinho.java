@@ -21,6 +21,10 @@ public class ItensCarrinho {
         this.Valor = Valor;
     }
 
+    public ItensCarrinho() {
+        
+    }
+
     public int getIDLivro() {
         return IDLivro;
     }
