@@ -23,9 +23,11 @@ public class ConnectionBD {
         Class.forName("com.mysql.jdbc.Driver");
         // Passo 2: Obter a conexao
         conn = DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/PI_III",
+                //"jdbc:mysql://127.0.0.1:3306/PI_III",
+                "jdbc:mysql://mysqldb2019.ckuhezkyk8ua.us-east-1.rds.amazonaws.com:3306/pi_iii",
                 "root",
-                "");
+                "rootroot");
         return conn;
+        
     }
 }
