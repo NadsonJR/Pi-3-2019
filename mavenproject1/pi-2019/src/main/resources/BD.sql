@@ -101,14 +101,14 @@
 
         INSERT INTO Usuario (Nome,Usuario,Senha,Cargo) VALUE ('Antonio Nadson','NadsonJR','$2a$10$nzAmEFObbTIe66g.dAZyYeRrKsfECiaU4u3svJTgVN3drvmjIxw.y','Diretor');
 
-        Insert into FormaDePagamento(Descricao) Values ("Crédito 1x");
-        Insert into FormaDePagamento(Descricao) Values ("Crédito 2x");
-        Insert into FormaDePagamento(Descricao) Values ("Crédito 3x");
-        Insert into FormaDePagamento(Descricao) Values ("Crédito 4x");
-        Insert into FormaDePagamento(Descricao) Values ("Crédito 5x");
-        Insert into FormaDePagamento(Descricao) Values ("Crédito 6x");
-        Insert into FormaDePagamento(Descricao) Values ("Débito");
-        Insert into FormaDePagamento(Descricao) Values ("Dinheiro");
+        Insert into formadepagamento(Descricao) Values ("Crédito 1x");
+        Insert into formadepagamento(Descricao) Values ("Crédito 2x");
+        Insert into formadepagamento(Descricao) Values ("Crédito 3x");
+        Insert into formadepagamento(Descricao) Values ("Crédito 4x");
+        Insert into formadepagamento(Descricao) Values ("Crédito 5x");
+        Insert into formadepagamento(Descricao) Values ("Crédito 6x");
+        Insert into formadepagamento(Descricao) Values ("Débito");
+        Insert into formadepagamento(Descricao) Values ("Dinheiro");
 
         Insert into Cargos(NomeCargo) Values ("Vendedor");
         Insert into Cargos(NomeCargo) Values ("Gerente");
@@ -117,13 +117,13 @@
         Insert into Cargos(NomeCargo) Values ("Diretor");        
         Insert into Cargos(NomeCargo) Values ("TI");        
         
-        INSERT INTO CATEGORIA(NOME) VALUES ("Terror");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Ação");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Aventura");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Horror");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Suspense");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Romance");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Cronica");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Biografia");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Games");
-        INSERT INTO CATEGORIA(NOME) VALUES ("Investigação");
+        INSERT INTO categoria(NOME) VALUES ("Terror");
+        INSERT INTO categoria(NOME) VALUES ("Ação");
+        INSERT INTO categoria(NOME) VALUES ("Aventura");
+        INSERT INTO categoria(NOME) VALUES ("Horror");
+        INSERT INTO categoria(NOME) VALUES ("Suspense");
+        INSERT INTO categoria(NOME) VALUES ("Romance");
+        INSERT INTO categoria(NOME) VALUES ("Cronica");
+        INSERT INTO categoria(NOME) VALUES ("Biografia");
+        INSERT INTO categoria(NOME) VALUES ("Games");
+        INSERT INTO categoria(NOME) VALUES ("Investigação");
