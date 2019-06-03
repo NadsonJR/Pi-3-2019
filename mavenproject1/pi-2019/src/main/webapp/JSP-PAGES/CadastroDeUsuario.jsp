@@ -41,7 +41,7 @@
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> Celular: </label>
-                    <input type="text" class="form-control" placeholder="(00)0000-0000" required name="celular" id="celular" maxlength="20" onkeyup="mascara('(##)#####-#####',this,event)">
+                    <input type="text" class="form-control" placeholder="(00)0000-0000" required name="celular" id="celular" maxlength="15" onkeyup="mascara('(##)#####-####',this,event)">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Email: </label>
