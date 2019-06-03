@@ -25,7 +25,7 @@ public class UsuarioDAO {
         System.out.println("Entrou no Inserir");
         //Monta a string de inserção de um usuario no BD,
         //utilizando os dados do usuario passados como parâmetro
-        String sql = "INSERT INTO usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,FilialNome) VALUES (?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Usuario (Nome,DatNasc,CPF,usuario,Senha,Cargo,Celular,Email,FilialNome) VALUES (?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -95,9 +95,9 @@ public class UsuarioDAO {
                     listaUsuario = new ArrayList<Usuario>();
                 }
                 //Cria uma instância de Usuario e popula com os valores do BD
-                int id = result.getInt("id");
+                int id = result.getInt("ID");
                 String NomeCompleto = result.getString("Nome");
-                String DatNasc = result.getString("datNasc");
+                String DatNasc = result.getString("DatNasc");
                 String CPF = result.getString("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");

@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 public class LoginDAO {
 
     public static Usuario Logar(String Username) throws Exception {
-        String sql = "SELECT * FROM usuario WHERE usuario=?";
+        String sql = "SELECT * FROM Usuario WHERE Usuario=?";
         System.out.println("Passou pela DAO!");
         Usuario user = null ;
         Connection connection = null;

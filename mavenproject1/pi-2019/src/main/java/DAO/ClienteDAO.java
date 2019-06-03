@@ -75,7 +75,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Cliente";
+        String sql = "SELECT * FROM cliente";
         //Lista de clientes de resultado
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
@@ -145,7 +145,7 @@ public class ClienteDAO {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
         //ESSA QUERY TA 100% FORA DAS BOAS PRÁTICAS ---->
-        String sql = "SELECT * FROM Cliente WHERE Nome=" + "'" + nomeBanco + "'";
+        String sql = "SELECT * FROM cliente WHERE Nome=" + "'" + nomeBanco + "'";
         //Lista de clientes de resultado
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
@@ -212,7 +212,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o cliente
         //com o ID informado e que esteja ativo ("enabled" com "true")
-        String sql = "SELECT * FROM Cliente WHERE ID=?";
+        String sql = "SELECT * FROM cliente WHERE ID=?";
         //Conexão para abertura e fechamento
         Connection connection = null;
         System.out.println("ID Procurar: " + idCliente);
@@ -280,7 +280,7 @@ public class ClienteDAO {
     public static boolean AlterarCliente(Cliente cliente) throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
         //comando sql
-        String sql = "update Cliente set Nome =?,Sobrenome =?,DataDeNascimento =?,CPF =?,RG=?,Cep=?,Complemento=?,Cidade=?,Estado=?,Endereco=?,Celular =?,Telefone=?,Email=? where id=?";
+        String sql = "update cliente set Nome =?,Sobrenome =?,DataDeNascimento =?,CPF =?,RG=?,Cep=?,Complemento=?,Cidade=?,Estado=?,Endereco=?,Celular =?,Telefone=?,Email=? where id=?";
         //Conexão para abertura e fechamento
         Connection connection = null;
 
