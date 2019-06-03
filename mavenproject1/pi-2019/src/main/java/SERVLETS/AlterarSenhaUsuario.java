@@ -48,6 +48,7 @@ public class AlterarSenhaUsuario extends HttpServlet {
             }
         }catch(Exception e){
             System.out.println(e);
+            request.setAttribute("msgResposta", "Não foi possivel alterar a senha");
         }
         
         RequestDispatcher dispatcher

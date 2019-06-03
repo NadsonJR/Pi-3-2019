@@ -326,7 +326,7 @@ public class UsuarioDAO {
         return null;
     }
 
-    public static boolean AlterarSenha(Usuario usuario) throws Exception {
+    public static boolean AlterarSenha(Usuario usuario) throws SQLException {
         System.out.println("Iniciando processo de atualização de Usuario...");
         //comando sql
         String sql = "update Usuario set Senha=? where cpf =?";
@@ -345,7 +345,12 @@ public class UsuarioDAO {
             //Comando do banco
             preparedStatement.setString(1, usuario.getHashSenha());
             preparedStatement.setString(2, usuario.getCPF());
-            preparedStatement.executeUpdate();
+            int resposta = preparedStatement.executeUpdate();
+            if(resposta == 1){
+                return true;
+            }else{
+                return false;
+            }
         } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
@@ -360,6 +365,5 @@ public class UsuarioDAO {
                 connection.close();
             }
         }
-        return true;
     }
 }
