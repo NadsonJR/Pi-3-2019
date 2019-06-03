@@ -5,7 +5,6 @@
  */
 package SERVLETS;
 
-
 import DAO.VendaDAO;
 
 import Modal.Venda;
@@ -32,7 +31,6 @@ public class ConsultarVendaServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
         request.setCharacterEncoding("UTF-8");
-        System.out.println("TA NO SERVLET DA VENDA");
         try {
             String nome = request.getParameter("nomeCliente");
             System.out.println(nome);
@@ -52,13 +50,20 @@ public class ConsultarVendaServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
         request.setCharacterEncoding("UTF-8");
-        System.out.println("TA NO SERVLET DA VENDA");
+
         try {
             String nome = request.getParameter("nomeCliente");
             System.out.println(nome);
+            if (nome != null) {
+                List<Venda> listaVenda = VendaDAO.buscar(nome);
+                request.setAttribute("listaVenda", listaVenda);
+                sessao.setAttribute("listaVenda", listaVenda);
+
+            } else {
             List<Venda> listaVenda = VendaDAO.listar();
             request.setAttribute("listaVenda", listaVenda);
             sessao.setAttribute("listaVenda", listaVenda);
+            }
         } catch (Exception e) {
             System.out.println(e + " erro ao buscar cliente");
         }

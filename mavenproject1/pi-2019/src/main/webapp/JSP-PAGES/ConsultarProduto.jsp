@@ -65,7 +65,7 @@
                                     <td><c:out value="${produto.getEditora()}"/></td>
                                     <td><c:out value="${produto.getDataCadastro()}"/></td>
                                     <td><c:out value="${produto.getCategoria()}"/></td>
-                                    <td><c:out value="${produto.getValorVenda()}"/></td>
+                                    <td><c:out value="${produto.formatToReal(produto.getValorVenda())}"/></td>
                                     <td><c:out value="${produto.getQuantidade()}"/></td>
                                     <td>
                                         <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
