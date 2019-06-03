@@ -69,15 +69,11 @@
                 </div>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-4 ">
+                <div class="form-group col-6 ">
                     <label> Usuário: </label>
                     <input type="text" class="form-control" placeholder="Username/Login" required name="username" id="username" value="${usuario.username}">
                 </div>
-                <div class="form-group col-4 ">
-                    <label> Senha: </label>
-                    <input type="text" class=" form-control" placeholder="*********" required name="Senha" id="Senha" value="${usuario.hashSenha}"/>
-                </div>
-                <div class=" form-group col-4 ">
+                <div class=" form-group col-6 ">
                     <label> Cargo: </label>
                     <select class="form-control" name="cargo" id="cargo" required >
                         <option selected>Escolha...</option>

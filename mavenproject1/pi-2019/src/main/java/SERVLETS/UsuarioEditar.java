@@ -68,11 +68,10 @@ public class UsuarioEditar extends HttpServlet {
         String DatNasc = request.getParameter("dataNascimento");
         String Cargo = request.getParameter("cargo");
         String username = request.getParameter("username");
-        String senhaAberta = request.getParameter("Senha");
         String Celular = request.getParameter("celular");
         String Email = request.getParameter("email");
         String Filial = request.getParameter("filial");
-        Usuario user = new Usuario(ID,Nome, CPF, DatNasc, Celular, Email, Filial, username, senhaAberta, Cargo);
+        Usuario user = new Usuario(ID,Nome, CPF, DatNasc, Celular, Email, Filial, username, Cargo);
         try {
             if (UsuarioDAO.AlterarUsuario(user)) {
                 request.setAttribute("msgResposta", "Cadastrado com sucesso!");

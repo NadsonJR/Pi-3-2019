@@ -49,6 +49,23 @@ public class Usuario {
         this.Email = Email;
         setSenha(senhaAberta);
     }
+
+    public Usuario(String CPF, String SenhaNova) {
+        this.CPF = CPF;
+        setSenha(SenhaNova);
+    }
+    
+    public Usuario(int ID, String Cargo, String username, String NomeFuncionario, String Nascimento, String CPF, String Celular, String Email, String Filial) {
+        this.ID = ID;
+        this.Cargo = Cargo;
+        this.username = username;
+        this.NomeFuncionario = NomeFuncionario;
+        this.Nascimento = Nascimento;
+        this.CPF = CPF;
+        this.Celular = Celular;
+        this.Email = Email;
+        this.Filial = Filial;
+    }
         
     public Usuario() {
     }

@@ -28,15 +28,11 @@
                 <h2>Consulta</h2>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-6 ">
+                <div class="form-group col-10 ">
                     <label> Client Full Name: </label>
                     <input type="text" class="form-control" placeholder="First Name" id="nome" name="nome">
                 </div>
 
-                <div class="form-group col-4 ">
-                    <label> CPF: </label>
-                    <input type="number" class="form-control" placeholder="Ainda nao funciona" id="cpf" name="cpf" >
-                </div>
                 <div class="form-group col-2">
                     <button type="submit" id="btn-form-search" style="margin-top: 30px;">Pesquisar <i class="fas fa-search"></i></button>
                 </div>

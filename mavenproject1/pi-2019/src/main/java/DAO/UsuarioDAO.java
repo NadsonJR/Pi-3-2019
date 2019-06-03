@@ -43,7 +43,7 @@ public class UsuarioDAO {
             preparedStatement.setString(4, usuario.getUsername());
             preparedStatement.setString(5, usuario.getHashSenha());
             preparedStatement.setString(6, usuario.getCargo());
-            preparedStatement.setString(7,usuario.getCelular());
+            preparedStatement.setString(7, usuario.getCelular());
             preparedStatement.setString(8, usuario.getEmail());
             preparedStatement.setString(9, usuario.getFilial());
             //Executa o comando no banco de dados
@@ -193,7 +193,7 @@ public class UsuarioDAO {
     public static boolean AlterarUsuario(Usuario usuario) throws Exception {
         System.out.println("Iniciando processo de atualização de Usuario...");
         //comando sql
-        String sql = "update Usuario set Nome =?,DatNasc =?,CPF =?,usuario =?,Senha =?,Cargo =?,Celular =?,Email =?,FilialNome =? where id =?";
+        String sql = "update Usuario set Nome =?,DatNasc =?,CPF =?,usuario =?,Cargo =?,Celular =?,Email =?,FilialNome =? where id =?";
         //Conexão para abertura e fechamento
         Connection connection = null;
         System.out.println(usuario.getID());
@@ -207,16 +207,15 @@ public class UsuarioDAO {
             preparedStatement = connection.prepareStatement(sql);
             //Configura os parâmetros do "PreparedStatement"
             //Comando do banco
-            preparedStatement.setString(1,usuario.getNomeFuncionario());
-            preparedStatement.setString(2,usuario.getNascimento());
-            preparedStatement.setString(3,usuario.getCPF());
-            preparedStatement.setString(4,usuario.getUsername());
-            preparedStatement.setString(5,usuario.getHashSenha());
-            preparedStatement.setString(6,usuario.getCargo());
-            preparedStatement.setString(7,usuario.getCelular());
-            preparedStatement.setString(8,usuario.getEmail());
-            preparedStatement.setString(9,usuario.getFilial());
-            preparedStatement.setInt(10,usuario.getID());
+            preparedStatement.setString(1, usuario.getNomeFuncionario());
+            preparedStatement.setString(2, usuario.getNascimento());
+            preparedStatement.setString(3, usuario.getCPF());
+            preparedStatement.setString(4, usuario.getUsername());
+            preparedStatement.setString(5, usuario.getCargo());
+            preparedStatement.setString(6, usuario.getCelular());
+            preparedStatement.setString(7, usuario.getEmail());
+            preparedStatement.setString(8, usuario.getFilial());
+            preparedStatement.setInt(9, usuario.getID());
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.getLocalizedMessage();
@@ -300,7 +299,7 @@ public class UsuarioDAO {
                 String Filial = result.getString("FilialNome");
                 Usuario user = new Usuario(id, NomeCompleto, CPF, DatNasc, Celular, Email, Filial, Username, Senha, Cargo);
                 user.setID(id);
-                
+
                 //Retorna o resultado
                 System.out.println("Retornando o objeto");
                 return user;
@@ -325,5 +324,42 @@ public class UsuarioDAO {
         //Neste caso, não há um elemento a retornar, então retornamos "null"
         System.out.println("Nao encontrou!");
         return null;
+    }
+
+    public static boolean AlterarSenha(Usuario usuario) throws Exception {
+        System.out.println("Iniciando processo de atualização de Usuario...");
+        //comando sql
+        String sql = "update Usuario set Senha=? where cpf =?";
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        System.out.println(usuario.getID());
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        try {
+            //abre conexão com banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            //Comando do banco
+            preparedStatement.setString(1, usuario.getHashSenha());
+            preparedStatement.setString(2, usuario.getCPF());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println(e);
+            return false;
+        } finally {
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        return true;
     }
 }
