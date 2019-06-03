@@ -131,7 +131,7 @@ public class Usuario {
     public void setHashSenha(String senha) {
         this.hashSenha = senha;
     }
-
+       
     public void setSenha(String senhaAberta) {
         this.hashSenha = BCrypt.hashpw(senhaAberta, BCrypt.gensalt());
     }
