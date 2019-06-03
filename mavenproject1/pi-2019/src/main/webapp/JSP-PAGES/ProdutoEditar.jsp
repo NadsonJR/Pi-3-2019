@@ -64,11 +64,11 @@
             <div class="row justify-content-center">
                 <div class="form-group col-3">
                     <label>Valor Venda:</label>
-                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" onkeypress="return onlynumber();" maxlength="7"/>
+                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" onkeypress="return onlynumber();" maxlength="7" value="${livro.valorVenda}"/>
                 </div>
                 <div class="form-group col-3">
                     <label>Valor Compra:</label>
-                    R$:<input type="int" id="dinheiro1" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" onkeypress="return onlynumber();" maxlength="7"/>
+                    R$:<input type="int" id="dinheiro1" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" onkeypress="return onlynumber();" maxlength="7" value="${livro.valorCusto}"/>
                 </div>
                 <div class="form-group col-3">
                     <label>Ano:</label>
