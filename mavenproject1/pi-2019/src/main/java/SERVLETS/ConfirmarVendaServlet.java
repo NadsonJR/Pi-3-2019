@@ -5,8 +5,13 @@
  */
 package SERVLETS;
 
+import DAO.VendaDAO;
+import Modal.Livro;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,7 +36,17 @@ public class ConfirmarVendaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
-        sessao.invalidate();
+            System.out.println("ID da Venda na confirmação: " + (int)sessao.getAttribute("IDVenda"));
+            System.out.println("Pagamento na confirmação: " + sessao.getAttribute("Pagamento"));
+        try {
+            System.out.println("ID da Venda na confirmação: " + (int)sessao.getAttribute("IDVenda"));
+            System.out.println("Pagamento na confirmação: " + sessao.getAttribute("Pagamento"));
+            VendaDAO.updateFormaPagamento((int)(sessao.getAttribute("IDVenda")), sessao.getAttribute("Pagamento").toString());
+        } catch (Exception ex) {
+            Logger.getLogger(ConfirmarVendaServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+                sessao.setAttribute("IDVenda", null);
 
         response.sendRedirect(request.getContextPath() + "/JSP-PAGES/Home.jsp");
 

@@ -10,7 +10,6 @@ import conexao.ConnectionBD;
 import java.sql.PreparedStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 /**
  *
@@ -34,8 +33,9 @@ public class LoginDAO {
                 user.setID(rs.getInt("ID"));
                 user.setNomeFuncionario(rs.getString("Nome"));
                 user.setUsername(rs.getString("Usuario"));
-                user.setHashSenha(rs.getString("Senha"));
+                user.setSenha(rs.getString("Senha"));
                 user.setCargo(rs.getString("Cargo"));
+                System.out.println(user.toString());
             }
         } finally {
             if (preparedStatement != null && !preparedStatement.isClosed()) {

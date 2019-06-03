@@ -73,7 +73,7 @@ public class CadastroVenda extends HttpServlet {
                 Livro L = LivroDAO.procurarId(IDLivro);
                 //Testa se o ID da Venda já foi criado
                 
-
+                //Verifica se a venda já foi iniciada no Banco de Dados
                 if (sessao.getAttribute("IDVenda") == null) {
                     
                     Cliente cliente = ClienteDAO.procurarId(Integer.parseInt(request.getParameter("cliente")));
@@ -82,7 +82,7 @@ public class CadastroVenda extends HttpServlet {
                     
                     System.out.println(request.getAttribute("NomeCliente"));
                     
-                    
+                    //Inicia a Venda no Banco
                     int IDVenda = VendaDAO.criarIDVenda();
 
                     sessao.setAttribute("IDVenda", IDVenda);
@@ -96,11 +96,11 @@ public class CadastroVenda extends HttpServlet {
                     v.setIDVenda(IDVenda);
                     v.setDataVenda(data.toString());
                     v.setValor(L.getValorVenda());
-                    v.setFormaPagamento("Dinheiro");
-
+                    v.setFormaPagamento(request.getParameter("Pagamento"));
+                    System.out.println(request.getParameter("Pagamento"));
                     VendaDAO.inserirVenda(v);
                 } else {
-                    
+                    //Caso a Venda já tenha sido iniciada, vai apenas atualizando conforme os produtos são acrescentados
                     
                     LocalDate data = LocalDate.now();
                     Venda v = new Venda();
@@ -119,12 +119,13 @@ public class CadastroVenda extends HttpServlet {
                     v.setIDVenda((int) sessao.getAttribute("IDVenda"));
                     v.setDataVenda(data.toString());
                     v.setValor(Float.parseFloat(request.getParameter("valorTotal")) + L.getValorVenda());
-                    v.setFormaPagamento("Dinheiro");
+                    System.out.println(request.getParameter("Pagamento"));
+                    v.setFormaPagamento(request.getParameter("Pagamento"));
                     System.out.println("ANTES DO UPDATE");
                     
                     VendaDAO.update(v);
                 }
-                //Cria um novo Carrinho
+                //Adiciona os produtos no Carrinho referenciando a Venda
                 ItensCarrinho C = new ItensCarrinho();
 
                 C.setIDLivro(IDLivro);

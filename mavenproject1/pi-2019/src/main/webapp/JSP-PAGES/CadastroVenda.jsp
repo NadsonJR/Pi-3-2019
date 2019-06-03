@@ -32,10 +32,9 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="form-group col-4">
+                    <div class="form-group col-5">
                         <label> Cliente </label>
                         <%
-                            out.print(request.getAttribute("NomeCliente"));
                             if (request.getAttribute("NomeCliente") != null) {
                                 out.print("<select class='form-control' required name='cliente'>"
                                         + "<option value=" + request.getAttribute("IDCliente") + ">");
@@ -57,7 +56,7 @@
                             }
                         %>
                     </div>
-                    <div class="form-group col-4">
+                    <div class="form-group col-5">
                         <label> Livro </label>
                         <select class="form-control" required name="produto">
                             <option>Choose... </option>
@@ -117,12 +116,12 @@
                     </div>
                     <div class="form-group  col-4">
                         <label>Forma de pagamento:</label>
-                        <select class="form-control" required name="cliente">
+                        <select class="form-control" required name="Pagamento">
                             <option>Choose... </option>
                             <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0">
-                                <option value="${Pagamento.getIdPagamento()}">
+                                <option value="${pageContext.session.setAttribute("Pagamento",Pagamento.getDescricao())}">
                                     <c:out value="${Pagamento.getDescricao()}"/>
-                                </option>
+                                </option> 
                             </c:forEach>
                         </select>
                     </div>
@@ -140,25 +139,27 @@
                         <label>
                             <%
                                 if (request.getAttribute("listaProdutoCarrinho") == null) {
+                                    out.print("Valor Total:<br>R$: ");
                                 } else {
                                     List<Livro> listaProduto;
                                     listaProduto = (List) request.getAttribute("listaProdutoCarrinho");
-                                    float ValorTotal = 0;
+                                    String ValorTotal = "";
                                     for (int i = 0; i < listaProduto.size(); i++) {
-                                        Livro livro = listaProduto.get(i);
-                                        ValorTotal += livro.getValorVenda();
+                                        Livro livro = listaProduto.get(i); 
+                                        ValorTotal += livro.formatToReal(livro.getValorVenda());
                                     }
-                                    out.print("Valor Total:<br>R$: " + ValorTotal);
+                                    out.print("Valor Total:<br> " + ValorTotal);
                                     out.print("<input type='hidden' required name='valorTotal' value='" + ValorTotal + "'>");
                                 }
                             %>
                         </label>
                     </div>
                 </div> 
-            </form>
+            
             <table>
                 <tr>
                     <td width="1000" style='text-align: right'>
+                        <form></form>
                         <form method="post" action="${pageContext.request.contextPath}/CancelarVenda">
                             <button  type="submit" class="btn btn-primary" id="btn-form"> Cancelar </button>
                         </form>
@@ -170,6 +171,7 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </form>      
+        </div>                
     </body>
 </html>

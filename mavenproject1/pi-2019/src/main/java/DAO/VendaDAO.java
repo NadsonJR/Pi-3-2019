@@ -245,6 +245,43 @@ public class VendaDAO {
         }
     }
    
+   public static void updateFormaPagamento(int IDVenda, String formaPagamento)
+            throws SQLException, Exception {
+        //Monta a string de inserção de um cliente no BD,
+        //utilizando os dados do clientes passados como parâmetro
+        String sql = "UPDATE Venda SET FormaPagamento = ? "
+                + "where IDVenda = " + IDVenda;
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            preparedStatement.setString(1, formaPagamento);
+            
+            //Executa o comando no banco de dados
+            preparedStatement.execute();
+        } catch (Exception e) {
+
+            e.getLocalizedMessage();
+            System.out.println(e);
+        } finally {
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection  != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+    }
+   
    public static boolean delete(int IDVenda)
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,

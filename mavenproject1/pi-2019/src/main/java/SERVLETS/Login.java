@@ -40,28 +40,30 @@ public class Login extends HttpServlet {
         String usuario = request.getParameter("inputName");
         String senhaAberta = request.getParameter("inputSenha");
         Usuario user=null;
+        System.out.println(usuario);
+        System.out.println(senhaAberta);
+        
         try {
             user = LoginDAO.Logar(usuario);
+            System.out.println("Usuario do Login " + user.toString());
         } catch (Exception e) {
             e.getLocalizedMessage();
-            System.out.println(e + " Erro no Login!");
+            System.out.println( " Erro no Login!" + e );
         }
-        System.out.println(user.getUsername());
-        System.out.println(user.getHashSenha());
-       // if (user != null && user.validarSenha(senhaAberta)) {
-            // Se sucesso, salva usuario na sessao e redireciona para /protegido/home
+        if (user.validarSenha(senhaAberta)) {
+             //Se sucesso, salva usuario na sessao e redireciona para /protegido/home
             HttpSession sessao = request.getSession();
             System.out.println("entrou no inf");
             sessao.setAttribute("usuario", user);
             request.getRequestDispatcher("/JSP-PAGES/Home.jsp")
                      .forward(request, response);
-       /*} else {
+       } else {
              // Se erro, reapresenta tela de login com msg de erro
              request.setAttribute("msgErro", "Usuário ou senha inválidos");
              request.getRequestDispatcher("/JSP-PAGES/Login.jsp")
                      .forward(request, response);
              
-        }*/
+        }
 
     }
 

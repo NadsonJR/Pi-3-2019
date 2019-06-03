@@ -5,16 +5,19 @@
  */
 package Modal;
 
+import java.text.NumberFormat;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  *
  * @author mt12732
  */
 public class Livro {
+
     private String nomelivro;
     private String Autor;
-    private String Editora;	
+    private String Editora;
     private String Descricao;
     private float ValorVenda;
     private float ValorCusto;
@@ -25,9 +28,7 @@ public class Livro {
 
     public Livro() {
     }
-    
-    
-    
+
     public String getDataCadastro() {
         return DataCadastro;
     }
@@ -108,33 +109,47 @@ public class Livro {
         this.Quantidade = Quantidade;
     }
 
-    
-    public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade, String DataCadastro ){
-    this.Categoria = Categoria;
-    this.nomelivro = NomeLivro;
-    this.Autor = Autor;
-    this.Editora = Editora;
-    this.Descricao = DescricaoLivro;
-    this.ValorVenda = ValorVenda;
-    this.ValorCusto = ValorCusto;
-    this.Quantidade = Quantidade;
-    this.DataCadastro =  DataCadastro;
-    }
-    
-        public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade, String DataCadastro, int id ){
-    this.Categoria = Categoria;
-    this.nomelivro = NomeLivro;
-    this.Autor = Autor;
-    this.Editora = Editora;
-    this.Descricao = DescricaoLivro;
-    this.ValorVenda = ValorVenda;
-    this.ValorCusto = ValorCusto;
-    this.Quantidade = Quantidade;
-    this.DataCadastro =  DataCadastro;
-    this.ID = id;
+    public double formatToFloat(String preco) {
+        float precoNovo;
+        String precoFormatado;
+        precoFormatado = preco.replaceAll("\\.", "").replaceAll("\\,", ".").replaceAll("R", "").replaceAll("\\$", "");
+        precoNovo = Float.parseFloat(precoFormatado);
+        return precoNovo;
     }
 
-    public Livro(String nomelivro, String Autor, String Editora,float ValorVenda,Integer ID, Integer Quantidade) {
+    public String formatToReal(float preco) {
+        Locale ptBr = new Locale("pt", "Br");
+        NumberFormat nf = NumberFormat.getCurrencyInstance(ptBr);
+        String formatado = nf.format(preco);
+        return formatado;
+    }
+
+    public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade, String DataCadastro) {
+        this.Categoria = Categoria;
+        this.nomelivro = NomeLivro;
+        this.Autor = Autor;
+        this.Editora = Editora;
+        this.Descricao = DescricaoLivro;
+        this.ValorVenda = ValorVenda;
+        this.ValorCusto = ValorCusto;
+        this.Quantidade = Quantidade;
+        this.DataCadastro = DataCadastro;
+    }
+
+    public Livro(String NomeLivro, String DescricaoLivro, String Autor, String Editora, float ValorVenda, float ValorCusto, String Categoria, int Quantidade, String DataCadastro, int id) {
+        this.Categoria = Categoria;
+        this.nomelivro = NomeLivro;
+        this.Autor = Autor;
+        this.Editora = Editora;
+        this.Descricao = DescricaoLivro;
+        this.ValorVenda = ValorVenda;
+        this.ValorCusto = ValorCusto;
+        this.Quantidade = Quantidade;
+        this.DataCadastro = DataCadastro;
+        this.ID = id;
+    }
+
+    public Livro(String nomelivro, String Autor, String Editora, float ValorVenda, Integer ID, Integer Quantidade) {
         this.nomelivro = nomelivro;
         this.Autor = Autor;
         this.Editora = Editora;
@@ -142,6 +157,5 @@ public class Livro {
         this.ID = ID;
         this.Quantidade = Quantidade;
     }
-    
-        
+
 }

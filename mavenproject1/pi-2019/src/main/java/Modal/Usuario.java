@@ -21,25 +21,11 @@ public class Usuario {
     private String CPF;
     private String Celular;
     private String Email;
-    private String hashSenha;
+    private String Senha;
     private String Filial;
-    
 
-    public Usuario(String NomeFuncionario, String CPF, String Nascimento, String Celular, String Email,String Filial, String username, String senhaAberta, String Cargo) {
-        this.Filial = Filial;
-        this.Cargo = Cargo;
-        this.username = username;
-        this.NomeFuncionario = NomeFuncionario;
-        this.Nascimento = Nascimento;
-        this.CPF = CPF;
-        this.Celular = Celular;
-        this.Email = Email;
-        setSenha(senhaAberta);
-    }
-
-    public Usuario(int ID, String NomeFuncionario, String CPF, String Nascimento, String Celular, String Email,String Filial, String username, String senhaAberta, String Cargo) {
+    public Usuario(int ID, String Cargo, String username, String NomeFuncionario, String Nascimento, String CPF, String Celular, String Email, String Senha, String Filial) {
         this.ID = ID;
-        this.Filial = Filial;
         this.Cargo = Cargo;
         this.username = username;
         this.NomeFuncionario = NomeFuncionario;
@@ -47,9 +33,23 @@ public class Usuario {
         this.CPF = CPF;
         this.Celular = Celular;
         this.Email = Email;
-        setSenha(senhaAberta);
+        this.Senha = Senha;
+        this.Filial = Filial;
     }
-        
+    
+     public Usuario(String NomeFuncionario,String CPF, String Nascimento,String Celular,String Email, String Filial,String username, String Senha,String Cargo) {
+        this.Cargo = Cargo;
+        this.username = username;
+        this.NomeFuncionario = NomeFuncionario;
+        this.Nascimento = Nascimento;
+        this.CPF = CPF;
+        this.Celular = Celular;
+        this.Email = Email;
+        this.Senha = Senha;
+        this.Filial = Filial;
+    }
+    
+    
     public Usuario() {
     }
     
@@ -125,19 +125,19 @@ public class Usuario {
     }
 
     public String getHashSenha() {
-        return hashSenha;
+        return Senha;
     }
 
-    public void setHashSenha(String senha) {
-        this.hashSenha = senha;
+    public void setSenha(String senha) {
+        this.Senha = senha;
     }
 
-    public void setSenha(String senhaAberta) {
-        this.hashSenha = BCrypt.hashpw(senhaAberta, BCrypt.gensalt());
-    }
     
-    public boolean validarSenha(String senhaAberta) {
-        return BCrypt.checkpw(senhaAberta, hashSenha);
+    public boolean validarSenha(String senha) {
+        if (senha.equals(Senha)){
+        return true;
+    }
+        return false;
     }
 
     public boolean verificarPapel(String Cargos) {
@@ -147,4 +147,13 @@ public class Usuario {
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "ID=" + ID + ", Cargo=" + Cargo + ", username=" + username + ", NomeFuncionario=" + NomeFuncionario + ", Nascimento=" + Nascimento + ", CPF=" + CPF + ", Celular=" + Celular + ", Email=" + Email + ", Senha=" + Senha + ", Filial=" + Filial + '}';
+    }
+    
+    
+    
+    
 }
