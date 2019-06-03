@@ -13,7 +13,7 @@ import java.util.List;
  * @author mt12732
  */
 public class Venda {
-     
+
     private int IDCliente;
     private int IDVenda;
     private String DataVenda;
@@ -31,13 +31,9 @@ public class Venda {
     }
 
     public Venda() {
-        
+
     }
 
-    
-    
-    
-    
     public int getIDCliente() {
         return IDCliente;
     }
@@ -85,13 +81,14 @@ public class Venda {
     public void setNomeCliente(String NomeCliente) {
         this.NomeCliente = NomeCliente;
     }
-    
-    
 
-   
-    
-    
-    
-    
-     
+    public String formatDataVenda(String data) {
+        String dia, mes, ano, dataBr;
+        dia = data.substring(8);
+        mes = data.substring(5, 7);
+        ano = data.substring(0, 4);
+        dataBr = dia + "/" + mes + "/" + ano;
+        return dataBr;
+    }
+
 }

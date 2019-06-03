@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Modal.Cliente;
+import Modal.Produto;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +54,7 @@ public class ClienteDAO {
             //Executa o comando no banco de dados
             preparedStatement.execute();
         } catch (Exception e) {
-            
+
             e.getLocalizedMessage();
             System.out.println(e);
             return false;
@@ -144,7 +145,7 @@ public class ClienteDAO {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
         //ESSA QUERY TA 100% FORA DAS BOAS PRÁTICAS ---->
-        String sql = "SELECT * FROM Cliente WHERE Nome="+ "'" + nomeBanco + "'";
+        String sql = "SELECT * FROM Cliente WHERE Nome=" + "'" + nomeBanco + "'";
         //Lista de clientes de resultado
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
@@ -342,13 +343,11 @@ public class ClienteDAO {
             preparedStatement.setInt(1, ID);
             preparedStatement.execute();
 
-        }catch(Exception e){
+        } catch (Exception e) {
             e.getLocalizedMessage();
             System.out.println(e);
             return false;
-        }
-        
-        finally {
+        } finally {
 
             if (preparedStatement != null && !preparedStatement.isClosed()) {
                 preparedStatement.close();
@@ -360,4 +359,55 @@ public class ClienteDAO {
         }
         return true;
     }
+
+    public static boolean checkDataBase()
+            throws SQLException, Exception {
+        //Monta a string de listagem de clientes no banco, considerando
+        //apenas a coluna de ativação de clientes ("enabled")
+        String sql = "SELECT * FROM cliente";
+        //Lista de clientes de resultado
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        int contador = 0;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+
+            //Itera por cada item do resultado
+            while (result.next()) {
+                //Se a lista não foi inicializada, a inicializa
+                contador++;
+            }
+            if (contador == 0) {
+                return false;
+            } else {
+                return true;
+            }
+
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+    }
+
 }

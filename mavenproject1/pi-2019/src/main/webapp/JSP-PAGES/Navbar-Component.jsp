@@ -47,11 +47,11 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  "Venda"
+                  Venda
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="${pageContext.request.contextPath}/CadastroVenda">Cadastro</a>
-                  <a class="dropdown-item" href="${pageContext.request.contextPath}/ConsultaVenda">Consulta</a>
+                  <a class="dropdown-item" href="${pageContext.request.contextPath}/ConsultarVenda">Consulta</a>
                 </div>
               </li>
               <li class="nav-item dropdown">

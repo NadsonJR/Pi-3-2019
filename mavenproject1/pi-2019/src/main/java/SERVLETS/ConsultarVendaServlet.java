@@ -5,12 +5,12 @@
  */
 package SERVLETS;
 
-import DAO.LivroDAO;
+
 import DAO.VendaDAO;
-import Modal.Livro;
+
 import Modal.Venda;
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,36 +22,48 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author nadso
+ * @author adn_e
  */
-@WebServlet(name = "EmitirRelatorio", urlPatterns = {"/EmitirRelatorio"})
-public class EmitirRelatorioServlet extends HttpServlet {
+@WebServlet(name = "ConsultarVendaServlet", urlPatterns = {"/ConsultarVenda"})
+public class ConsultarVendaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         HttpSession sessao = request.getSession();
+        request.setCharacterEncoding("UTF-8");
+        System.out.println("TA NO SERVLET DA VENDA");
         try {
+            String nome = request.getParameter("nomeCliente");
+            System.out.println(nome);
             List<Venda> listaVenda = VendaDAO.listar();
             request.setAttribute("listaVenda", listaVenda);
-            sessao.setAttribute("listaVenda" , listaVenda);
-            System.out.println(listaVenda);
+            sessao.setAttribute("listaVenda", listaVenda);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e + " erro ao buscar cliente");
         }
-
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/JSP-PAGES/EmitirRelatorio.jsp");
+                = request.getRequestDispatcher("JSP-PAGES/ConsultaVenda.jsp");
         dispatcher.forward(request, response);
-
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession sessao = request.getSession();
+        request.setCharacterEncoding("UTF-8");
+        System.out.println("TA NO SERVLET DA VENDA");
+        try {
+            String nome = request.getParameter("nomeCliente");
+            System.out.println(nome);
+            List<Venda> listaVenda = VendaDAO.listar();
+            request.setAttribute("listaVenda", listaVenda);
+            sessao.setAttribute("listaVenda", listaVenda);
+        } catch (Exception e) {
+            System.out.println(e + " erro ao buscar cliente");
+        }
         RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/JSP-PAGES/EmitirRelatorio.jsp");
+                = request.getRequestDispatcher("JSP-PAGES/ConsultaVenda.jsp");
         dispatcher.forward(request, response);
     }
 

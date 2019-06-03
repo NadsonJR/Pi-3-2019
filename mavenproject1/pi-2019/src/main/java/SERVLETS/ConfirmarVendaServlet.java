@@ -36,6 +36,8 @@ public class ConfirmarVendaServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sessao = request.getSession();
+        if(sessao.getAttribute("IDVenda") != null){
+                
             System.out.println("ID da Venda na confirmação: " + (int)sessao.getAttribute("IDVenda"));
             System.out.println("Pagamento na confirmação: " + sessao.getAttribute("Pagamento"));
         try {
@@ -48,8 +50,12 @@ public class ConfirmarVendaServlet extends HttpServlet {
             
                 sessao.setAttribute("IDVenda", null);
 
-        response.sendRedirect(request.getContextPath() + "/JSP-PAGES/Home.jsp");
+        response.sendRedirect(request.getContextPath() + "/CadastroVenda");
 
+    } else {
+            response.sendRedirect(request.getContextPath() + "/CadastroVenda");
+        }
+        
     }
 
 }

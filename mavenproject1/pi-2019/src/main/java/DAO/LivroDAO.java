@@ -6,6 +6,7 @@
 package DAO;
 
 import Modal.Livro;
+import Modal.Produto;
 import conexao.ConnectionBD;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -310,6 +311,48 @@ public class LivroDAO {
         return true;
     }
 
+     public static boolean AlterarQuantidadeProduto(int ID, int Quantidade) throws Exception {
+        System.out.println("Iniciando processo de atualização de Produto...");
+
+        //comando sql
+        String sql = "update Livro set Quantidade=? WHERE ID=?";
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+
+        try {
+            //abre conexão com banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+            //Configura os parâmetros do "PreparedStatement"
+            //Comando do banco
+
+            preparedStatement.setFloat(1, Quantidade);
+             preparedStatement.setInt(2, ID);
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.getLocalizedMessage();
+            System.out.println("Produto Alterar ERRO: " + e);
+            return false;
+        } finally {
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+        return true;
+    }
+    
+    
+    
+    
     public static boolean delLivro(int ID) throws Exception {
         String sql = "DELETE From Livro WHere ID=?";
         Connection connection = null;
@@ -336,4 +379,58 @@ public class LivroDAO {
         }
         return true;
     }
+        
+    
+    
+    public static boolean checkDataBase()
+            throws SQLException, Exception {
+        //Monta a string de listagem de clientes no banco, considerando
+        //apenas a coluna de ativação de clientes ("enabled")
+        String sql = "SELECT * FROM Livro";
+        //Lista de clientes de resultado
+        List<Produto> listaProduto = null;
+        //Conexão para abertura e fechamento
+        Connection connection = null;
+        //Statement para obtenção através da conexão, execução de
+        //comandos SQL e fechamentos
+        PreparedStatement preparedStatement = null;
+        //Armazenará os resultados do banco de dados
+        ResultSet result = null;
+        int contador = 0;
+        try {
+            //Abre uma conexão com o banco de dados
+            connection = ConnectionBD.obterConexao();
+            //Cria um statement para execução de instruções SQL
+            preparedStatement = connection.prepareStatement(sql);
+
+            //Executa a consulta SQL no banco de dados
+            result = preparedStatement.executeQuery();
+
+            //Itera por cada item do resultado
+            while (result.next()) {
+                //Se a lista não foi inicializada, a inicializa
+                contador++;
+            }
+            if (contador == 0) {
+                return false;
+            } else {
+                return true;
+            }
+
+        } finally {
+            //Se o result ainda estiver aberto, realiza seu fechamento
+            if (result != null && !result.isClosed()) {
+                result.close();
+            }
+            //Se o statement ainda estiver aberto, realiza seu fechamento
+            if (preparedStatement != null && !preparedStatement.isClosed()) {
+                preparedStatement.close();
+            }
+            //Se a conexão ainda estiver aberta, realiza seu fechamento
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        }
+    }
+    
 }

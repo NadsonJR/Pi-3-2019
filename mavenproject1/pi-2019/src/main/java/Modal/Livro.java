@@ -109,7 +109,7 @@ public class Livro {
         this.Quantidade = Quantidade;
     }
 
-    public double formatToFloat(String preco) {
+    public float formatToFloat(String preco) {
         float precoNovo;
         String precoFormatado;
         precoFormatado = preco.replaceAll("\\.", "").replaceAll("\\,", ".").replaceAll("R", "").replaceAll("\\$", "");

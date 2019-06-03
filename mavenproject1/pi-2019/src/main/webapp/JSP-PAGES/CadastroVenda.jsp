@@ -25,14 +25,15 @@
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
         <div id="FadeForm" class="form-type">
-            <form  method="get" action="${pageContext.request.contextPath}/CadastroVenda">
+            <form  method="post" action="${pageContext.request.contextPath}/CadastroVenda">
+
                 <div class="row justify-content-center">
                     <div class="form-group col-6">
                         <h2>Venda</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
-                    <div class="form-group col-5">
+                    <div class="form-group col-4">
                         <label> Cliente </label>
                         <%
                             if (request.getAttribute("NomeCliente") != null) {
@@ -42,7 +43,7 @@
 
                                 out.print("</option>"
                                         + "</select>");
-                            } else {
+                            } else if (request.getAttribute("listaClientes") != null) {
 
                                 List<Cliente> lista = (List) request.getAttribute("listaClientes");
                                 out.print("<select class='form-control' required name='cliente'>");
@@ -53,10 +54,14 @@
                                 }
 
                                 out.print("</select>");
+                            } else {
+                                out.print("<select class='form-control' required name='cliente'>");
+                                out.print("<option>Choose...</option>");
+                                out.print("</select>");
                             }
                         %>
                     </div>
-                    <div class="form-group col-5">
+                    <div class="form-group col-4">
                         <label> Livro </label>
                         <select class="form-control" required name="produto">
                             <option>Choose... </option>
@@ -67,6 +72,13 @@
                             </c:forEach>
                         </select> 
                     </div>
+                    <div class="form-group col-2">
+                        <label> Quantidade </label>
+                        <input type="number" class="form-control" placeholder="1" min="1" required name="Quantidade"/>
+                    </div>
+
+
+
                     <div class="form-group col-2 "style="margin-top: 30px;">
                         <button type="submit" id="btn-form-search">Adicionar</button>
                     </div>
@@ -118,10 +130,10 @@
                         <label>Forma de pagamento:</label>
                         <select class="form-control" required name="Pagamento">
                             <option>Choose... </option>
-                            <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0">
-                                <option value="${pageContext.session.setAttribute("Pagamento",Pagamento.getDescricao())}">
+                            <c:forEach items ="${listaPagamento}" var="Pagamento" begin="0" >
+                                <option value="${pageContext.session.setAttribute("Pagamento",Pagamento.getDescricao())}" onclick="">
                                     <c:out value="${Pagamento.getDescricao()}"/>
-                                </option> 
+                                </option>        
                             </c:forEach>
                         </select>
                     </div>
@@ -143,35 +155,35 @@
                                 } else {
                                     List<Livro> listaProduto;
                                     listaProduto = (List) request.getAttribute("listaProdutoCarrinho");
-                                    String ValorTotal = "";
+                                    float ValorTotal = 0;
+                                    Livro livro = new Livro();
                                     for (int i = 0; i < listaProduto.size(); i++) {
-                                        Livro livro = listaProduto.get(i); 
-                                        ValorTotal += livro.formatToReal(livro.getValorVenda());
+                                        livro = listaProduto.get(i);
+                                        ValorTotal += (livro.getValorVenda()*livro.getQuantidade());
                                     }
-                                    out.print("Valor Total:<br> " + ValorTotal);
+                                    out.print("Valor Total:<br> " + livro.formatToReal(ValorTotal));
                                     out.print("<input type='hidden' required name='valorTotal' value='" + ValorTotal + "'>");
                                 }
                             %>
                         </label>
                     </div>
+                    <table>
+                        <tr>
+                            <td width="1000" style='text-align: right'>
+                                <form></form>
+                                <form method="post" action="${pageContext.request.contextPath}/CancelarVenda">
+                                    <button  type="submit" class="btn btn-primary" id="btn-form"> Cancelar </button>
+                                </form>
+                            </td>
+                            <td width="50" >
+                                <form method="post" action="${pageContext.request.contextPath}/ConfirmarVenda">
+                                    <button type="submit"  class="btn btn-primary" id="btn-form"> Confirmar </button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
                 </div> 
-            
-            <table>
-                <tr>
-                    <td width="1000" style='text-align: right'>
-                        <form></form>
-                        <form method="post" action="${pageContext.request.contextPath}/CancelarVenda">
-                            <button  type="submit" class="btn btn-primary" id="btn-form"> Cancelar </button>
-                        </form>
-                    </td>
-                    <td width="50" >
-                        <form method="post" action="${pageContext.request.contextPath}/ConfirmarVenda">
-                            <button type="submit"  class="btn btn-primary" id="btn-form"> Confirmar </button>
-                        </form>
-                    </td>
-                </tr>
-            </table>
-        </form>      
+            </form>      
         </div>                
     </body>
 </html>

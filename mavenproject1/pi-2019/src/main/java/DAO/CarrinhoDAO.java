@@ -100,7 +100,7 @@ public class CarrinhoDAO {
                 float ValorVenda = Float.parseFloat(result.getString("livro.ValorVenda"));
                 float ValorCusto = Float.parseFloat(result.getString("livro.ValorCusto"));
                 String Categoria = result.getString("categoria.Nome");
-                int Quantidade = Integer.parseInt(result.getString("livro.Quantidade"));
+                int Quantidade = Integer.parseInt(result.getString("carrinho.Quantidade"));
                 String Data = result.getString("livro.DataCadastro");
 
                 Livro L = new Livro(NomeLivro, Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data);

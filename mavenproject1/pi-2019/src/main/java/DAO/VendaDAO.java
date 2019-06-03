@@ -62,11 +62,11 @@ public class VendaDAO {
             }
         }
     }
-   public static List<Venda> listarVenda()
+   public static List<Venda> listar()
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Venda";//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
+        String sql = "SELECT * FROM Venda join Cliente on venda.IDCliente = cliente.ID";//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
         //Lista de clientes de resultado
         System.out.println("Entrou DAO ");
         List<Venda> listaVenda = new ArrayList<Venda>();
@@ -92,14 +92,15 @@ public class VendaDAO {
                 //Se a lista não foi inicializada, a inicializa                
                 System.out.println("Entrou no result Next");
                 //Cria uma instância de Venda e popula com os valores do BD
-                int IDCliente = result.getInt("IDCLiente");
-                int IDVenda = result.getInt("IDVenda");
-                String data = result.getString("DataVenda");
-                float Valor = result.getInt("Valor");
-                String FormaPagamento = result.getString("Descricao");
-                String NomeCliente = result.getString("NomeCliente");
+                int IDCliente = result.getInt("venda.IDCLiente");
+                int IDVenda = result.getInt("venda.IDVenda");
+                String data = result.getString("venda.DataVenda");
+                float Valor = result.getInt("venda.Valor");
+                String FormaPagamento = result.getString("venda.FormaPagamento");
+                String NomeCliente = result.getString("cliente.Nome") +" "+ result.getString("cliente.Sobrenome");
                 Venda V = new Venda(IDCliente, IDVenda, data, Valor, FormaPagamento, NomeCliente);
                 //Adiciona a instância na lista
+                System.out.println(V.toString());
                 listaVenda.add(V);
             }
         }catch(Exception e){
