@@ -11,7 +11,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Alterar Filial</title>
+        <title>Cadastro Filial</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="JSP-STYLES/main.css" />
         <script src="JSP-JS/jQuery-Mask-Plugin-master/src/jquery.mask.js" type="text/javascript"></script>

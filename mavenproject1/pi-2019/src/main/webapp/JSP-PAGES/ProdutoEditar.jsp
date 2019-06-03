@@ -20,13 +20,12 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function () {
-                $("input.data").mask("99/99/9999");
-                $("input.cpf").mask("999.999.999-99");
-                $("input.cep").mask("99.999-999");
-                $('#dinheiro').mask('#.##9,99', {reverse: true});
+            jQuery.noConflict();
+            jQuery(function($){
+                $('#dinheiro').mask('#.##9.99', {reverse: true});
+                $('#dinheiro1').mask('#.##9.99', {reverse: true});
             });
-        </script>        
+        </script>      
     </head>
     <jsp:include page="Navbar-Component.jsp"/>
     <body id="body-changes" class="text-center">  
@@ -65,11 +64,11 @@
             <div class="row justify-content-center">
                 <div class="form-group col-3">
                     <label>Valor Venda:</label>
-                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${livro.valorVenda}"/>
+                    R$:<input type="int" id="dinheiro" name="ValorVenda" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" onkeypress="return onlynumber();" maxlength="7"/>
                 </div>
                 <div class="form-group col-3">
                     <label>Valor Compra:</label>
-                    R$:<input type="int" id="dinheiro" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" value="${livro.valorCusto}"/>
+                    R$:<input type="int" id="dinheiro1" name="ValorCusto" class="dinheiro form-control" style="display:inline-block" placeholder="R$00,00" onkeypress="return onlynumber();" maxlength="7"/>
                 </div>
                 <div class="form-group col-3">
                     <label>Ano:</label>

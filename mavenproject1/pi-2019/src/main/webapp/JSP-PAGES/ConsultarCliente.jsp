@@ -29,7 +29,7 @@
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-10 ">
-                    <label> Client Full Name: </label>
+                    <label> Nome do Cliente: </label>
                     <input type="text" class="form-control" placeholder="First Name" id="nome" name="nome">
                 </div>
 

@@ -51,9 +51,7 @@ public class ProdutoExcluir extends HttpServlet {
             System.out.println("oi "+e);
         }
         
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("ConsultarProduto");
     }
 
 

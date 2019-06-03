@@ -9,6 +9,7 @@
 
 <!DOCTYPE html>
 <html>
+    <jsp:include page="Navbar-Component.jsp"/>
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
     </head>
-    <jsp:include page="Navbar-Component.jsp"/>
+    
     <body id="body-changes" class="text-center">
         <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroUsuario" accept-charset="UTF-8">
             <div class="row justify-content-center">
@@ -84,8 +85,8 @@
                 <div class ="form group col-9 ">
                 </div>
                 <div class ="form group   col-sm-3 ">
-                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
-                    <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
+                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancelar </button>
+                    <button type="submit" class="btn btn-primary" id="btn-form" > Confirmar </button>
                 </div>
             </div>
 

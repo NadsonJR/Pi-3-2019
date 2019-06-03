@@ -26,7 +26,7 @@
     <form id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/ClienteEditar" >
         <div class="row justify-content-center">
             <div class="form-group col-6">
-                <h2>Client</h2>
+                <h2>Cliente</h2>
             </div>
         </div>
         <div class="row justify-content-center">
