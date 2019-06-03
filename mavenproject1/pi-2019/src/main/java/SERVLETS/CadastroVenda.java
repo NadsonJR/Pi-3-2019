@@ -69,6 +69,7 @@ public class CadastroVenda extends HttpServlet {
                 int IDLivro = Integer.parseInt(request.getParameter("produto"));
                 //Pega as informações do Livro no BD
                 Livro L = LivroDAO.procurarId(IDLivro);
+                System.out.println(L.toString());
                 //Testa se o ID da Venda já foi criado
 
                 //Verifica se a venda já foi iniciada no Banco de Dados
@@ -115,7 +116,7 @@ public class CadastroVenda extends HttpServlet {
 
                     v.setIDVenda((int) sessao.getAttribute("IDVenda"));
                     v.setDataVenda(data.toString());
-                    v.setValor(L.formatToFloat(request.getParameter("valorTotal").toString()) + L.getValorVenda());
+                    v.setValor(L.formatToFloat(request.getParameter("valorTotal")) + L.getValorVenda());
                     System.out.println(request.getParameter("Pagamento"));
                     v.setFormaPagamento(request.getParameter("Pagamento"));
                     System.out.println("ANTES DO UPDATE");

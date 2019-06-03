@@ -163,10 +163,10 @@ public class FilialDAO {
                 int IDFilial = result.getInt("ID");
                 String NomeFilial = result.getString("NomeFilial");
                 String CNPJ = result.getString("CNPJ");
-                String Razao = result.getString("razao");
-                String CEP = result.getString("cep");
+                String Razao = result.getString("Razao");
+                String CEP = result.getString("Cep");
                 String Cidade = result.getString("Cidade");
-                String Estado = result.getString("estado");
+                String Estado = result.getString("Estado");
                 String Endereco = result.getString("Endereco");
                 String Complemento = result.getString("Complemento");
                 String Contato = result.getString("Contato");
@@ -292,10 +292,10 @@ public class FilialDAO {
                 int IDFilial = result.getInt("ID");
                 String NomeFilial = result.getString("NomeFilial");
                 String CNPJ = result.getString("CNPJ");
-                String Razao = result.getString("razao");
-                String CEP = result.getString("cep");
+                String Razao = result.getString("Razao");
+                String CEP = result.getString("Cep");
                 String Cidade = result.getString("Cidade");
-                String Estado = result.getString("estado");
+                String Estado = result.getString("Estado");
                 String Endereco = result.getString("Endereco");
                 String Complemento = result.getString("Complemento");
                 String Contato = result.getString("Contato");

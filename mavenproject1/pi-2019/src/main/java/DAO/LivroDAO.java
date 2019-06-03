@@ -69,7 +69,7 @@ public class LivroDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "select l.*, c.Nome as Categoria2 from Livro as l inner join categoria as c on c.IDCategoria = l.Categoria;";
+        String sql = "select l.*, c.Nome as Categoria2 from Livro as l inner join Categoria as c on c.IDCategoria = l.Categoria;";
         //Lista de clientes de resultado
         List<Livro> listaProduto = null;
         //Conexão para abertura e fechamento
@@ -96,7 +96,7 @@ public class LivroDAO {
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
 
-                int id = result.getInt("id");
+                int id = result.getInt("ID");
                 String NomeLivro = result.getString("NomeLivro");
                 String Autor = result.getString("Autor");
                 String Editora = result.getString("Editora");
@@ -224,7 +224,7 @@ public class LivroDAO {
             //Verifica se há pelo menos um resultado
             if (result.next()) {
                 //Cria uma instância de Cliente e popula com os valores do BD
-                int id = result.getInt("id");
+                int id = result.getInt("ID");
                 String NomeLivro = result.getString("NomeLivro");
                 String Autor = result.getString("Autor");
                 String Editora = result.getString("Editora");

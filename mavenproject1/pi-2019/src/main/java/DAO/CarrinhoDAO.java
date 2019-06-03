@@ -25,7 +25,7 @@ public class CarrinhoDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO carrinho (IDLivro,Quantidade,IDCarrinho,Valor) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Carrinho (IDLivro,Quantidade,IDCarrinho,Valor) VALUES (?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -64,8 +64,8 @@ public class CarrinhoDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * From carrinho join livro on carrinho.IDLivro = livro.ID join Categoria"
-                + " on categoria.IDCategoria = livro.Categoria where carrinho.IDCarrinho =" + IDCarrinho;
+        String sql = "SELECT * From Carrinho join Livro on Carrinho.IDLivro = Livro.ID join Categoria"
+                + " on Categoria.IDCategoria = Livro.Categoria where Carrinho.IDCarrinho =" + IDCarrinho;
         //Lista de clientes de resultado
         List<Livro> listaProduto = null;
         //Conexão para abertura e fechamento
@@ -92,16 +92,16 @@ public class CarrinhoDAO {
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
 
-                int id = result.getInt("livro.ID");
-                String NomeLivro = result.getString("livro.NomeLivro");
-                String Autor = result.getString("livro.Autor");
-                String Editora = result.getString("livro.Editora");
-                String Descricao = result.getString("livro.Descricao");
-                float ValorVenda = Float.parseFloat(result.getString("livro.ValorVenda"));
-                float ValorCusto = Float.parseFloat(result.getString("livro.ValorCusto"));
-                String Categoria = result.getString("categoria.Nome");
-                int Quantidade = Integer.parseInt(result.getString("carrinho.Quantidade"));
-                String Data = result.getString("livro.DataCadastro");
+                int id = result.getInt("Livro.ID");
+                String NomeLivro = result.getString("Livro.NomeLivro");
+                String Autor = result.getString("Livro.Autor");
+                String Editora = result.getString("Livro.Editora");
+                String Descricao = result.getString("Livro.Descricao");
+                float ValorVenda = Float.parseFloat(result.getString("Livro.ValorVenda"));
+                float ValorCusto = Float.parseFloat(result.getString("Livro.ValorCusto"));
+                String Categoria = result.getString("Categoria.Nome");
+                int Quantidade = Integer.parseInt(result.getString("Carrinho.Quantidade"));
+                String Data = result.getString("Livro.DataCadastro");
 
                 Livro L = new Livro(NomeLivro, Descricao, Autor, Editora, ValorVenda, ValorCusto, Categoria, Quantidade, Data);
                 L.setID(id);
@@ -133,7 +133,7 @@ public class CarrinhoDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "DELETE FROM carrinho where IDCarrinho = " + IDCarrinho;
+        String sql = "DELETE FROM Carrinho where IDCarrinho = " + IDCarrinho;
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de

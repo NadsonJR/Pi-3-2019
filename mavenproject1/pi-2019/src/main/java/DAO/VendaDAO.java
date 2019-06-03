@@ -67,7 +67,7 @@ public class VendaDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Venda join Cliente on venda.IDCliente = cliente.ID";//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
+        String sql = "SELECT * FROM Venda join Cliente on venda.IDCliente = Cliente.ID";//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
         //Lista de clientes de resultado
         System.out.println("Entrou DAO ");
         List<Venda> listaVenda = new ArrayList<Venda>();
@@ -93,12 +93,12 @@ public class VendaDAO {
                 //Se a lista não foi inicializada, a inicializa                
                 System.out.println("Entrou no result Next");
                 //Cria uma instância de Venda e popula com os valores do BD
-                int IDCliente = result.getInt("venda.IDCLiente");
-                int IDVenda = result.getInt("venda.IDVenda");
-                String data = result.getString("venda.DataVenda");
-                float Valor = result.getInt("venda.Valor");
-                String FormaPagamento = result.getString("venda.FormaPagamento");
-                String NomeCliente = result.getString("cliente.Nome") +" "+ result.getString("cliente.Sobrenome");
+                int IDCliente = result.getInt("Venda.IDCLiente");
+                int IDVenda = result.getInt("Venda.IDVenda");
+                String data = result.getString("Venda.DataVenda");
+                float Valor = result.getInt("Venda.Valor");
+                String FormaPagamento = result.getString("Venda.FormaPagamento");
+                String NomeCliente = result.getString("Cliente.Nome") +" "+ result.getString("Cliente.Sobrenome");
                 Venda V = new Venda(IDCliente, IDVenda, data, Valor, FormaPagamento, NomeCliente);
                 //Adiciona a instância na lista
                 System.out.println(V.toString());
@@ -131,9 +131,9 @@ public class VendaDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Venda join Cliente on venda.IDCliente = cliente.ID join carrinho on "
-                + "venda.IDVenda = carrinho.IDCarrinho join "
-                + "livro on livro.ID = carrinho.IDLivro where venda.IDVenda = " + IDVenda;//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
+        String sql = "SELECT * FROM Venda join Cliente on Venda.IDCliente = Cliente.ID join Carrinho on "
+                + "Venda.IDVenda = Carrinho.IDCarrinho join "
+                + "Livro on Livro.ID = Carrinho.IDLivro where Venda.IDVenda = " + IDVenda;//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
         //Lista de clientes de resultado
         System.out.println("Entrou DAO ");
         List<Relatorio> listaRelatorio = new ArrayList<Relatorio>();
@@ -159,14 +159,14 @@ public class VendaDAO {
                 //Se a lista não foi inicializada, a inicializa                
                 System.out.println("Entrou no result Next");
                 //Cria uma instância de Venda e popula com os valores do BD
-                String nomeCliente = result.getString("cliente.Nome") + " " + result.getString("cliente.Sobrenome");
-                String data = result.getString("venda.DataVenda");
-                String livro = result.getString("livro.NomeLivro");
-                int quantidade = result.getInt("carrinho.Quantidade");
-                float valorUnitario = result.getFloat("livro.ValorVenda");
-                float valor = result.getFloat("carrinho.Valor");
-                float valorTotal = result.getFloat("venda.Valor");
-                String FormaPagamento = result.getString("venda.FormaPagamento");
+                String nomeCliente = result.getString("Cliente.Nome") + " " + result.getString("Cliente.Sobrenome");
+                String data = result.getString("Venda.DataVenda");
+                String livro = result.getString("Livro.NomeLivro");
+                int quantidade = result.getInt("Carrinho.Quantidade");
+                float valorUnitario = result.getFloat("Venda.ValorVenda");
+                float valor = result.getFloat("Carrinho.Valor");
+                float valorTotal = result.getFloat("Venda.Valor");
+                String FormaPagamento = result.getString("Venda.FormaPagamento");
                 
                 Relatorio r = new Relatorio(IDVenda, nomeCliente, data, livro, quantidade, valorUnitario, valor, valorTotal, FormaPagamento);
                 
@@ -238,7 +238,7 @@ public class VendaDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO venda (IDCliente, IDVenda, DataVenda, Valor, FormaPagamento) values (?,?,?,?,?)";
+        String sql = "INSERT INTO Venda (IDCliente, IDVenda, DataVenda, Valor, FormaPagamento) values (?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -358,7 +358,7 @@ public class VendaDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM Venda join Cliente on venda.IDCliente = cliente.ID where Nome like ?";//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
+        String sql = "SELECT * FROM Venda join Cliente on venda.IDCliente = Cliente.ID where Nome like ?";//"select V.*,FP.Descricao, C.Nome From Venda as V  inner join FormaDePagamento as FP on FP.IDPagamento = V.FormaPagamento inner join Cliente as C on C.ID = V.IDCliente";  
         //Lista de clientes de resultado
         System.out.println("Entrou DAO ");
         List<Venda> listaVenda = new ArrayList<Venda>();
@@ -385,12 +385,12 @@ public class VendaDAO {
                 //Se a lista não foi inicializada, a inicializa                
                 System.out.println("Entrou no result Next");
                 //Cria uma instância de Venda e popula com os valores do BD
-                int IDCliente = result.getInt("venda.IDCLiente");
-                int IDVenda = result.getInt("venda.IDVenda");
-                String data = result.getString("venda.DataVenda");
-                float Valor = result.getInt("venda.Valor");
-                String FormaPagamento = result.getString("venda.FormaPagamento");
-                String NomeCliente = result.getString("cliente.Nome") +" "+ result.getString("cliente.Sobrenome");
+                int IDCliente = result.getInt("Venda.IDCLiente");
+                int IDVenda = result.getInt("Venda.IDVenda");
+                String data = result.getString("Venda.DataVenda");
+                float Valor = result.getInt("Venda.Valor");
+                String FormaPagamento = result.getString("Venda.FormaPagamento");
+                String NomeCliente = result.getString("Cliente.Nome") +" "+ result.getString("Cliente.Sobrenome");
                 Venda V = new Venda(IDCliente, IDVenda, data, Valor, FormaPagamento, NomeCliente);
                 //Adiciona a instância na lista
                 System.out.println(V.toString());
@@ -424,7 +424,7 @@ public class VendaDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "DELETE FROM venda where IDVenda = " + IDVenda;
+        String sql = "DELETE FROM Venda where IDVenda = " + IDVenda;
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de

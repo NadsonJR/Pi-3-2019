@@ -25,7 +25,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de inserção de um cliente no BD,
         //utilizando os dados do clientes passados como parâmetro
-        String sql = "INSERT INTO cliente (Nome,Sobrenome,DataDeNascimento,CPF,RG,CEP,Complemento,Cidade,Estado,Endereco,Telefone,Celular,Email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Cliente (Nome,Sobrenome,DataDeNascimento,CPF,RG,CEP,Complemento,Cidade,Estado,Endereco,Telefone,Celular,Email) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         //Conexão para abertura e fechamento
         Connection connection = null;
         //Statement para obtenção através da conexão, execução de
@@ -75,7 +75,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM cliente";
+        String sql = "SELECT * FROM Cliente";
         //Lista de clientes de resultado
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
@@ -102,20 +102,20 @@ public class ClienteDAO {
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
 
-                int id = result.getInt("id");
-                String nome = result.getString("nome");
-                String sobrenome = result.getString("sobrenome");
+                int id = result.getInt("ID");
+                String nome = result.getString("Nome");
+                String sobrenome = result.getString("Sobrenome");
                 String dataNascimento = result.getString("DataDeNascimento");
-                String cpf = result.getString("cpf");
-                String rg = result.getString("rg");
-                String Cep = result.getString("cep");
-                String complemento = result.getString("complemento");
-                String cidade = result.getString("cidade");
-                String estado = result.getString("estado");
-                String endereco = result.getString("endereco");
+                String cpf = result.getString("CPF");
+                String rg = result.getString("RG");
+                String Cep = result.getString("CEP");
+                String complemento = result.getString("Complemento");
+                String cidade = result.getString("Cidade");
+                String estado = result.getString("Estado");
+                String endereco = result.getString("Endereco");
                 String telefone = result.getString("Telefone");
-                String celular = result.getString("celular");
-                String Email = result.getString("email");
+                String celular = result.getString("Celular");
+                String Email = result.getString("Email");
 
                 Cliente c = new Cliente(Cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, Email, telefone, celular);
                 c.setID(id);
@@ -145,7 +145,7 @@ public class ClienteDAO {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
         //ESSA QUERY TA 100% FORA DAS BOAS PRÁTICAS ---->
-        String sql = "SELECT * FROM cliente WHERE Nome=" + "'" + nomeBanco + "'";
+        String sql = "SELECT * FROM Cliente WHERE Nome=" + "'" + nomeBanco + "'";
         //Lista de clientes de resultado
         List<Cliente> listaClientes = null;
         //Conexão para abertura e fechamento
@@ -169,20 +169,20 @@ public class ClienteDAO {
                     listaClientes = new ArrayList<Cliente>();
                 }
                 //Cria uma instância de Cliente e popula com os valores do BD
-                int id = result.getInt("id");
-                String nome = result.getString("nome");
-                String sobrenome = result.getString("sobrenome");
-                String dataNascimento = result.getString("dataDeNascimento");
-                String cpf = result.getString("cpf");
-                String rg = result.getString("rg");
-                String Cep = result.getString("cep");
-                String complemento = result.getString("complemento");
-                String cidade = result.getString("cidade");
-                String estado = result.getString("estado");
-                String endereco = result.getString("endereco");
+                int id = result.getInt("ID");
+                String nome = result.getString("Nome");
+                String sobrenome = result.getString("Sobrenome");
+                String dataNascimento = result.getString("DataDeNascimento");
+                String cpf = result.getString("CPF");
+                String rg = result.getString("RG");
+                String Cep = result.getString("CEP");
+                String complemento = result.getString("Complemento");
+                String cidade = result.getString("Cidade");
+                String estado = result.getString("Estado");
+                String endereco = result.getString("Endereco");
                 String telefone = result.getString("Telefone");
-                String celular = result.getString("celular");
-                String Email = result.getString("email");
+                String celular = result.getString("Celular");
+                String Email = result.getString("Email");
 
                 Cliente c = new Cliente(Cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, Email, telefone, celular);
                 c.setID(id);
@@ -212,7 +212,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Compõe uma String de consulta que considera apenas o cliente
         //com o ID informado e que esteja ativo ("enabled" com "true")
-        String sql = "SELECT * FROM cliente WHERE ID=?";
+        String sql = "SELECT * FROM Cliente WHERE ID=?";
         //Conexão para abertura e fechamento
         Connection connection = null;
         System.out.println("ID Procurar: " + idCliente);
@@ -234,20 +234,20 @@ public class ClienteDAO {
             //Verifica se há pelo menos um resultado
             if (result.next()) {
                 //Cria uma instância de Cliente e popula com os valores do BD
-                int id = result.getInt("id");
-                String nome = result.getString("nome");
-                String sobrenome = result.getString("sobrenome");
+                int id = result.getInt("ID");
+                String nome = result.getString("Nome");
+                String sobrenome = result.getString("Sobrenome");
                 String dataNascimento = result.getString("DataDeNascimento");
-                String cpf = result.getString("cpf");
-                String rg = result.getString("rg");
-                String Cep = result.getString("cep");
-                String complemento = result.getString("complemento");
-                String cidade = result.getString("cidade");
-                String estado = result.getString("estado");
-                String endereco = result.getString("endereco");
+                String cpf = result.getString("CPF");
+                String rg = result.getString("RG");
+                String Cep = result.getString("CEP");
+                String complemento = result.getString("Complemento");
+                String cidade = result.getString("Cidade");
+                String estado = result.getString("Estado");
+                String endereco = result.getString("Endereco");
                 String telefone = result.getString("Telefone");
-                String celular = result.getString("celular");
-                String Email = result.getString("email");
+                String celular = result.getString("Celular");
+                String Email = result.getString("Email");
 
                 Cliente c = new Cliente(Cep, complemento, endereco, cidade, estado, nome, sobrenome, rg, cpf, dataNascimento, Email, telefone, celular);
                 c.setID(id);
@@ -280,7 +280,8 @@ public class ClienteDAO {
     public static boolean AlterarCliente(Cliente cliente) throws Exception {
         System.out.println("Iniciando processo de atualização de cliente...");
         //comando sql
-        String sql = "update cliente set Nome =?,Sobrenome =?,DataDeNascimento =?,CPF =?,RG=?,Cep=?,Complemento=?,Cidade=?,Estado=?,Endereco=?,Celular =?,Telefone=?,Email=? where id=?";
+        String sql = "update Cliente set Nome =?,Sobrenome =?,DataDeNascimento =?,CPF =?,RG=?,Cep=?,"
+                + "Complemento=?,Cidade=?,Estado=?,Endereco=?,Celular =?,Telefone=?,Email=? where ID=?";
         //Conexão para abertura e fechamento
         Connection connection = null;
 
@@ -364,7 +365,7 @@ public class ClienteDAO {
             throws SQLException, Exception {
         //Monta a string de listagem de clientes no banco, considerando
         //apenas a coluna de ativação de clientes ("enabled")
-        String sql = "SELECT * FROM cliente";
+        String sql = "SELECT * FROM Cliente";
         //Lista de clientes de resultado
         //Conexão para abertura e fechamento
         Connection connection = null;

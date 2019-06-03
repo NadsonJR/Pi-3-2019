@@ -140,7 +140,7 @@
   USE PI_III;
 
 
-  CREATE TABLE cliente (
+  CREATE TABLE Cliente (
   ID int(11) NOT NULL AUTO_INCREMENT,
   Nome varchar(255) NOT NULL,
   Sobrenome varchar(255) NOT NULL,

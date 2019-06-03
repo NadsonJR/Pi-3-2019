@@ -288,9 +288,9 @@ public class UsuarioDAO {
             //Verifica se há pelo menos um resultado
             if (result.next()) {
                 //Cria uma instância de Usuario e popula com os valores do BD
-                int id = result.getInt("id");
+                int id = result.getInt("ID");
                 String NomeCompleto = result.getString("Nome");
-                String DatNasc = result.getString("datNasc");
+                String DatNasc = result.getString("DatNasc");
                 String CPF = result.getString("CPF");
                 String Username = result.getString("Usuario");
                 String Senha = result.getString("Senha");
