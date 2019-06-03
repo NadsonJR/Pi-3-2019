@@ -1,7 +1,7 @@
 <%-- 
     Document   : ConsultarProduto
     Created on : 08/02/2019, 16:16:33
-    Author     : mt12732
+    Author     : Adaulan
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -61,17 +61,17 @@
                                     <td><c:out value="${venda.getIDVenda()}"/></td>
                                     <td><c:out value="${venda.getNomeCliente()}"/></td>
                                     <td><c:out value="${venda.formatDataVenda(venda.getDataVenda())}"/></td>
-                                    <td><c:out value="${venda.getValor()}"/></td>
+                                    <td><c:out value="${venda.formatToReal(venda.getValor())}"/></td>
                                     <td><c:out value="${venda.getFormaPagamento()}"/></td>
                                     <td>
-                                        <form method="get" action="${pageContext.request.contextPath}/ProdutoEditar">
-                                            <input type="hidden" value="${produto.getID()}" name="id">
+                                        <form method="post" action="${pageContext.request.contextPath}/EmitirRelatorio">
+                                            <input type="hidden" value="${venda.getIDVenda()}" name="IDVenda">
                                             <button class="form-button " id="btn-form-search"  type="submit"><i class="far fa-edit"></i></button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form  method="post" action="${pageContext.request.contextPath}/ProdutoExcluir">
-                                            <input type="hidden" value="${produto.getID()}" name="id">
+                                        <form  method="post" action="${pageContext.request.contextPath}/ExcluirVenda">
+                                            <input type="hidden" value="${venda.getIDVenda()}" name="IDVenda">
                                             <button id="btn-form-search" type="submit"><i class="fas fa-times"></i></button>                                        
                                         </form>
                                     </td>    

@@ -1,7 +1,7 @@
 <%-- 
     Document   : ProdutoCadastro
     Created on : 08/02/2019, 14:48:44
-    Author     : mt12732
+    Author     : Adaulan
 --%>
 <%@page import="Modal.Cliente"%>
 <%@page import="java.time.LocalDate"%>
@@ -37,7 +37,7 @@
                         <label> Cliente </label>
                         <%
                             if (request.getAttribute("NomeCliente") != null) {
-                                out.print("<select class='form-control' required name='cliente'>"
+                                out.print("<select class='form-control' required name='cliente' >"
                                         + "<option value=" + request.getAttribute("IDCliente") + ">");
                                 out.print(request.getAttribute("NomeCliente").toString());
 

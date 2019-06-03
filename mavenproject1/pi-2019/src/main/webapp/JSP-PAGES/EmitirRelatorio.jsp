@@ -26,22 +26,17 @@
     <jsp:include page="Navbar-Component.jsp" />
         
     <body id="body-changes" class="text-center" > 
-        <form id="FadeForm" class="form-type"action = "${pageContext.request.contextPath}/EmitirRelatorio" method = "post" >
+        <form id="FadeForm" class="form-type" action="${pageContext.request.contextPath}/EmitirRelatorio" method = "post" >
             <div class="row justify-content-center">
                 <h2>Relatório de venda</h2>
             </div>
             <div class="row justify-content-center">
-                <div class="form-group col-5 ">
-                    <label> Data Inicial: </label>
-                    <input type="text" class="form-control" placeholder="Ainda nao funciona" id="nome" name="nome">
-                </div>
-
-                <div class="form-group col-5 ">
-                    <label> Data Final: </label>
-                    <input type="number" class="form-control" placeholder="Ainda nao funciona" id="cpf" name="cpf" >
+                <div class="form-group col-6 ">
+                    <label> ID da Venda: </label>
+                    <input type="text" class="form-control" placeholder="ID da Venda" id="nome" name="IDVenda">
                 </div>
                 <div class="form-group col-2">
-                    <button type="submit" id="btn-form-search" style="margin-top: 30px;">Pesquisar <i class="fas fa-search"></i></button>
+                    <button type="submit" id="btn-form" style="margin-top: 30px;">Emitir <i class="fas fa-search"></i></button>
                 </div>
             </div>
             
@@ -51,10 +46,13 @@
                     <div class="table-wrapper-scroll-y my-custom-scrollbar" id="style-1">
                         <table class="table ">
                             <tr>
-                                <th scope="col">Número da Venda</th>
-                                <th scope="col">CLiente</th>
+                                <th scope="col">ID da Venda</th>
+                                <th scope="col">Cliente</th>
                                 <th scope="col">Data da Venda</th>
-                                <th scope="col">Valor</th>
+                                <th scope="col">Livro</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Valor Unitário</th>
+                                <th scope="col">Valor Total</th>
                                 <th scope="col">Forma De Pagamento</th>
                             </tr>
 
@@ -63,13 +61,16 @@
                             </form>
                             <%--<c:set var="${listaClientes}" scope="result" value="${null}"/>--%>
                             <%-- primeiro form ignorado pelo metodo! --%>
-                            <c:forEach items ="${listaVenda}" var="Venda" begin="0">
+                            <c:forEach items ="${listaRelatorio}" var="relatorio" begin="0">
                                 <tr>
-                                    <td><c:out value="${Venda.getIDVenda()}"/></td>
-                                    <td><c:out value="${Venda.getClienteNome()}"/></td>
-                                    <td><c:out value="${Venda.getDataVenda()}"/></td>
-                                    <td><c:out value="${Venda.getValor()}"/></td>
-                                    <td><c:out value="${Venda.getFormaPagamento()}"/></td>
+                                    <td><c:out value="${relatorio.getIDVenda()}"/></td>
+                                    <td><c:out value="${relatorio.getNomeCliente()}"/></td>
+                                    <td><c:out value="${relatorio.formatDataVenda(relatorio.getDataVenda())}"/></td>
+                                    <td><c:out value="${relatorio.getNomeLivro()}"/></td>
+                                    <td><c:out value="${relatorio.getQuantidade()}"/></td>
+                                    <td><c:out value="${relatorio.formatToReal(relatorio.getValorUnitario())}"/></td>
+                                    <td><c:out value="${relatorio.formatToReal(relatorio.getValor())}"/></td>
+                                    <td><c:out value="${relatorio.getFormaPagamento()}"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>

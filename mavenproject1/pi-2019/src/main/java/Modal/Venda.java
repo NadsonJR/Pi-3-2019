@@ -5,12 +5,12 @@
  */
 package Modal;
 
-import java.util.Date;
-import java.util.List;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  *
- * @author mt12732
+ * @author Adaulan
  */
 public class Venda {
 
@@ -90,5 +90,26 @@ public class Venda {
         dataBr = dia + "/" + mes + "/" + ano;
         return dataBr;
     }
+    
+        public float formatToFloat(String preco) {
+        float precoNovo;
+        String precoFormatado;
+        precoFormatado = preco.replaceAll("\\.", "").replaceAll("\\,", ".").replaceAll("R", "").replaceAll("\\$", "");
+        precoNovo = Float.parseFloat(precoFormatado);
+        return precoNovo;
+    }
 
+    public String formatToReal(float preco) {
+        Locale ptBr = new Locale("pt", "Br");
+        NumberFormat nf = NumberFormat.getCurrencyInstance(ptBr);
+        String formatado = nf.format(preco);
+        return formatado;
+    }
+
+    @Override
+    public String toString() {
+        return "Venda{" + "IDCliente=" + IDCliente + ", IDVenda=" + IDVenda + ", DataVenda=" + DataVenda + ", Valor=" + Valor + ", FormaPagamento=" + FormaPagamento + ", NomeCliente=" + NomeCliente + '}';
+    }
+    
+    
 }

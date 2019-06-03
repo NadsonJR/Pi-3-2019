@@ -135,111 +135,107 @@
 
 
 <<<----------- BANCO ADAULAN ------------>>>
-  CREATE TABLE `cliente` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(255) NOT NULL,
-  `Sobrenome` varchar(255) NOT NULL,
-  `CPF` varchar(14) NOT NULL,
-  `RG` varchar(14) NOT NULL,
-  `Cep` varchar(255) NOT NULL,
-  `Complemento` varchar(255) DEFAULT NULL,
-  `Cidade` varchar(30) NOT NULL,
-  `Estado` varchar(30) NOT NULL,
-  `Endereco` varchar(255) NOT NULL,
-  `DataDeNascimento` varchar(255) NOT NULL,
-  `Celular` varchar(255) DEFAULT NULL,
-  `Telefone` varchar(255) DEFAULT NULL,
-  `Email` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `CPF` (`CPF`),
-  UNIQUE KEY `RG` (`RG`)
+  CREATE DATABASE PI_III;
+
+  USE PI_III;
+
+
+  CREATE TABLE cliente (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  Nome varchar(255) NOT NULL,
+  Sobrenome varchar(255) NOT NULL,
+  CPF varchar(14) NOT NULL,
+  RG varchar(14) NOT NULL,
+  Cep varchar(255) NOT NULL,
+  Complemento varchar(255) DEFAULT NULL,
+  Cidade varchar(30) NOT NULL,
+  Estado varchar(30) NOT NULL,
+  Endereco varchar(255) NOT NULL,
+  DataDeNascimento varchar(255) NOT NULL,
+  Celular varchar(255) DEFAULT NULL,
+  Telefone varchar(255) DEFAULT NULL,
+  Email varchar(255) NOT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE KEY CPF (CPF),
+  UNIQUE KEY RG (RG)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `cargos` (
-  `idCargo` int(11) NOT NULL AUTO_INCREMENT,
-  `NomeCargo` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`idCargo`)
+CREATE TABLE cargos (
+  idCargo int(11) NOT NULL AUTO_INCREMENT,
+  NomeCargo varchar(255) DEFAULT NULL,
+  PRIMARY KEY (idCargo)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8
 
 
-CREATE TABLE `carrinho` (
-  `IDLivro` int(11) NOT NULL,
-  `Quantidade` int(11) NOT NULL,
-  `IDCarrinho` int(11) NOT NULL,
-  `Valor` float DEFAULT NULL,
-  KEY `IDCarrinho` (`IDCarrinho`),
-  CONSTRAINT `carrinho_ibfk_1` FOREIGN KEY (`IDCarrinho`) REFERENCES `venda` (`IDVenda`)
+CREATE TABLE carrinho (
+  IDLivro int(11) NOT NULL,
+  Quantidade int(11) NOT NULL,
+  IDCarrinho int(11) NOT NULL,
+  Valor float DEFAULT NULL,
+  KEY IDCarrinho (IDCarrinho),
+  CONSTRAINT carrinho_ibfk_1 FOREIGN KEY (IDCarrinho) REFERENCES venda (IDVenda)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 
-CREATE TABLE `categoria` (
-  `IDCategoria` int(11) NOT NULL AUTO_INCREMENT,
-  `Nome` varchar(255) NOT NULL,
-  PRIMARY KEY (`IDCategoria`),
-  UNIQUE KEY `UC_NOME` (`Nome`)
+CREATE TABLE categoria (
+  IDCategoria int(11) NOT NULL AUTO_INCREMENT,
+  Nome varchar(255) NOT NULL,
+  PRIMARY KEY (IDCategoria),
+  UNIQUE KEY UC_NOME (Nome)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `emitirrelatorio` (
-  `Nome` varchar(255) NOT NULL,
-  `IDRelatorio` int(11) NOT NULL,
-  `DataVenda` varchar(255) DEFAULT NULL,
-  `Valor` float DEFAULT NULL,
-  `DescricaoPagamento` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1
-
-
-CREATE TABLE `formadepagamento` (
-  `IdPagamento` int(11) NOT NULL AUTO_INCREMENT,
-  `Descricao` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`IdPagamento`)
+CREATE TABLE formadepagamento (
+  IdPagamento int(11) NOT NULL AUTO_INCREMENT,
+  Descricao varchar(255) DEFAULT NULL,
+  PRIMARY KEY (IdPagamento)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `funcionario` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `IdFilial` int(11) NOT NULL,
-  `Nome` varchar(255) NOT NULL,
-  `Sexo` varchar(9) NOT NULL,
-  `DatNasc` varchar(10) NOT NULL,
-  `CPF` varchar(14) NOT NULL,
-  `Cargo` varchar(30) NOT NULL,
-  `Deptmento` varchar(30) NOT NULL,
-  `Celular` varchar(14) NOT NULL,
-  `Email` varchar(100) NOT NULL,
-  `UserName` varchar(30) NOT NULL,
-  `Senha` varchar(30) NOT NULL,
-  `Ativo` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  UNIQUE KEY `CPF` (`CPF`)
+CREATE TABLE funcionario (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  IdFilial int(11) NOT NULL,
+  Nome varchar(255) NOT NULL,
+  Sexo varchar(9) NOT NULL,
+  DatNasc varchar(10) NOT NULL,
+  CPF varchar(14) NOT NULL,
+  Cargo varchar(30) NOT NULL,
+  Deptmento varchar(30) NOT NULL,
+  Celular varchar(14) NOT NULL,
+  Email varchar(100) NOT NULL,
+  UserName varchar(30) NOT NULL,
+  Senha varchar(30) NOT NULL,
+  Ativo tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (ID),
+  UNIQUE KEY CPF (CPF)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `livro` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `NomeLivro` varchar(255) NOT NULL,
-  `Autor` varchar(255) NOT NULL,
-  `Editora` varchar(255) NOT NULL,
-  `Descricao` varchar(255) NOT NULL,
-  `ValorVenda` float NOT NULL,
-  `ValorCusto` float NOT NULL,
-  `Categoria` varchar(30) NOT NULL,
-  `Quantidade` int(11) DEFAULT NULL,
-  `DataCadastro` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+CREATE TABLE livro (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  NomeLivro varchar(255) NOT NULL,
+  Autor varchar(255) NOT NULL,
+  Editora varchar(255) NOT NULL,
+  Descricao varchar(255) NOT NULL,
+  ValorVenda float NOT NULL,
+  ValorCusto float NOT NULL,
+  Categoria varchar(30) NOT NULL,
+  Quantidade int(11) DEFAULT NULL,
+  DataCadastro varchar(255) DEFAULT NULL,
+  PRIMARY KEY (ID)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1
 
 
-CREATE TABLE `venda` (
-  `IDCliente` int(11) NOT NULL,
-  `IDVenda` int(11) NOT NULL,
-  `DataVenda` date DEFAULT NULL,
-  `Valor` float DEFAULT NULL,
-  `FormaPagamento` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`IDVenda`),
-  KEY `IDCliente` (`IDCliente`),
-  CONSTRAINT `venda_ibfk_1` FOREIGN KEY (`IDCliente`) REFERENCES `cliente` (`ID`)
+CREATE TABLE venda (
+  IDCliente int(11) NOT NULL,
+  IDVenda int(11) NOT NULL,
+  DataVenda date DEFAULT NULL,
+  Valor float DEFAULT NULL,
+  FormaPagamento varchar(255) DEFAULT NULL,
+  PRIMARY KEY (IDVenda),
+  KEY IDCliente (IDCliente),
+  CONSTRAINT `venda_ibfk_1` FOREIGN KEY (IDCliente) REFERENCES cliente (ID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 
 

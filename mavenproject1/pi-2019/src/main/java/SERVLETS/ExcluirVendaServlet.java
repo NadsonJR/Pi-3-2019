@@ -5,7 +5,8 @@
  */
 package SERVLETS;
 
-import DAO.LivroDAO;
+import DAO.CarrinhoDAO;
+import DAO.VendaDAO;
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,28 +17,32 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author mt12732
+ * @author Adaulan
  */
-@WebServlet(name = "ProdutoExcluir", urlPatterns = {"/ProdutoExcluir"})
-public class ProdutoExcluir extends HttpServlet {
-
-   
+@WebServlet(name = "ExcluirVendaServlet", urlPatterns = {"/ExcluirVenda"})
+public class ExcluirVendaServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/ConsultarProduto.jsp");
-        dispatcher.forward(request, response);
+        
+    
+    
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      int IdLivro = Integer.parseInt(request.getParameter("id"));
+            int IDVenda = Integer.parseInt(request.getParameter("IDVenda"));
         try {
             
-            if(LivroDAO.delLivro(IdLivro)){
+            if(CarrinhoDAO.delete(IDVenda)){
+                request.setAttribute("msgResposta", "Excluido com sucesso!");
+            } else {
+                request.setAttribute("msgResposta", "Não Foi possível realizar a exclusão!");
+            }
+            
+            if(VendaDAO.delete(IDVenda)){
                 request.setAttribute("msgResposta", "Excluido com sucesso!");
             } else {
                 request.setAttribute("msgResposta", "Não Foi possível realizar a exclusão!");
@@ -51,6 +56,11 @@ public class ProdutoExcluir extends HttpServlet {
                 = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
         dispatcher.forward(request, response);
     }
+    
+    
+    
+
+
 
 
 }

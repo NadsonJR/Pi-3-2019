@@ -18,8 +18,6 @@ import Modal.Venda;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +28,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author mt12732
+ * @author Adaulan
  */
 @WebServlet(name = "CadastroVenda", urlPatterns = {"/CadastroVenda"})
 public class CadastroVenda extends HttpServlet {
