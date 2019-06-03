@@ -33,7 +33,7 @@ public class LoginDAO {
                 user.setID(rs.getInt("ID"));
                 user.setNomeFuncionario(rs.getString("Nome"));
                 user.setUsername(rs.getString("Usuario"));
-                user.setSenha(rs.getString("Senha"));
+                user.setHashSenha(rs.getString("Senha"));
                 user.setCargo(rs.getString("Cargo"));
                 System.out.println(user.toString());
             }
