@@ -74,9 +74,8 @@ public class ProdutoCadastroServlet extends HttpServlet {
         } catch (Exception e) {
         }
 
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("/JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        request.setAttribute("Livro ", L);
+        response.sendRedirect("ConsultarProduto");
     }
 
 }

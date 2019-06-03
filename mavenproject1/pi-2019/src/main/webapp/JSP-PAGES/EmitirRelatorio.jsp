@@ -38,7 +38,7 @@
 
                 <div class="form-group col-5 ">
                     <label> Data Final: </label>
-                    <input type="number" class="form-control" placeholder="Ainda nao funciona" id="cpf" name="cpf" >
+                    <input type="text" class="form-control" placeholder="Ainda nao funciona" id="cpf" name="cpf" >
                 </div>
                 <div class="form-group col-2">
                     <button type="submit" id="btn-form-search" style="margin-top: 30px;">Pesquisar <i class="fas fa-search"></i></button>
@@ -52,7 +52,7 @@
                         <table class="table ">
                             <tr>
                                 <th scope="col">Número da Venda</th>
-                                <th scope="col">CLiente</th>
+                                <th scope="col">Cliente</th>
                                 <th scope="col">Data da Venda</th>
                                 <th scope="col">Valor</th>
                                 <th scope="col">Forma De Pagamento</th>

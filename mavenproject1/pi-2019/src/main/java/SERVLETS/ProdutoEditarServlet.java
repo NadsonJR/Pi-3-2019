@@ -72,9 +72,7 @@ public class ProdutoEditarServlet extends HttpServlet {
             e.getLocalizedMessage();
             System.out.println(e);
         }
-        RequestDispatcher dispatcher
-                = request.getRequestDispatcher("JSP-PAGES/Home.jsp");
-        dispatcher.forward(request, response);
+        response.sendRedirect("ConsultarProduto");
     }
 
 }

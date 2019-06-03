@@ -7,6 +7,7 @@
 
 <!DOCTYPE html>
 <html>
+    <jsp:include page="Navbar-Component.jsp"/>
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +15,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" media="screen" href="JSP-STYLES/main.css" />
         <script type="text/javascript" src="JSP-JS/main.js"></script>
-       </head>
-    <jsp:include page="Navbar-Component.jsp"/>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+        
+    </head>
+
     <body id="body-changes" class="text-center">
         <form name="formCad" id="FadeForm" class="form-type" method="post" action="${pageContext.request.contextPath}/CadastroCliente" accept-charset="UTF-8">
             <div class="row justify-content-center">
@@ -36,21 +40,21 @@
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> CPF: </label>
-                    <input type="text" class="cpf form-control" placeholder="###.###.###-##" required name="cpf" id="cpf" maxlength="14" onkeypress="return onlynumber();" onkeyup="mascara('###.###.###-##',this,event)">
+                    <input type="text" class="cpf form-control" placeholder="###.###.###-##" required name="cpf" id="cpf" maxlength="14" onkeypress="return onlynumber();" onkeyup="mascara('###.###.###-##', this, event)">
                 </div>
                 <div class=" form-group col-4 ">
                     <label> R.G: </label>
-                    <input type="text" class="form-control" placeholder="##.###.###-##" required name="rg" id="rg" maxlength="14"onkeypress="return onlynumber();" onkeyup="mascara('##.###.###-##',this,event)">
+                    <input type="text" class="form-control" placeholder="##.###.###-##" required name="rg" id="rg" maxlength="14"onkeypress="return onlynumber();" onkeyup="mascara('##.###.###-##', this, event)">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Data de Nascimento: </label>
-                    <input type="text" class="cpf form-control data-mask" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10"  onkeypress="return onlynumber();" onkeyup="mascara('##/##/####',this,event)">
+                    <input type="text" class="cpf form-control data-mask" placeholder="dd/MM/yyyy" required name="dataNascimento" id="dataNascimento" maxlength="10"  onkeypress="return onlynumber();" onkeyup="mascara('##/##/####', this, event)">
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="form-group col-4 ">
                     <label> CEP: </label>
-                    <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" maxlength="10" onkeypress="return onlynumber();" onkeyup="mascara('#####-###',this,event)">
+                    <input type="text" class="form-control" placeholder="00000-000" required name="cep" id="cep" maxlength="10" onkeypress="return onlynumber();" onkeyup="mascara('#####-###', this, event)">
                 </div>
                 <div class="form-group col-4 ">
                     <label> Cidade: </label>
@@ -107,19 +111,19 @@
                 </div>
                 <div class="form-group col-3">
                     <label> Telefone: </label>
-                    <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" required onkeypress="return onlynumber();" maxlength="20" onkeyup="mascara('(##)####-####',this,event)">
+                    <input type="text" class="form-control" placeholder="(00)0000-0000" name="telefone" id="telefone" required onkeypress="return onlynumber();" maxlength="20" onkeyup="mascara('(##)####-####', this, event)">
                 </div>
                 <div class="form-group col-3">
                     <label> Celular: </label>
-                    <input type="text" class="form-control" placeholder="(00)90000-0000" name="celular" id="celular" required onkeypress="return onlynumber();" maxlength="15" onkeyup="mascara('(##)#####-####',this,event)">
+                    <input type="text" class="form-control" placeholder="(00)90000-0000" name="celular" id="celular" required onkeypress="return onlynumber();" maxlength="15" onkeyup="mascara('(##)#####-####', this, event)">
                 </div>
             </div>
             <div class="row ">
                 <div class ="form group col-9 ">
                 </div>
                 <div class ="form group   col-sm-3 ">
-                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancel </button>
-                    <button type="submit" class="btn btn-primary" id="btn-form" > Confirm </button>
+                    <button type="reset" class="btn btn-primary" id="btn-form"> Cancelar </button>
+                    <button type="submit" class="btn btn-primary" id="btn-form" > Confirmar </button>
                 </div>
             </div>
         </form>
